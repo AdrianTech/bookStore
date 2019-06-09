@@ -1,0 +1,74 @@
+.cartContent {
+   font-family: "Poppins";
+   h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 5%;
+   }
+   .addedToBasketBook {
+      // display: grid;
+      // grid-template-columns: repeat(5, 1fr);
+      // grid-gap: 5px;
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px dotted black;
+      .title {
+         text-align: center;
+         flex: 1;
+         img {
+            width: 45px;
+            height: 55px;
+         }
+      }
+      h5,
+      .countItems,
+      .fas,
+      .total {
+         padding-top: 10px;
+      }
+      h5 {
+         flex: 1.7;
+         font-size: 15px;
+      }
+      .countItems {
+         flex: 2.3;
+         button {
+            padding: 3px 5px;
+            background-color: $darkRed;
+            color: $bgc-item;
+            border: 1px solid $bgc-item;
+            font-weight: 700;
+            font-family: "Poppins";
+         }
+         span {
+            padding: 5px;
+            font-size: 17px;
+            font-weight: 700;
+         }
+      }
+      .total {
+         font-size: 15px;
+         flex: 2;
+         font-weight: 700;
+      }
+      i {
+         font-size: 23px;
+         cursor: pointer;
+      }
+   }
+   .summary {
+      position: absolute;
+      left: 10%;
+      bottom: 20%;
+      font-size: 13px;
+      background-color: $bgc-item;
+      padding: 7px;
+      span {
+         color: $darkRed;
+         font-size: 17px;
+      }
+   }
+}
+@media (min-width: 768px) {
+}
+//

@@ -1,0 +1,9 @@
+$darkRed: #5c0303;
+$global-light: #d4d1d1;
+$bgc-item: #ebd9d9;
+@mixin clearLink {
+   text-decoration: none;
+}
+@mixin txtCtr {
+   text-align: center;
+}

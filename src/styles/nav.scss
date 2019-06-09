@@ -1,0 +1,106 @@
+nav {
+   width: 100%;
+   height: 60px;
+   background-color: $darkRed;
+   display: flex;
+   position: fixed;
+   border-bottom: 1px solid #040266;
+   z-index: 5;
+   // .logo {
+   //    flex-basis: 15%;
+   //    background-color: $darkRed;
+   // }
+   .baner {
+      flex-basis: 60%;
+      font-family: "Pacifico", cursive;
+      position: relative;
+      padding: 3px 0;
+      a {
+         color: $global-light;
+         @include clearLink;
+      }
+      h1 {
+         font-size: 18px;
+         letter-spacing: 3px;
+         position: relative;
+         margin-left: 5%;
+         &::after {
+            content: "Your Lovely Store...";
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            top: 85%;
+            left: 20%;
+            font-size: 10px;
+            color: $global-light;
+         }
+      }
+   }
+   .cart {
+      flex-basis: 40%;
+      @include txtCtr;
+      color: $global-light;
+      background-color: #690202;
+      padding: 3px;
+      a {
+         @include clearLink;
+         line-height: 45px;
+         color: $global-light;
+         font-size: 20px;
+         width: 100%;
+         flex-direction: column;
+      }
+      .items {
+         border-radius: 50%;
+         width: 20px;
+         height: 20px;
+         background-color: rgba(255, 255, 255, 0.616);
+         display: inline-block;
+         position: relative;
+         span {
+            font-size: 16px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-family: "Oswald", sans-serif;
+            font-weight: 700;
+         }
+      }
+      p {
+         font-size: 13px;
+         position: relative;
+         bottom: 18%;
+         font-family: "Arima Madurai", cursive;
+      }
+   }
+}
+@media (min-width: 768px) {
+   nav {
+      height: 70px;
+      .baner {
+         flex-basis: 85%;
+         h1 {
+            margin-left: 10%;
+            font-size: 28px;
+            letter-spacing: 5px;
+            &::after {
+               left: 10%;
+            }
+         }
+      }
+      .cart {
+         flex-basis: 15%;
+         a {
+            font-size: 33px;
+            line-height: 55px;
+            margin-left: 20px;
+         }
+         p {
+            font-weight: 700;
+            margin-left: 15%;
+         }
+      }
+   }
+}

@@ -1,0 +1,35 @@
+@import "./globalVar";
+*,
+::before,
+::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.wrapper {
+   padding: 70px 3% 0;
+}
+.notFound {
+   text-align: center;
+   font-family: "Poppins";
+   font-size: 14px;
+   h2 {
+      margin-bottom: 10px;
+   }
+   a {
+      text-decoration: none;
+      font-weight: 700;
+      background-color: $bgc-item;
+      padding: 8px;
+      color: $darkRed;
+      &:hover {
+         color: black;
+      }
+   }
+}
+@media (min-width: 768px) {
+   .notFound {
+      font-size: 18px;
+   }
+}
+//
