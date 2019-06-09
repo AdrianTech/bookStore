@@ -65,11 +65,12 @@ class StoreProvider extends Component {
       const findItem = cart.find(item => item.id === id);
       const index = cart.indexOf(findItem);
       const item = cart[index];
-      let fixedTotal = item.total;
+      //let fixedTotal = item.total;
       item.count = item.count + 1;
-      fixedTotal = item.count * item.price;
-      let total = parseFloat(fixedTotal.toFixed(2));
-      item.total = total;
+      //fixedTotal = item.count * item.price;
+      item.total = item.count * item.price;
+      //let total = parseFloat(fixedTotal.toFixed(2));
+      //item.total = total;
       this.summary();
       this.setState({
          cartStore: [...cart]
@@ -81,11 +82,12 @@ class StoreProvider extends Component {
       const index = cart.indexOf(findItem);
       const item = cart[index];
       if (item.count <= 0) return;
-      let fixedTotal = item.total;
+      //let fixedTotal = item.total;
       item.count = item.count - 1;
-      fixedTotal = item.count * item.price;
-      let total = parseFloat(fixedTotal.toFixed(2));
-      item.total = total;
+      // fixedTotal = item.count * item.price;
+      item.total = item.count * item.price;
+      //let total = parseFloat(fixedTotal.toFixed(2));
+      //item.total = total;
       this.summary();
       this.setState({
          cartStore: [...cart]
@@ -99,12 +101,10 @@ class StoreProvider extends Component {
       this.setState({
          sum
       });
-      console.log(this.state.sum);
    };
 
    render() {
       const { addToBasket, deleteItem } = this;
-      console.log(this.state);
 
       return (
          <BookContext.Provider

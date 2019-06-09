@@ -10,65 +10,134 @@
       // grid-template-columns: repeat(5, 1fr);
       // grid-gap: 5px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       border-bottom: 1px dotted black;
+      margin-bottom: 2%;
       .title {
          text-align: center;
          flex: 1;
+         width: 30%;
+         height: 37%;
+         margin: 0 auto;
+         //flex-basis: 20%;
+         padding: 2%;
          img {
-            width: 45px;
-            height: 55px;
+            width: 100%;
          }
       }
       h5,
       .countItems,
       .fas,
       .total {
-         padding-top: 10px;
+         padding: 10px 5px;
       }
       h5 {
-         flex: 1.7;
-         font-size: 15px;
+         flex: 1;
+         //flex-basis: 20%;
+         font-size: 18px;
+         text-align: center;
       }
       .countItems {
-         flex: 2.3;
+         flex: 1;
+         margin: 0 auto;
          button {
-            padding: 3px 5px;
+            padding: 5px 8px;
             background-color: $darkRed;
             color: $bgc-item;
-            border: 1px solid $bgc-item;
+            border: none;
+            font-size: 18px;
             font-weight: 700;
             font-family: "Poppins";
+            cursor: pointer;
          }
          span {
-            padding: 5px;
-            font-size: 17px;
+            padding: 10px;
+            font-size: 23px;
             font-weight: 700;
          }
       }
       .total {
-         font-size: 15px;
-         flex: 2;
+         font-size: 18px;
+         flex: 1;
+         text-align: center;
          font-weight: 700;
       }
-      i {
-         font-size: 23px;
-         cursor: pointer;
+      .deleteBook {
+         margin: 0 auto 10px;
+         i {
+            font-size: 19px;
+            cursor: pointer;
+            padding: 8px 15px;
+            display: flex;
+            color: #d60606;
+            background-color: $bgc-item;
+            p {
+               margin-left: 10px;
+               //font-size: 20px;
+            }
+         }
       }
    }
    .summary {
       position: absolute;
-      left: 10%;
-      bottom: 20%;
-      font-size: 13px;
+      font-size: 16px;
       background-color: $bgc-item;
       padding: 7px;
+      margin-top: 10px;
       span {
          color: $darkRed;
-         font-size: 17px;
+         font-size: 20px;
       }
    }
 }
 @media (min-width: 768px) {
+   .cartContent {
+      .addedToBasketBook {
+         flex-direction: row;
+         i {
+            //display: block;
+            //height: 15%;
+            background-color: transparent;
+         }
+         h5,
+         .countItems,
+         .deleteBook,
+         .total {
+            padding-top: 10%;
+         }
+         .total {
+            font-size: 22px;
+            text-align: left;
+         }
+         .countItems {
+            flex: 1;
+            text-align: center;
+            div {
+               button {
+                  font-size: 20px;
+                  padding: 6px 10px;
+               }
+               span {
+                  font-size: 32px;
+               }
+            }
+         }
+         h5 {
+            font-size: 22px;
+         }
+      }
+      h2 {
+         font-size: 22px;
+      }
+      .summary {
+         top: 12%;
+         right: 1.5%;
+         margin-top: 0;
+         padding: 10px;
+         font-size: 16px;
+         span {
+            font-size: 21px;
+         }
+      }
+   }
 }
-//

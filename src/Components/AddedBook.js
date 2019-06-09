@@ -3,7 +3,6 @@ import React from "react";
 const AddedBooks = ({ data, item }) => {
    const { substractionItem, additionItem, deleteItem } = data;
    const { id, price, cover, title, count, total } = item;
-   console.log(data);
    return (
       <div className="addedToBasketBook">
          <div className="title">
@@ -12,12 +11,26 @@ const AddedBooks = ({ data, item }) => {
          </div>
          <h5>Cost: {price} &euro;</h5>
          <div className="countItems">
-            <button onClick={() => additionItem(id)}>+</button>
-            <span>{count}</span>
-            <button onClick={() => substractionItem(id)}>-</button>
+            <div>
+               <button onClick={() => additionItem(id)}>+</button>
+               <span>{count}</span>
+               <button onClick={() => substractionItem(id)}>-</button>
+            </div>
          </div>
-         <span className="total">Sum: {total} &euro;</span>
-         <i className="fas fa-times-circle" onClick={() => deleteItem(id)} />
+         <span className="total">
+            Estimation:{" "}
+            {total.toLocaleString("de-DE", {
+               minimumFractionDigits: 2,
+               maximumFractionDigits: 2
+            })}
+            &euro;
+         </span>
+         <div className="deleteBook">
+            <i className="fas fa-times-circle" onClick={() => deleteItem(id)}>
+               {" "}
+               <p>Delete Book</p>
+            </i>
+         </div>
       </div>
    );
 };
