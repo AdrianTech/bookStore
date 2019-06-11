@@ -19,13 +19,13 @@ class ViewBook extends Component {
                            <div className="header">
                               <h4>{item.author}</h4>
                               <h5>{item.title}</h5>
-                              <h5>Only: {item.price} &euro;</h5>
                            </div>
                            <div className="bookCover">
                               <img src={item.cover} alt="Cover" />
                            </div>
                            <p>{item.desc}</p>
                            <div className="spanItems">
+                              <span className="price">Only: {item.price} &euro;</span>
                               <span>Pages: {item.pages}</span>
                               <span>Publishing house: {item.print}</span>
                               <span>Publishing date: {item.date}</span>

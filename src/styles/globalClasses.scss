@@ -30,11 +30,6 @@
       color: $darkRed;
       border: 1px dashed black;
    }
-   &:disabled {
-      background-color: #c3d6f8;
-      color: $darkRed;
-      border: 1px dashed black;
-   }
 }
 @media (min-width: 768px) {
    .main-btn {
@@ -42,7 +37,7 @@
       font-size: 18px;
    }
    .secondary-btn {
-      padding: 10px 18px;
-      font-size: 20px;
+      padding: 10px 15px;
+      font-size: 17px;
    }
 }

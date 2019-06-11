@@ -9,9 +9,12 @@ class BookList extends Component {
       const {} = this.state;
 
       return (
-         <div className="showBooks">
-            <StoreConsumer>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</StoreConsumer>
-         </div>
+         <>
+            <span className="welcome">Welcome to our Old Town book store</span>
+            <div className="showBooks">
+               <StoreConsumer>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</StoreConsumer>
+            </div>
+         </>
       );
    }
 }

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import { StoreConsumer } from "./Store";
 
 class Book extends Component {
    state = {};
 
    render() {
       const { author, title, cover, isActive, price, id } = this.props.elem;
-      //console.log(isActive);
 
       return (
          <div className="book-Cart">

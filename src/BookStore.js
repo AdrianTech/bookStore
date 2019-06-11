@@ -7,6 +7,7 @@ import BookList from "./Components/BookList";
 import ViewBook from "./Components/ViewBook";
 import YourCart from "./Components/BookCart";
 import PageNotFound from "./Components/NotFound";
+import End from "./Components/end";
 
 class BookStore extends Component {
    state = {};
@@ -21,6 +22,7 @@ class BookStore extends Component {
                <Switch>
                   <Route path="/" exact component={BookList} />
                   <Route path="/viewBook/:id" component={ViewBook} />
+                  <Route path="/end" component={End} />
                   <Route path="/yourCart" component={YourCart} />
                   <Route component={PageNotFound} />
                </Switch>

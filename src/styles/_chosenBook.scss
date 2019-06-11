@@ -1,77 +1,93 @@
 .bookDetails {
-   //padding-top: 80px;
    display: grid;
    grid-template-columns: 1fr;
-   font-family: "Roboto";
+   font-family: "Poppins", sans-serif;
    .header {
       font-size: 22px;
       margin-bottom: 15px;
       text-align: center;
    }
+   p {
+      font-size: 18px;
+      font-family: "Poppins", sans-serif;
+   }
    .bookCover {
-      width: 25%;
-      height: 30%;
-      // display: inline-block;
-      margin: 0 auto;
+      margin: 0 auto 15px;
+      width: 53%;
+      height: 59%;
       img {
          width: 100%;
       }
    }
-   p {
-      display: flex;
-   }
-   span {
+   .spanItems {
+      margin-top: 15px;
+      display: grid;
+      grid-template-columns: 1fr;
+      font-size: 18px;
+      .price {
+         font-weight: 700;
+      }
+      span {
+         background-color: rgb(218, 216, 216);
+         margin-bottom: 5px;
+         text-align: center;
+      }
    }
 }
 .buttons {
    margin-top: 15px;
    transition: all 0.25s ease-in-out;
+   text-align: center;
    .btn-basket {
       margin: 0 10px 10px 0;
    }
 }
 @media screen and (min-width: 768px) {
    .bookDetails {
-      // display: flex;
-      // flex-wrap: wrap;
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(12, 1fr);
-      height: 100vh;
-      // width: 100%;
-      //padding-left: 100px;
-      //padding-right: 100px;
+      height: calc(100vh - 80px);
       .header {
-         grid-column: 2/10;
+         grid-column: 1/12;
          grid-row: 1/2;
       }
       .bookCover {
-         //flex-basis: 30%;
          grid-column: 1/6;
-         grid-row: 2/7;
-         img {
-            height: 260px;
-            width: 200px;
-         }
+         grid-row: 2/5;
       }
       p {
-         //flex-basis: 60%;
-         //font-size: 25px;
          grid-column: 6/12;
          grid-row: 2/6;
+         font-size: 15px;
       }
       .spanItems {
-         //flex-basis: 33%;
-         grid-column: 6/10;
-         grid-row: 6/7;
          display: grid;
          grid-template-columns: 1fr 1fr;
+         grid-column: 6/13;
+         grid-row: 10/10;
+         font-family: "Open Sans", sans-serif;
+         font-weight: 700;
+         .price {
+            font-size: 20px;
+         }
+         span {
+            background-color: transparent;
+            text-align: left;
+         }
       }
    }
    .buttons {
       grid-column: 2/10;
-      grid-row: 9/11;
+      grid-row: 11/13;
+      margin-top: 15px;
+      display: inline-block;
       .btn-basket {
-         margin-right: 30%;
+         margin-right: 20%;
       }
+   }
+}
+@media (min-width: 1100px) {
+   .bookDetails p {
+      font-size: 17px;
    }
 }

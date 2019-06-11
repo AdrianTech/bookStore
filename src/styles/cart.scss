@@ -3,23 +3,18 @@
    h2 {
       text-align: center;
       font-size: 18px;
-      margin-bottom: 5%;
+      margin-bottom: 6%;
    }
    .addedToBasketBook {
-      // display: grid;
-      // grid-template-columns: repeat(5, 1fr);
-      // grid-gap: 5px;
       display: flex;
       flex-direction: column;
       border-bottom: 1px dotted black;
       margin-bottom: 2%;
       .title {
          text-align: center;
-         flex: 1;
-         width: 30%;
-         height: 37%;
+         width: 50%;
+         height: 57%;
          margin: 0 auto;
-         //flex-basis: 20%;
          padding: 2%;
          img {
             width: 100%;
@@ -41,14 +36,18 @@
          flex: 1;
          margin: 0 auto;
          button {
-            padding: 5px 8px;
+            //padding: 5px 8px;
+            width: 30px;
+            height: 30px;
             background-color: $darkRed;
             color: $bgc-item;
             border: none;
             font-size: 18px;
             font-weight: 700;
             font-family: "Poppins";
+            border-radius: 50%;
             cursor: pointer;
+            outline: none;
          }
          span {
             padding: 10px;
@@ -63,7 +62,7 @@
          font-weight: 700;
       }
       .deleteBook {
-         margin: 0 auto 10px;
+         margin: 0 auto 15px;
          i {
             font-size: 19px;
             cursor: pointer;
@@ -80,33 +79,45 @@
    }
    .summary {
       position: absolute;
-      font-size: 16px;
+      font-size: 12px;
       background-color: $bgc-item;
-      padding: 7px;
+      padding: 5px;
       margin-top: 10px;
       span {
          color: $darkRed;
-         font-size: 20px;
+         font-size: 17px;
       }
+   }
+   .bank-btn {
+      text-align: right;
+      position: relative;
+      margin: 10px;
+      left: 45%;
    }
 }
 @media (min-width: 768px) {
    .cartContent {
+      h2 {
+         margin-bottom: 3%;
+      }
       .addedToBasketBook {
          flex-direction: row;
+         .title {
+            width: 15%;
+            height: 20%;
+            flex: 0.4;
+         }
          i {
-            //display: block;
-            //height: 15%;
             background-color: transparent;
          }
          h5,
          .countItems,
          .deleteBook,
          .total {
-            padding-top: 10%;
+            padding-top: 7%;
          }
          .total {
-            font-size: 22px;
+            font-size: 20px;
             text-align: left;
          }
          .countItems {
@@ -115,15 +126,17 @@
             div {
                button {
                   font-size: 20px;
-                  padding: 6px 10px;
+                  padding: 4px 8px;
+                  width: 40px;
+                  height: 40px;
                }
                span {
-                  font-size: 32px;
+                  font-size: 29px;
                }
             }
          }
          h5 {
-            font-size: 22px;
+            font-size: 20px;
          }
       }
       h2 {
@@ -135,9 +148,13 @@
          margin-top: 0;
          padding: 10px;
          font-size: 16px;
+         position: fixed;
          span {
             font-size: 21px;
          }
+      }
+      .bank-btn {
+         left: 87%;
       }
    }
 }

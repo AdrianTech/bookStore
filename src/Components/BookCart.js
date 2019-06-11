@@ -3,9 +3,18 @@ import { StoreConsumer } from "./Store";
 import AddedBook from "./AddedBook";
 import Summary from "./Summary";
 import "../styles/_globalVar.scss";
+import BankList from "./BankList";
 
 class BookCart extends Component {
-   state = {};
+   state = {
+      bankList: false
+   };
+
+   handleState = () => {
+      this.setState({
+         bankList: !this.state.bankList
+      });
+   };
 
    render() {
       return (
@@ -18,17 +27,14 @@ class BookCart extends Component {
                         <AddedBook key={item.id} data={data} item={item} />
                      ))}
                      <Summary data={data} />
+                     {data.cartStore.length > 0 ? (
+                        <button className="secondary-btn bank-btn" onClick={this.handleState}>
+                           Buy selected books
+                        </button>
+                     ) : null}
+                     {this.state.bankList ? <BankList sum={data.sum} click={this.handleState} /> : null}
                   </>
-               )
-               // data.cartStore.map(item => (
-               //    <div className="bookCart" key={item.id}>
-               //       <h4>{item.title}</h4> <h4>{item.author}</h4>
-               //       <button onClick={() => data.deleteItem(item.id)}>
-               //          <i className="fas fa-times-circle" />
-               //       </button>
-               //    </div>
-               //))
-               }
+               )}
             </StoreConsumer>
          </section>
       );

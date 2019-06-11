@@ -7,7 +7,14 @@
    box-sizing: border-box;
 }
 .wrapper {
-   padding: 75px 3% 0;
+   padding: 80px 3% 0;
+}
+.welcome {
+   font-size: 20px;
+   font-weight: 700;
+   margin-bottom: 15px;
+   display: block;
+   text-transform: uppercase;
 }
 .notFound {
    text-align: center;
@@ -30,6 +37,12 @@
 @media (min-width: 768px) {
    .notFound {
       font-size: 18px;
+   }
+   .welcome {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 10px 0;
    }
 }
 //

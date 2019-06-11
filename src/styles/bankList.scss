@@ -1,0 +1,62 @@
+.bankList {
+   width: 100%;
+   height: 100%;
+   padding: 0 10px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(0, 0, 0, 0.9);
+   z-index: 8;
+   transition: all 0.3s ease-in-out;
+   a {
+      text-decoration: none;
+      color: black;
+   }
+   button {
+      font-size: 30px;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      outline: none;
+      padding: 10px;
+      cursor: pointer;
+   }
+   h3 {
+      color: white;
+      display: inline-block;
+      margin-left: 5%;
+   }
+   .showPayForm {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      .list {
+         background-color: #fff;
+         padding: 15px;
+         font-size: 20px;
+         text-align: center;
+         cursor: pointer;
+         i {
+            font-size: 33px;
+         }
+      }
+   }
+}
+@media (min-width: 768px) {
+   .bankList {
+      width: 90%;
+      height: 90%;
+      .showPayForm {
+         grid-template-columns: repeat(4, 1fr);
+         grid-gap: 20px;
+         .list {
+            padding: 20px;
+            font-size: 28px;
+            i {
+               font-size: 50px;
+            }
+         }
+      }
+   }
+}

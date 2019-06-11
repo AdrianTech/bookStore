@@ -12,7 +12,7 @@ class Navigation extends Component {
          <nav>
             <div className="baner">
                <h1>
-                  <Link to="/">VintageBooks</Link>
+                  <Link to="/">OldTown</Link>
                </h1>
             </div>
             <StoreConsumer>
