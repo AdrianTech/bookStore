@@ -36,11 +36,10 @@
          flex: 1;
          margin: 0 auto;
          button {
-            //padding: 5px 8px;
             width: 30px;
             height: 30px;
             background-color: $darkRed;
-            color: $bgc-item;
+            color: $global-light;
             border: none;
             font-size: 18px;
             font-weight: 700;
@@ -69,10 +68,8 @@
             padding: 8px 15px;
             display: flex;
             color: #d60606;
-            background-color: $bgc-item;
             p {
                margin-left: 10px;
-               //font-size: 20px;
             }
          }
       }
@@ -91,8 +88,10 @@
    .bank-btn {
       text-align: right;
       position: relative;
+      padding-right: 20px;
+      padding-left: 20px;
       margin: 10px;
-      left: 45%;
+      left: 50%;
    }
 }
 @media (min-width: 768px) {
@@ -154,7 +153,9 @@
          }
       }
       .bank-btn {
-         left: 87%;
+         left: 80%;
+         padding-right: 30px;
+         padding-left: 30px;
       }
    }
 }

@@ -14,7 +14,7 @@ const BankList = ({ sum, click }) => {
    return (
       <div className="bankList">
          <button onClick={click}>
-            <i class="far fa-times-circle" />
+            <i className="far fa-times-circle" />
          </button>
          <h3>You'll pay only {sum} &euro;</h3>
          <div className="showPayForm">{mapPayForm}</div>

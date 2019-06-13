@@ -1,8 +1,9 @@
 import Steinbeck from "./img/Steinbeck.jpg";
 import Dostoevsky from "./img/Dostoevsky.jpg";
 import Huxley from "./img/Huxley.jpg";
-import Wiliam from "./img/cover.jpg";
-import Pure from "./img/pure.jpg";
+import Kafka from "./img/Kafka.jpg";
+import Macbeth from "./img/Macbeth.jpg";
+import Strindberg from "./img/Strindberg.jpg";
 const books = [
    {
       id: 1,
@@ -53,7 +54,7 @@ const books = [
       id: 4,
       author: "William Shakespeare",
       title: "Macbeth",
-      cover: Wiliam,
+      cover: Macbeth,
       pages: 1289,
       desc:
          "A brave Scottish general named Macbeth receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders King Duncan and takes the Scottish throne for himself. He is then wracked with guilt and paranoia. Forced to commit more and more murders to protect himself from enmity and suspicion, he soon becomes a tyrannical ruler. The bloodbath and consequent civil war swiftly take Macbeth and Lady Macbeth into the realms of madness and death.",
@@ -68,10 +69,10 @@ const books = [
       id: 5,
       author: "Franz Kafka",
       title: "The Trial",
-      cover: Pure,
+      cover: Kafka,
       pages: 147,
       desc:
-         "The Trial is a novel written by Franz Kafka between 1914 and 1915 and published posthumously in 1925. One of his most well-known works, it tells the story of Josef K., a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime revealed neither to him nor to the reader. Heavily influenced by Dostoyevsky's Crime and Punishment and The Brothers Karamazov, Kafka even went so far as to call Dostoyevsky a blood relative.[2] Like Kafka's other novels, The Trial was never completed, although it does include a chapter which brings the story to an end.",
+         "The Trial is a novel written by Franz Kafka between 1914 and 1915 and published posthumously in 1925. One of his most well-known works, it tells the story of Josef K., a man arrested and prosecuted by a remote, inaccessible authority, with the nature of his crime revealed neither to him nor to the reader. Heavily influenced by Dostoyevsky's Crime and Punishment and The Brothers Karamazov, Kafka even went so far as to call Dostoyevsky a blood relative. Like Kafka's other novels, The Trial was never completed, although it does include a chapter which brings the story to an end.",
       print: "Kafka's Legacy",
       price: 5.49,
       date: 2016,
@@ -83,7 +84,7 @@ const books = [
       id: 6,
       author: "August Strindberg",
       title: "A Dream Play",
-      cover: Pure,
+      cover: Strindberg,
       pages: 147,
       desc:
          "The primary character in the play is Agnes, a daughter of the Vedic god Indra. She descends to Earth to bear witness to problems of human beings. She meets about 40 characters, some of them having a clearly symbolical value (such as four deans representing theology, philosophy, medicine, and law). After experiencing all sorts of human suffering (for example poverty, cruelty, and the routine of family life), the daughter of gods realizes that human beings are to be pitied. Finally, she returns to Heaven and this moment corresponds to the awakening from a dream-like sequence of events.",

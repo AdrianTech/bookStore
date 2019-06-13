@@ -29,7 +29,7 @@ class BookCart extends Component {
                      <Summary data={data} />
                      {data.cartStore.length > 0 ? (
                         <button className="secondary-btn bank-btn" onClick={this.handleState}>
-                           Buy selected books
+                           I Buy It!
                         </button>
                      ) : null}
                      {this.state.bankList ? <BankList sum={data.sum} click={this.handleState} /> : null}

@@ -9,11 +9,15 @@
 .wrapper {
    padding: 80px 3% 0;
 }
+img {
+   border: 1px solid #000;
+}
 .welcome {
    font-size: 20px;
    font-weight: 700;
    margin-bottom: 15px;
    display: block;
+   text-align: center;
    text-transform: uppercase;
 }
 .notFound {
@@ -40,9 +44,7 @@
    }
    .welcome {
       font-size: 40px;
-      text-align: center;
       margin-bottom: 25px;
       padding: 10px 0;
    }
 }
-//

@@ -20,11 +20,11 @@ class Book extends Component {
             <div className="addBasket">
                <Link to={`/viewBook/${id}`}>
                   <button className="main-btn">
-                     <i className="fas fa-glasses" /> Read details
+                     <i className="far fa-eye" /> Read details
                   </button>
                </Link>
 
-               <h4>Only {price} &euro;</h4>
+               <h4>Only: {price} &euro;</h4>
             </div>
          </div>
       );

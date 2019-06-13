@@ -31,11 +31,16 @@
          font-family: "Poppins", sans-serif;
          font-weight: 700;
          padding: 2px 5px 3px 5px;
+         border: 1px solid #000;
       }
    }
    .addBasket {
       display: flex;
       justify-content: space-between;
+      h4 {
+         font-size: 19px;
+         font-family: "Poppins";
+      }
    }
 }
 
@@ -45,7 +50,10 @@
    }
    .book-Cart {
       .addBasket {
-         padding: 0 20px 6px 0;
+         padding: 0 10px 6px 0;
+         h4 {
+            font-size: 21px;
+         }
       }
    }
 }

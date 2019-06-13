@@ -6,10 +6,6 @@ nav {
    position: fixed;
    border-bottom: 1px solid #040266;
    z-index: 5;
-   // .logo {
-   //    flex-basis: 15%;
-   //    background-color: $darkRed;
-   // }
    .baner {
       flex-basis: 60%;
       font-family: "Pacifico", cursive;
@@ -25,7 +21,7 @@ nav {
          position: relative;
          margin-left: 5%;
          &::after {
-            content: "Your Lovely Store...";
+            content: "Your Lovely Store";
             position: absolute;
             width: 100%;
             bottom: 0;
@@ -54,7 +50,7 @@ nav {
          border-radius: 50%;
          width: 20px;
          height: 20px;
-         background-color: rgba(255, 255, 255, 0.616);
+         background-color: $global-light;
          display: inline-block;
          position: relative;
          span {
@@ -92,6 +88,9 @@ nav {
       }
       .cart {
          flex-basis: 15%;
+         items span {
+            font-size: 18px;
+         }
          a {
             font-size: 33px;
             line-height: 55px;
