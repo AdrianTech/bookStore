@@ -1,7 +1,7 @@
 import React from "react";
 const End = () => {
    return (
-      <div>
+      <div className="end">
          <h1>Thanks for watching</h1>
       </div>
    );
