@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { StoreConsumer } from "./Store";
 
 class Navigation extends Component {
-   state = {};
-
    render() {
-      const {} = this.state;
-
       return (
          <nav>
             <div className="baner">

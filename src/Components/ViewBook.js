@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import "../styles/_chosenBook.scss";
 
 class ViewBook extends Component {
-   state = {};
-
    render() {
       return (
          <>
