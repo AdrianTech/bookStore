@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import { books } from "../data";
 import { StoreConsumer } from "./Store";
 import { Link } from "react-router-dom";
 import "../styles/_chosenBook.scss";

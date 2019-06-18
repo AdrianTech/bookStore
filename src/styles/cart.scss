@@ -1,7 +1,13 @@
 .cartContent {
    font-family: "Poppins";
-   h2 {
+   h2,
+   h3,
+   h5,
+   .total,
+   .title {
       text-align: center;
+   }
+   h2 {
       font-size: 18px;
       margin-bottom: 6%;
    }
@@ -11,7 +17,6 @@
       border-bottom: 1px dotted black;
       margin-bottom: 2%;
       .title {
-         text-align: center;
          width: 50%;
          height: 57%;
          margin: 0 auto;
@@ -28,9 +33,7 @@
       }
       h5 {
          flex: 1;
-         //flex-basis: 20%;
          font-size: 18px;
-         text-align: center;
       }
       .countItems {
          flex: 1;
@@ -57,7 +60,6 @@
       .total {
          font-size: 18px;
          flex: 1;
-         text-align: center;
          font-weight: 700;
       }
       .deleteBook {

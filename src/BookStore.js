@@ -7,14 +7,10 @@ import BookList from "./Components/BookList";
 import ViewBook from "./Components/ViewBook";
 import YourCart from "./Components/BookCart";
 import PageNotFound from "./Components/NotFound";
-import End from "./Components/end";
+import End from "./Components/End";
 
 class BookStore extends Component {
-   state = {};
-
    render() {
-      const {} = this.state;
-
       return (
          <>
             <Navigation />

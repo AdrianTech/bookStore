@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Book from "./Book";
 import { StoreConsumer } from "./Store";
+import Footer from "./Footer";
 
 class BookList extends Component {
    render() {
@@ -10,6 +11,7 @@ class BookList extends Component {
             <div className="showBooks">
                <StoreConsumer>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</StoreConsumer>
             </div>
+            <Footer />
          </>
       );
    }

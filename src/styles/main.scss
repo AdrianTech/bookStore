@@ -41,6 +41,14 @@ img {
       }
    }
 }
+footer {
+   width: 100%;
+   padding: 10px 0;
+   text-align: center;
+   background-color: #e2dfdf;
+   font-family: "Poppins";
+   font-size: 15px;
+}
 @media (min-width: 768px) {
    .notFound {
       font-size: 18px;
@@ -49,5 +57,10 @@ img {
       font-size: 40px;
       margin-bottom: 25px;
       padding: 10px 0;
+   }
+   footer {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: 600;
    }
 }

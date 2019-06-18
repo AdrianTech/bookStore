@@ -22,17 +22,22 @@ class BookCart extends Component {
             <StoreConsumer>
                {data => (
                   <>
-                     <h2>All Your Added Books</h2>
-                     {data.cartStore.map(item => (
-                        <AddedBook key={item.id} data={data} item={item} />
-                     ))}
-                     <Summary data={data} />
                      {data.cartStore.length > 0 ? (
-                        <button className="secondary-btn bank-btn" onClick={this.handleState}>
-                           I Buy It!
-                        </button>
-                     ) : null}
-                     {this.state.bankList ? <BankList sum={data.sum} click={this.handleState} /> : null}
+                        <>
+                           <h2>All Your Added Books</h2>
+                           {data.cartStore.map(item => (
+                              <AddedBook key={item.id} data={data} item={item} />
+                           ))}
+                           <Summary data={data} />
+
+                           <button className="secondary-btn bank-btn" onClick={this.handleState}>
+                              I Buy It!
+                           </button>
+                           {this.state.bankList ? <BankList sum={data.sum} click={this.handleState} /> : null}
+                        </>
+                     ) : (
+                        <h2>Your Basket Is Empty </h2>
+                     )}
                   </>
                )}
             </StoreConsumer>
