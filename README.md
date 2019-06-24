@@ -1,8 +1,9 @@
 ### Technology stack
- - HTML
+ ### - HTML
  - SCSS
  - React.js
  - React-Router
+ - React Hooks
  - Context API
  
 #### Description
