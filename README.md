@@ -1,5 +1,5 @@
 ### Technology stack
- ### - HTML
+ ###- HTML
  - SCSS
  - React.js
  - React-Router
