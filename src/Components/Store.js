@@ -8,7 +8,17 @@ class StoreProvider extends Component {
       booksData: [],
       cartStore: [],
       sum: 0,
-      itemSum: 0
+      itemSum: 0,
+      step: 1,
+      firstName: "",
+      lastName: "",
+      nickName: "",
+      email: "",
+      password: "",
+      dateBirth: "",
+      modalActive: "",
+      phone: "",
+      confirmed: false
    };
    componentDidMount() {
       this.setBook();
@@ -94,18 +104,106 @@ class StoreProvider extends Component {
          sum
       });
    };
+   handleForms = e => {
+      const name = e.target.name;
+      const value = e.target.value;
+      this.setState({
+         [name]: value
+      });
+   };
+   handleSubmitForm = e => {
+      e.preventDefault();
+      const { password, nickName, lastName, firstName, email, step } = this.state;
+      if (step === 1) {
+         if (nickName && password) {
+            this.setState({
+               confirmed: true,
+               modalActive: false
+            });
+         } else {
+            alert("Fields 'NickName and Password' are required");
+            return;
+         }
+      } else if (step === 2) {
+         const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+         if (lastName && firstName && validate.test(email)) {
+            this.setState({
+               confirmed: false,
+               step: step + 1
+            });
+         } else {
+            alert("Please, fill out all the required fields");
+            return;
+         }
+      } else if (step === 3) {
+         if (nickName) {
+            this.setState({
+               confirmed: true,
+               step: 4
+            });
+         } else {
+            alert("Field 'NickName'is required");
+            return;
+         }
+      }
+      console.log("Submitted");
+   };
+   handleStepUp = () => {
+      const { step } = this.state;
+      this.setState({
+         step: step + 1
+      });
+   };
+   handleStepDown = () => {
+      const { step } = this.state;
+      this.setState({
+         step: step - 1
+      });
+   };
+   showModal = () => {
+      const { modalActive, step } = this.state;
+      this.setState({
+         modalActive: !modalActive,
+         step: 1
+      });
+   };
 
    render() {
-      const { addToBasket, deleteItem } = this;
+      const {
+         addToBasket,
+         deleteItem,
+         substractionItem,
+         additionItem,
+         handleForms,
+         handleSubmitForm,
+         handleStepUp,
+         handleStepDown,
+         showModal
+      } = this;
+      const { step, password, email, lastName, firstName, nickName, dateBirth, modalActive, phone } = this.state;
 
       return (
          <BookContext.Provider
             value={{
                ...this.state,
-               addToBasket: addToBasket,
-               deleteItem: deleteItem,
-               substractionItem: this.substractionItem,
-               additionItem: this.additionItem
+               addToBasket,
+               deleteItem,
+               substractionItem,
+               additionItem,
+               modalActive,
+               step,
+               password,
+               firstName,
+               lastName,
+               email,
+               nickName,
+               showModal,
+               handleForms,
+               handleSubmitForm,
+               handleStepUp,
+               handleStepDown,
+               dateBirth,
+               phone
             }}
          >
             {this.props.children}
@@ -113,5 +211,6 @@ class StoreProvider extends Component {
       );
    }
 }
-const StoreConsumer = BookContext.Consumer;
-export { StoreProvider, StoreConsumer };
+const Context = BookContext.Consumer;
+const StoreConsumer = BookContext; //Consumer
+export { StoreProvider, StoreConsumer, Context };

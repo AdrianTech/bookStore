@@ -1,5 +1,6 @@
 .cartContent {
    font-family: "Poppins";
+   margin-top: -10px;
    h2,
    h3,
    h5,
@@ -86,6 +87,10 @@
          color: $darkRed;
          font-size: 17px;
       }
+      h3 {
+         color: #000;
+         margin: 0;
+      }
    }
    .bank-btn {
       text-align: right;
@@ -98,6 +103,7 @@
 }
 @media (min-width: 768px) {
    .cartContent {
+      margin-top: 0;
       h2 {
          margin-bottom: 3%;
       }

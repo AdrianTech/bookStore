@@ -31,6 +31,17 @@
       border: 1px dashed black;
    }
 }
+.form-btn {
+   display: block;
+   padding: 3px 9px;
+   font-size: 15px;
+   font-family: "Poppins";
+   background-color: #834040;
+   color: $bgc-item;
+   width: 65%;
+   border: 1px solid #575555;
+   margin: 10px auto 5px;
+}
 @media (min-width: 768px) {
    .main-btn {
       font-size: 18px;
@@ -38,5 +49,8 @@
    .secondary-btn {
       padding: 10px 15px;
       font-size: 17px;
+   }
+   .form-btn {
+      width: 40%;
    }
 }

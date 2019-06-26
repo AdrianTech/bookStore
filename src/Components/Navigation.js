@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { StoreConsumer } from "./Store";
+import { StoreConsumer, Context } from "./Store";
 
 class Navigation extends Component {
    render() {
@@ -11,7 +11,7 @@ class Navigation extends Component {
                   <Link to="/">OldTown</Link>
                </h1>
             </div>
-            <StoreConsumer>
+            <Context>
                {data => (
                   <div className="cart">
                      <Link to="/yourCart">
@@ -25,7 +25,7 @@ class Navigation extends Component {
                      <p>Book Basket</p>
                   </div>
                )}
-            </StoreConsumer>
+            </Context>
          </nav>
       );
    }

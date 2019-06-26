@@ -4,6 +4,7 @@ import AddedBook from "./AddedBook";
 import Summary from "./Summary";
 import "../styles/_globalVar.scss";
 import BankList from "./BankList";
+import OpenModalLogin from "./forms/OpenModalLogin";
 
 class BookCart extends Component {
    state = {
@@ -22,6 +23,7 @@ class BookCart extends Component {
             <StoreConsumer>
                {data => (
                   <>
+                     <OpenModalLogin />
                      {data.cartStore.length > 0 ? (
                         <>
                            <h2>All Your Added Books</h2>
@@ -33,7 +35,7 @@ class BookCart extends Component {
                            <button className="secondary-btn bank-btn" onClick={this.handleState}>
                               I Buy It!
                            </button>
-                           {this.state.bankList ? <BankList sum={data.sum} click={this.handleState} /> : null}
+                           {this.state.bankList && <BankList click={this.handleState} {...data} />}
                         </>
                      ) : (
                         <h2>Your Basket Is Empty </h2>
