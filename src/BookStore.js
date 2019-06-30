@@ -8,6 +8,7 @@ import ViewBook from "./Components/ViewBook";
 import YourCart from "./Components/BookCart";
 import PageNotFound from "./Components/NotFound";
 import End from "./Components/End";
+import Terms from "./Components/forms/Terms";
 
 class BookStore extends Component {
    render() {
@@ -20,6 +21,7 @@ class BookStore extends Component {
                   <Route path="/viewBook/:id" component={ViewBook} />
                   <Route path="/end" component={End} />
                   <Route path="/yourCart" component={YourCart} />
+                  <Route path="/terms" component={Terms} />
                   <Route component={PageNotFound} />
                </Switch>
             </div>

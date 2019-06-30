@@ -1,11 +1,11 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import { StoreConsumer } from "../Store";
+import { StoreConsumer, Context } from "../Store";
 
 const OpenModalLogin = () => {
    return (
       <>
-         <StoreConsumer>
+         <Context>
             {data => (
                <>
                   {!data.confirmed ? (
@@ -28,7 +28,7 @@ const OpenModalLogin = () => {
                   )}
                </>
             )}
-         </StoreConsumer>
+         </Context>
       </>
    );
 };

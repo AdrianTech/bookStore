@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import payForm from "./payForm";
 import { Link } from "react-router-dom";
-const BankList = ({ sum, click, nickName, confirmed }) => {
+import { StoreConsumer } from "../Components/Store";
+const BankList = ({ click }) => {
+   const { sum, nickName, confirmed } = useContext(StoreConsumer);
    const mapPayForm = payForm.map(item => (
       <div key={item.id} className="list">
          <Link to="/end">
@@ -17,7 +19,7 @@ const BankList = ({ sum, click, nickName, confirmed }) => {
             <i className="far fa-times-circle" />
          </button>
          {confirmed ? (
-            <h3>
+            <h3 style={{ marginBottom: nickName.length > 7 ? "8px" : null }}>
                {nickName}, you'll pay only: {sum} &euro;
             </h3>
          ) : (

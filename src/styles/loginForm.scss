@@ -30,10 +30,14 @@
       cursor: pointer;
    }
    .form {
-      width: 80%;
+      width: 100%;
       background-color: #000;
       padding: 6%;
       margin: 15% auto;
+      a {
+         color: #a8c0c5;
+         font-size: 1.1em;
+      }
       form {
          display: flex;
          flex-direction: column;
@@ -44,14 +48,27 @@
       }
       input {
          border-radius: 5px;
-         border: 1px solid $darkRed;
-         padding: 5px;
+         border: 2px solid $darkRed;
+         padding: 7px;
+         font-size: 16px;
          outline: none;
       }
       h2,
-      h6 {
+      h6,
+      p {
          color: $bgc-item;
       }
+      p {
+         padding: 6px 0;
+         font-size: 12px;
+         text-align: center;
+         margin-top: 7px;
+      }
+   }
+}
+.terms {
+   > * {
+      padding: 11px 6px;
    }
 }
 .button-login {
@@ -59,6 +76,7 @@
    font-family: "Poppins";
    font-weight: 700;
    position: relative;
+   margin-bottom: 12px;
    i {
       margin-right: 7px;
    }
@@ -75,7 +93,7 @@
    .loginForm {
       .form {
          width: 50%;
-         margin: 0 auto;
+         margin: -5% auto;
          padding: 3%;
          label,
          input {
@@ -100,5 +118,8 @@
          width: 60%;
          margin: auto;
       }
+   }
+   .terms {
+      text-align: center;
    }
 }

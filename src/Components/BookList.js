@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Book from "./Book";
-import { StoreConsumer } from "./Store";
+import { StoreConsumer, Context } from "./Store";
 import Footer from "./Footer";
 
 class BookList extends Component {
@@ -9,7 +9,7 @@ class BookList extends Component {
          <>
             <span className="welcome">Welcome to our Old Town book store</span>
             <div className="showBooks">
-               <StoreConsumer>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</StoreConsumer>
+               <Context>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</Context>
             </div>
             <Footer />
          </>

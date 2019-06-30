@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StoreConsumer } from "./Store";
+import { StoreConsumer, Context } from "./Store";
 import AddedBook from "./AddedBook";
 import Summary from "./Summary";
 import "../styles/_globalVar.scss";
@@ -20,7 +20,7 @@ class BookCart extends Component {
    render() {
       return (
          <section className="cartContent">
-            <StoreConsumer>
+            <Context>
                {data => (
                   <>
                      <OpenModalLogin />
@@ -42,7 +42,7 @@ class BookCart extends Component {
                      )}
                   </>
                )}
-            </StoreConsumer>
+            </Context>
          </section>
       );
    }

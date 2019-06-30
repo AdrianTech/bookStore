@@ -1,8 +1,9 @@
 import React from "react";
 import { useContext } from "react";
 import { StoreConsumer } from "../Store";
+import { Link } from "react-router-dom";
 const SignUpFinal = () => {
-   const { handleForms, handleStepUp, nickName, dateBirth, handleStepDown, phone, handleSubmitForm } = useContext(StoreConsumer);
+   const { handleForms, nickName, dateBirth, handleStepDown, phone, handleSubmitForm } = useContext(StoreConsumer);
    return (
       <>
          <div className="form">
@@ -18,6 +19,9 @@ const SignUpFinal = () => {
             <button className="form-btn" onClick={handleStepDown}>
                Previous form
             </button>
+            <p>
+               By clicking on Confirm Data, you agree to OldTow's <Link to="/terms">Terms and Conditions of Use.</Link>
+            </p>
             <h6>* - it's not required</h6>
          </div>
       </>

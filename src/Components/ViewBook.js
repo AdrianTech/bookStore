@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StoreConsumer } from "./Store";
+import { StoreConsumer, Context } from "./Store";
 import { Link } from "react-router-dom";
 import "../styles/_chosenBook.scss";
 
@@ -7,7 +7,7 @@ class ViewBook extends Component {
    render() {
       return (
          <>
-            <StoreConsumer>
+            <Context>
                {data =>
                   data.booksData
                      .filter(item => item.id === parseInt(this.props.match.params.id))
@@ -48,7 +48,7 @@ class ViewBook extends Component {
                         </div>
                      ))
                }
-            </StoreConsumer>
+            </Context>
          </>
       );
    }

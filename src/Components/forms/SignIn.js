@@ -7,7 +7,7 @@ const SignIn = () => {
       <>
          <div className="form">
             <form onSubmit={handleSubmitForm}>
-               <h2>Log in</h2>
+               <h2>Sign in</h2>
                <label htmlFor="LogIn">Nickname</label>
                <input type="text" name="nickName" value={nickName} onChange={handleForms} />
                <label htmlFor="password">Password</label>
@@ -16,7 +16,7 @@ const SignIn = () => {
             </form>
             <h3>OR</h3>
             <button className="signUp-btn" onClick={handleStepUp}>
-               Sign up
+               Create account
             </button>
          </div>
       </>
