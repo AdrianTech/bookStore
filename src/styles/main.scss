@@ -63,10 +63,12 @@ img {
       background-color: rgba(0, 0, 0, 0.85);
       border-radius: 10px;
       padding: 20px;
+      width: 90%;
       h1 {
-         font-size: 25px;
+         font-size: 22px;
          color: #fcfcfc;
          padding: 5px;
+         text-transform: uppercase;
       }
       .welcome-btn {
          padding: 8px 22px;
@@ -108,6 +110,7 @@ footer {
       .nav-page {
          background-color: rgba(0, 0, 0, 0.7);
          padding: 30px;
+         width: 60%;
          h1 {
             font-size: 55px;
          }
