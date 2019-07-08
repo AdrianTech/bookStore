@@ -14,7 +14,7 @@ const EnterPage = () => {
          <div className="nav-page">
             <h1>Welcome to Old Town</h1>
             <Link to="/list">
-               <button className="welcome-btn">Let's start</button>
+               <button className="welcome-btn">Start read</button>
             </Link>
          </div>
       </div>

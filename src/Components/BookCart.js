@@ -28,7 +28,7 @@ class BookCart extends Component {
                      {data.cartStore.length > 0 ? (
                         <>
                            <h2>All Your Added Books</h2>
-                           {data.cartStore.map((item, index) => (
+                           {data.cartStore.map(item => (
                               <AddedBook key={item.id} data={data} item={item} />
                            ))}
                            <Summary data={data} />
