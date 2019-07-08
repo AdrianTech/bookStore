@@ -161,11 +161,17 @@ class StoreProvider extends Component {
       });
    };
    showModal = () => {
-      const { modalActive, step } = this.state;
+      const { modalActive } = this.state;
       this.setState({
          modalActive: !modalActive,
          step: 1
       });
+   };
+   resetBasket = () => {
+      this.setState({
+         cartStore: []
+      });
+      this.setBook();
    };
 
    render() {
@@ -178,7 +184,8 @@ class StoreProvider extends Component {
          handleSubmitForm,
          handleStepUp,
          handleStepDown,
-         showModal
+         showModal,
+         resetBasket
       } = this;
       const { step, password, email, lastName, firstName, nickName, dateBirth, modalActive, phone } = this.state;
 
@@ -203,7 +210,8 @@ class StoreProvider extends Component {
                handleStepUp,
                handleStepDown,
                dateBirth,
-               phone
+               phone,
+               resetBasket
             }}
          >
             {this.props.children}

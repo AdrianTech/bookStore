@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import payForm from "./payForm";
 import { Link } from "react-router-dom";
 import { StoreConsumer } from "../Components/Store";
-const BankList = ({ click }) => {
+const BankList = ({ click, resetBasket }) => {
    const { sum, nickName, confirmed } = useContext(StoreConsumer);
    const mapPayForm = payForm.map(item => (
-      <div key={item.id} className="list">
+      <div key={item.id} className="list" onClick={resetBasket}>
          <Link to="/end">
             <i className={item.icon} />
             <p>{item.name}</p>
@@ -23,7 +23,14 @@ const BankList = ({ click }) => {
                {nickName}, you'll pay only: {sum} &euro;
             </h3>
          ) : (
-            <h3>You'll pay only: {sum} &euro;</h3>
+            <h3>
+               You'll pay only:{" "}
+               {sum.toLocaleString("de-DE", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+               })}{" "}
+               &euro;
+            </h3>
          )}
          <div className="showPayForm">{mapPayForm}</div>
       </div>

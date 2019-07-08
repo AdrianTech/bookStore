@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StoreConsumer, Context } from "./Store";
+import { Context } from "./Store";
 import { Link } from "react-router-dom";
 import "../styles/_chosenBook.scss";
 
@@ -39,7 +39,7 @@ class ViewBook extends Component {
                                     </button>
                                  </Link>
                               )}
-                              <Link to="/">
+                              <Link to="/list">
                                  <button className="secondary-btn">
                                     <i className="fas fa-undo-alt"> Back to Books</i>
                                  </button>

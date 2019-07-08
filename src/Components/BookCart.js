@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { StoreConsumer, Context } from "./Store";
+import { Context } from "./Store";
+import { Link } from "react-router-dom";
 import AddedBook from "./AddedBook";
 import Summary from "./Summary";
 import "../styles/_globalVar.scss";
@@ -27,7 +28,7 @@ class BookCart extends Component {
                      {data.cartStore.length > 0 ? (
                         <>
                            <h2>All Your Added Books</h2>
-                           {data.cartStore.map(item => (
+                           {data.cartStore.map((item, index) => (
                               <AddedBook key={item.id} data={data} item={item} />
                            ))}
                            <Summary data={data} />
@@ -38,7 +39,12 @@ class BookCart extends Component {
                            {this.state.bankList && <BankList click={this.handleState} {...data} />}
                         </>
                      ) : (
-                        <h2>Your Basket Is Empty </h2>
+                        <>
+                           <h2>Your Basket Is Empty </h2>
+                           <Link style={{ display: "block", textAlign: "center", fontSize: "20px" }} to="/list">
+                              Return to books
+                           </Link>
+                        </>
                      )}
                   </>
                )}

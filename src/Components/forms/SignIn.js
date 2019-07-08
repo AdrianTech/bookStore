@@ -23,4 +23,3 @@ const SignIn = () => {
    );
 };
 export default SignIn;
-//{ nickName, password, handleForms, handleStepUp, handleSubmitForm }

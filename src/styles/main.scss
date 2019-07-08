@@ -12,6 +12,7 @@
 a {
    text-decoration: none;
    cursor: pointer;
+   color: #3d1616;
 }
 img {
    border: 1px solid #000;
@@ -44,6 +45,47 @@ img {
       }
    }
 }
+.enterPage {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   width: 100vw;
+   font-family: "Poppins";
+   overflow: hidden;
+   top: 0;
+   left: 0;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   z-index: 70;
+   .nav-page {
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 20px;
+      h1 {
+         font-size: 25px;
+         color: #fcfcfc;
+         padding: 5px;
+      }
+      .welcome-btn {
+         padding: 8px 22px;
+         margin-top: 15px;
+         border: 2px solid $bgc-item;
+         background-color: transparent;
+         color: #fff;
+         font-weight: 700;
+         border-radius: 6px;
+         font-size: 20px;
+         transition: all 0.3s ease;
+         &:hover {
+            background-color: #000;
+            border-color: #e2dfdf;
+            color: $bgc-item;
+         }
+      }
+   }
+}
 footer {
    width: 100%;
    padding: 10px 0;
@@ -60,6 +102,20 @@ footer {
       font-size: 40px;
       margin-bottom: 25px;
       padding: 10px 0;
+   }
+
+   .enterPage {
+      .nav-page {
+         background-color: rgba(0, 0, 0, 0.7);
+         padding: 30px;
+         h1 {
+            font-size: 55px;
+         }
+         .welcome-btn {
+            padding: 10px 30px;
+            font-size: 25px;
+         }
+      }
    }
    footer {
       margin-top: 15px;

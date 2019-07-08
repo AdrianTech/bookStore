@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AddedBooks = ({ data, item }) => {
    const { substractionItem, additionItem, deleteItem } = data;
@@ -26,10 +27,13 @@ const AddedBooks = ({ data, item }) => {
             &euro;
          </span>
          <div className="deleteBook">
-            <i className="fas fa-times-circle" onClick={() => deleteItem(id)}>
+            <i style={{ marginBottom: "10px" }} className="fas fa-times-circle" onClick={() => deleteItem(id)}>
                {" "}
                <p>Delete Book</p>
             </i>
+            <Link style={{ marginLeft: "20px" }} to="/list">
+               Return to books
+            </Link>
          </div>
       </div>
    );

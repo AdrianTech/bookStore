@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import { StoreConsumer, Context } from "../Store";
+import { Context } from "../Store";
 
 const OpenModalLogin = () => {
    return (

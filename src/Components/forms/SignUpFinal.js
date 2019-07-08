@@ -28,4 +28,3 @@ const SignUpFinal = () => {
    );
 };
 export default SignUpFinal;
-//{ handleStepUp, handleStepDown, handleForms, nickName, dateBirth }

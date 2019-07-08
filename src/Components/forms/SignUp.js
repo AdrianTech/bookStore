@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { StoreConsumer } from "../Store";
 const SignUp = () => {
-   const { handleForms, handleStepUp, firstName, lastName, email, handleSubmitForm } = useContext(StoreConsumer);
+   const { handleForms, firstName, lastName, email, handleSubmitForm } = useContext(StoreConsumer);
    return (
       <>
          <div className="form">
@@ -21,4 +21,3 @@ const SignUp = () => {
    );
 };
 export default SignUp;
-//{ firstName, lastName, handleStepUp, handleStepDown, handleForms, email }
