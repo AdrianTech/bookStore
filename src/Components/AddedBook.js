@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AddedBooks = ({ data, item }) => {
-   const { substractionItem, additionItem, deleteItem } = data;
+   const { subtractItem, addItem, deleteItem } = data;
    const { id, price, cover, title, count, total } = item;
    return (
       <div className="addedToBasketBook">
@@ -13,9 +13,9 @@ const AddedBooks = ({ data, item }) => {
          <h5>Cost: {price} &euro;</h5>
          <div className="countItems">
             <div>
-               <button onClick={() => additionItem(id)}>+</button>
+               <button onClick={() => addItem(id)}>+</button>
                <span>{count}</span>
-               <button onClick={() => substractionItem(id)}>-</button>
+               <button onClick={() => subtractItem(id)}>-</button>
             </div>
          </div>
          <span className="total">

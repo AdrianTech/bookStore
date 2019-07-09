@@ -60,25 +60,25 @@ img {
    text-align: center;
    z-index: 70;
    .nav-page {
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(0, 0, 0, 0.8);
       border-radius: 10px;
       padding: 20px;
-      width: 90%;
+      width: 80%;
       h1 {
          font-size: 22px;
          color: #fcfcfc;
-         padding: 5px;
          text-transform: uppercase;
       }
       .welcome-btn {
          padding: 8px 22px;
          margin-top: 15px;
-         border: 2px solid $bgc-item;
+         border: 1px solid $bgc-item;
          background-color: transparent;
          color: #fff;
          font-weight: 700;
          border-radius: 6px;
          font-size: 20px;
+         cursor: pointer;
          transition: all 0.3s ease;
          &:hover {
             background-color: #000;
@@ -112,7 +112,11 @@ footer {
          padding: 30px;
          width: 60%;
          h1 {
-            font-size: 55px;
+            font-size: 50px;
+            display: inline-block;
+            &:first-child {
+               margin-right: 10px;
+            }
          }
          .welcome-btn {
             padding: 10px 30px;

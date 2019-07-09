@@ -70,7 +70,7 @@ class StoreProvider extends Component {
          booksData: books
       });
    };
-   additionItem = id => {
+   addItem = id => {
       let cart = [...this.state.cartStore];
       const findItem = cart.find(item => item.id === id);
       const index = cart.indexOf(findItem);
@@ -82,7 +82,7 @@ class StoreProvider extends Component {
          cartStore: [...cart]
       });
    };
-   substractionItem = id => {
+   subtractItem = id => {
       let cart = [...this.state.cartStore];
       const findItem = cart.find(item => item.id === id);
       const index = cart.indexOf(findItem);
@@ -178,8 +178,8 @@ class StoreProvider extends Component {
       const {
          addToBasket,
          deleteItem,
-         substractionItem,
-         additionItem,
+         subtractItem,
+         addItem,
          handleForms,
          handleSubmitForm,
          handleStepUp,
@@ -195,8 +195,8 @@ class StoreProvider extends Component {
                ...this.state,
                addToBasket,
                deleteItem,
-               substractionItem,
-               additionItem,
+               subtractItem,
+               addItem,
                modalActive,
                step,
                password,
