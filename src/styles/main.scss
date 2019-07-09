@@ -110,13 +110,16 @@ footer {
       .nav-page {
          background-color: rgba(0, 0, 0, 0.7);
          padding: 30px;
-         width: 60%;
+         width: 70%;
          h1 {
             font-size: 50px;
             display: inline-block;
             &:first-child {
                margin-right: 10px;
             }
+         }
+         a {
+            display: block;
          }
          .welcome-btn {
             padding: 10px 30px;
