@@ -19,7 +19,7 @@
       background-color: #000;
    }
    .formModalClose {
-      position: relative;
+      position: absolute;
       left: 87%;
       padding: 10px;
       text-align: right;
@@ -33,7 +33,7 @@
       width: 100%;
       background-color: #000;
       padding: 6%;
-      margin: 15% auto;
+      margin: 20% auto;
       a {
          color: #a8c0c5;
          font-size: 1.1em;
@@ -97,7 +97,7 @@
    .loginForm {
       .form {
          width: 50%;
-         margin: -5% auto;
+         margin: 1% auto;
          padding: 3%;
          label,
          input {
@@ -120,6 +120,7 @@
       .formModalClose {
          font-size: 45px;
          left: 85%;
+         top: 5%;
       }
       .done {
          margin-top: 10%;

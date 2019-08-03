@@ -2,11 +2,11 @@ import React from "react";
 import { useContext } from "react";
 import { StoreConsumer } from "../Store";
 const SignIn = () => {
-   const { handleSubmitForm, handleForms, handleStepUp, nickName, password } = useContext(StoreConsumer);
+   const { handleLogIn, handleForms, handleStepUp, nickName, password } = useContext(StoreConsumer);
    return (
       <>
          <div className="form">
-            <form onSubmit={handleSubmitForm}>
+            <form onSubmit={handleLogIn}>
                <h2>Sign in</h2>
                <label htmlFor="LogIn">Nickname</label>
                <input type="text" name="nickName" value={nickName} onChange={handleForms} />

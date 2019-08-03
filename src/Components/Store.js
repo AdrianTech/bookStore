@@ -111,32 +111,38 @@ class StoreProvider extends Component {
          [name]: value
       });
    };
-   handleSubmitForm = e => {
+   handleLogIn = e => {
       e.preventDefault();
-      const { password, nickName, lastName, firstName, email, step } = this.state;
+      const { password, nickName, step } = this.state;
+      console.log("log");
       if (step === 1) {
-         if (nickName && password) {
+         if (nickName.trim().length > 2 && password.trim().length > 4) {
             this.setState({
                confirmed: true,
                modalActive: false
             });
          } else {
-            alert("Fields 'NickName and Password' are required");
+            alert("Fields 'Nickname' and 'Password' should be at least 2 and 4 characters");
             return;
          }
-      } else if (step === 2) {
+      }
+   };
+   handleSubmitForm = e => {
+      e.preventDefault();
+      const { nickName, lastName, firstName, email, step } = this.state;
+      if (step === 2) {
          const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-         if (lastName && firstName && validate.test(email)) {
+         if (lastName.trim().length > 2 && firstName.trim().length > 2 && validate.test(email)) {
             this.setState({
                confirmed: false,
                step: step + 1
             });
          } else {
-            alert("Please, fill out all the required fields");
+            alert("Please, fill out correctly all the required fields");
             return;
          }
       } else if (step === 3) {
-         if (nickName) {
+         if (nickName.trim().length > 2) {
             this.setState({
                confirmed: true,
                step: 4
@@ -146,7 +152,6 @@ class StoreProvider extends Component {
             return;
          }
       }
-      console.log("Submitted");
    };
    handleStepUp = () => {
       const { step } = this.state;
@@ -185,7 +190,8 @@ class StoreProvider extends Component {
          handleStepUp,
          handleStepDown,
          showModal,
-         resetBasket
+         resetBasket,
+         handleLogIn
       } = this;
       const { step, password, email, lastName, firstName, nickName, dateBirth, modalActive, phone } = this.state;
 
@@ -209,6 +215,7 @@ class StoreProvider extends Component {
                handleSubmitForm,
                handleStepUp,
                handleStepDown,
+               handleLogIn,
                dateBirth,
                phone,
                resetBasket
