@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 class Book extends Component {
    render() {
-      const { author, title, cover, isActive, price, id } = this.props.elem;
+      console.log(typeof this.props.elem._id);
+      const { author, title, cover, isActive, price, _id } = this.props.elem;
 
       return (
          <div className="book-Cart">
@@ -11,18 +12,18 @@ class Book extends Component {
             <h3>{title}</h3>
             <div className="img-book">
                {isActive ? <span>Book added</span> : null}
-               <Link to={`/viewBook/${id}`}>
+               <Link to={`/viewBook/${_id}`}>
                   <img src={cover} alt="Book cover" />
                </Link>
             </div>
             <div className="addBasket">
-               <Link to={`/viewBook/${id}`}>
+               <Link to={`/viewBook/${_id}`}>
                   <button className="main-btn">
                      <i className="far fa-eye" /> Read details
                   </button>
                </Link>
 
-               <h4>Only: {price} &euro;</h4>
+               <h4>Only: {parseFloat(price)} &euro;</h4>
             </div>
          </div>
       );

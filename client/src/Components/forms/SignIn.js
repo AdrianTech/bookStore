@@ -2,14 +2,14 @@ import React from "react";
 import { useContext } from "react";
 import { StoreConsumer } from "../Store";
 const SignIn = () => {
-   const { handleLogIn, handleForms, handleStepUp, nickName, password } = useContext(StoreConsumer);
+   const { handleLogIn, handleForms, handleStepUp, email, password } = useContext(StoreConsumer);
    return (
       <>
          <div className="form">
-            <form onSubmit={handleLogIn}>
+            <form className="forms" onSubmit={handleLogIn}>
                <h2>Sign in</h2>
-               <label htmlFor="LogIn">Nickname</label>
-               <input type="text" name="nickName" value={nickName} onChange={handleForms} />
+               <label htmlFor="LogIn">Your Email</label>
+               <input type="text" name="email" value={email} onChange={handleForms} />
                <label htmlFor="password">Password</label>
                <input type="password" name="password" value={password} onChange={handleForms} />
                <button className="form-btn">Log in</button>

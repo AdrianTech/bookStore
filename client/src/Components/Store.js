@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { books } from "../data";
+//import { books } from "../data";
 
 const BookContext = React.createContext();
 
@@ -18,27 +18,38 @@ class StoreProvider extends Component {
       dateBirth: "",
       modalActive: "",
       phone: "",
-      confirmed: false
+      confirmed: false,
+      info: ""
    };
    componentDidMount() {
-      this.setBook();
+      //this.setBook();
+      this.getData();
    }
 
-   setBook = () => {
-      let booksData = [];
-      books.forEach(item => {
-         const book = { ...item };
-         booksData = [...booksData, book];
-      });
-      this.setState({
-         booksData
-      });
+   getData = () => {
+      fetch("/products")
+         .then(response => response.json())
+         .then(data => {
+            this.setState({ booksData: data });
+         })
+         .catch(err => err);
    };
+
+   // setBook = () => {
+   //    let booksData = [];
+   //    books.forEach(item => {
+   //       const book = { ...item };
+   //       booksData = [...booksData, book];
+   //    });
+   //    this.setState({
+   //       booksData
+   //    });
+   // };
 
    addToBasket = id => {
       const { booksData, cartStore } = this.state;
       let data = [...booksData];
-      const book = booksData.find(item => item.id === id);
+      const book = booksData.find(item => item._id === id);
       const index = data.indexOf(book);
       const item = data[index];
       item.isActive = true;
@@ -57,8 +68,8 @@ class StoreProvider extends Component {
       const { cartStore, booksData } = this.state;
       let cart = [...cartStore];
       let books = [...booksData];
-      cart = cart.filter(item => item.id !== id);
-      const findItem = booksData.find(item => item.id === id);
+      cart = cart.filter(item => item._id !== id);
+      const findItem = booksData.find(item => item._id === id);
       const index = books.indexOf(findItem);
       let deletedItem = books[index];
       deletedItem.isActive = false;
@@ -72,7 +83,7 @@ class StoreProvider extends Component {
    };
    addItem = id => {
       let cart = [...this.state.cartStore];
-      const findItem = cart.find(item => item.id === id);
+      const findItem = cart.find(item => item._id === id);
       const index = cart.indexOf(findItem);
       const item = cart[index];
       item.count = item.count + 1;
@@ -84,7 +95,7 @@ class StoreProvider extends Component {
    };
    subtractItem = id => {
       let cart = [...this.state.cartStore];
-      const findItem = cart.find(item => item.id === id);
+      const findItem = cart.find(item => item._id === id);
       const index = cart.indexOf(findItem);
       const item = cart[index];
       if (item.count <= 0) return;
@@ -98,8 +109,12 @@ class StoreProvider extends Component {
    summary = () => {
       const { cartStore } = this.state;
       let itemTotal = 0;
-      cartStore.map(item => (itemTotal += item.total));
-      const sum = parseFloat(itemTotal.toFixed(2));
+      cartStore.map(item => {
+         const float = parseFloat(item.total);
+         itemTotal += float;
+         return itemTotal;
+      });
+      const sum = itemTotal.toFixed(2);
       this.setState({
          sum
       });
@@ -113,23 +128,69 @@ class StoreProvider extends Component {
    };
    handleLogIn = e => {
       e.preventDefault();
-      const { password, nickName, step } = this.state;
-      console.log("log");
-      if (step === 1) {
-         if (nickName.trim().length > 2 && password.trim().length > 4) {
-            this.setState({
-               confirmed: true,
-               modalActive: false
-            });
-         } else {
-            alert("Fields 'Nickname' and 'Password' should be at least 2 and 4 characters");
-            return;
-         }
-      }
+      const { password, email } = this.state;
+      fetch("/user/login", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify({ email, password })
+      })
+         .then(res => res.json())
+         .then(res => {
+            console.log(res);
+            localStorage.setItem("auth-token", res.token);
+         });
+      // if (step === 1) {
+      //    if (nickName.trim().length > 2 && password.trim().length > 4) {
+      //       this.setState({
+      //          confirmed: true,
+      //          modalActive: false
+      //       });
+      //    } else {
+      //       alert("Fields 'Nickname' and 'Password' should be at least 2 and 4 characters");
+      //       return;
+      //    }
+      // }
    };
    handleSubmitForm = e => {
+      let info;
       e.preventDefault();
-      const { nickName, lastName, firstName, email, step } = this.state;
+      const { nickName, lastName, firstName, email, password, phone, step } = this.state;
+      const test = fetch("/user/register", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify({ firstName, lastName, email, nickName, password, phone })
+      })
+         .then(res => res.json())
+         .then(res => {
+            info = res;
+            alert(info);
+            if (info.status !== 400) {
+               this.setState({
+                  step: step + 1
+               });
+            }
+         });
+      // if (this.info.status !== 400) {
+      //    this.setState({
+      //       step: step + 1
+      //    });
+      // .then(res => {
+      //    this.info = res;
+      //    alert(this.info);
+      // })
+      // .catch(err => {
+      //    this.info = err;
+      //    alert(`Ups, we have some error ${this.info}`);
+      // });
+      console.log(test);
+   };
+
+   handleStepUp = () => {
+      const { lastName, firstName, email, step } = this.state;
       if (step === 2) {
          const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
          if (lastName.trim().length > 2 && firstName.trim().length > 2 && validate.test(email)) {
@@ -141,20 +202,7 @@ class StoreProvider extends Component {
             alert("Please, fill out correctly all the required fields");
             return;
          }
-      } else if (step === 3) {
-         if (nickName.trim().length > 2) {
-            this.setState({
-               confirmed: true,
-               step: 4
-            });
-         } else {
-            alert("Field 'NickName'is required");
-            return;
-         }
       }
-   };
-   handleStepUp = () => {
-      const { step } = this.state;
       this.setState({
          step: step + 1
       });

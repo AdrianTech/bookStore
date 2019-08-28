@@ -8,7 +8,7 @@ class BookList extends Component {
       return (
          <>
             <div className="showBooks">
-               <Context>{data => data.booksData.map(elem => <Book key={elem.id} elem={elem} />)}</Context>
+               <Context>{data => data.booksData.map(elem => <Book key={elem._id} elem={elem} />)}</Context>
             </div>
             <Footer />
          </>

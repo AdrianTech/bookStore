@@ -10,9 +10,9 @@ class ViewBook extends Component {
             <Context>
                {data =>
                   data.booksData
-                     .filter(item => item.id === parseInt(this.props.match.params.id))
+                     .filter(item => item._id === this.props.match.params.id)
                      .map(item => (
-                        <div key={item.id} className="bookDetails">
+                        <div key={item._id} className="bookDetails">
                            <div className="header">
                               <h4>{item.author}</h4>
                               <h5>{item.title}</h5>
@@ -29,7 +29,7 @@ class ViewBook extends Component {
                            </div>
                            <div className="buttons">
                               {!item.isActive ? (
-                                 <button onClick={() => data.addToBasket(item.id)} className="secondary-btn btn-basket">
+                                 <button onClick={() => data.addToBasket(item._id)} className="secondary-btn btn-basket">
                                     <i className="fas fa-book-medical"> Add to Basket</i>
                                  </button>
                               ) : (

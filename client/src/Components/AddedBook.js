@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AddedBooks = ({ data, item }) => {
    const { subtractItem, addItem, deleteItem } = data;
-   const { id, price, cover, title, count, total } = item;
+   const { _id, price, cover, title, count, total } = item;
    return (
       <div className="addedToBasketBook">
          <div className="title">
@@ -13,9 +13,9 @@ const AddedBooks = ({ data, item }) => {
          <h5>Cost: {price} &euro;</h5>
          <div className="countItems">
             <div>
-               <button onClick={() => addItem(id)}>+</button>
+               <button onClick={() => addItem(_id)}>+</button>
                <span>{count}</span>
-               <button onClick={() => subtractItem(id)}>-</button>
+               <button onClick={() => subtractItem(_id)}>-</button>
             </div>
          </div>
          <span className="total">
@@ -27,7 +27,7 @@ const AddedBooks = ({ data, item }) => {
             &euro;
          </span>
          <div className="deleteBook">
-            <i style={{ marginBottom: "10px" }} className="fas fa-times-circle" onClick={() => deleteItem(id)}>
+            <i style={{ marginBottom: "10px" }} className="fas fa-times-circle" onClick={() => deleteItem(_id)}>
                {" "}
                <p>Delete Book</p>
             </i>

@@ -3,15 +3,15 @@ import { useContext } from "react";
 import { StoreConsumer } from "../Store";
 import { Link } from "react-router-dom";
 const SignUpFinal = () => {
-   const { handleForms, nickName, dateBirth, handleStepDown, phone, handleSubmitForm } = useContext(StoreConsumer);
+   const { handleForms, nickName, handleStepDown, phone, handleSubmitForm, password } = useContext(StoreConsumer);
    return (
       <>
          <div className="form">
-            <form onSubmit={handleSubmitForm}>
+            <form className="forms" onSubmit={handleSubmitForm}>
                <label>Enter your nickname</label>
                <input type="text" name="nickName" value={nickName} onChange={handleForms} />
-               <label>Your date of birth*</label>
-               <input type="date" min="1900-01-01" name="dateBirth" value={dateBirth} onChange={handleForms} />
+               <label>Password</label>
+               <input type="password" name="password" value={password} onChange={handleForms} />
                <label>Your phone number*</label>
                <input type="text" name="phone" value={phone} onChange={handleForms} />
                <button className="form-btn">Confirm data</button>

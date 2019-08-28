@@ -29,7 +29,7 @@ class BookCart extends Component {
                         <>
                            <h2>All Your Added Books</h2>
                            {data.cartStore.map(item => (
-                              <AddedBook key={item.id} data={data} item={item} />
+                              <AddedBook key={item._id} data={data} item={item} />
                            ))}
                            <Summary data={data} />
 
