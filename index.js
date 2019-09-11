@@ -16,7 +16,7 @@ const handleProducts = require("./routes/handleProducts");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 // app.use((req, res, next) => {
 //    res.setHeader("x-powered-by", "from server");
