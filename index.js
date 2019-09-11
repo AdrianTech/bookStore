@@ -16,13 +16,17 @@ const handleProducts = require("./routes/handleProducts");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 
-// app.use((req, res, next) => {
-//    res.setHeader("x-powered-by", "from server");
-//    next();
-// });
 app.use("/", handleProducts);
 app.use("/user", handleUsers);
+app.get("/*", function(req, res) {
+   res.sendFile(path.join(__dirname, "client/build/index.html"), function(err) {
+      if (err) {
+         res.status(500).send(err);
+      }
+   });
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

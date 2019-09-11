@@ -14,7 +14,6 @@ import User from "./Components/User";
 
 class BookStore extends Component {
    render() {
-
       return (
          <>
             <Navigation />
