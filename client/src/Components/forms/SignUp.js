@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext } from "react";
-import { StoreConsumer } from "../Store";
+import { AuthContext } from "../context/Auth";
 const SignUp = () => {
-   const { handleForms, firstName, handleStepUp, lastName, email } = useContext(StoreConsumer);
+   const { handleForms, firstName, handleStepUp, lastName, email } = useContext(AuthContext);
    return (
       <>
          <div className="form">

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+   id: mongoose.Schema.Types.ObjectId,
    firstName: {
       type: String,
       require: true,
@@ -34,9 +35,11 @@ const userSchema = new mongoose.Schema({
       require: false,
       min: 8
    },
-   date: {
-      type: Date,
-      default: Date.now
+   registerDate: {
+      type: String,
+      require: true,
+      min: 3,
+      max: 100
    }
 });
 

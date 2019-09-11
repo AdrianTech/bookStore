@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import { books } from "../data";
 
 const BookContext = React.createContext();
 
@@ -8,18 +7,7 @@ class StoreProvider extends Component {
       booksData: [],
       cartStore: [],
       sum: 0,
-      itemSum: 0,
-      step: 1,
-      firstName: "",
-      lastName: "",
-      nickName: "",
-      email: "",
-      password: "",
-      dateBirth: "",
-      modalActive: "",
-      phone: "",
-      confirmed: false,
-      info: ""
+      itemSum: 0
    };
    componentDidMount() {
       //this.setBook();
@@ -119,129 +107,16 @@ class StoreProvider extends Component {
          sum
       });
    };
-   handleForms = e => {
-      const name = e.target.name;
-      const value = e.target.value;
-      this.setState({
-         [name]: value
-      });
-   };
-   handleLogIn = e => {
-      e.preventDefault();
-      const { password, email } = this.state;
-      fetch("/user/login", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify({ email, password })
-      })
-         .then(res => res.json())
-         .then(res => {
-            console.log(res);
-            localStorage.setItem("auth-token", res.token);
-         });
-      // if (step === 1) {
-      //    if (nickName.trim().length > 2 && password.trim().length > 4) {
-      //       this.setState({
-      //          confirmed: true,
-      //          modalActive: false
-      //       });
-      //    } else {
-      //       alert("Fields 'Nickname' and 'Password' should be at least 2 and 4 characters");
-      //       return;
-      //    }
-      // }
-   };
-   handleSubmitForm = e => {
-      let info;
-      e.preventDefault();
-      const { nickName, lastName, firstName, email, password, phone, step } = this.state;
-      const test = fetch("/user/register", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json"
-         },
-         body: JSON.stringify({ firstName, lastName, email, nickName, password, phone })
-      })
-         .then(res => res.json())
-         .then(res => {
-            info = res;
-            alert(info);
-            if (info.status !== 400) {
-               this.setState({
-                  step: step + 1
-               });
-            }
-         });
-      // if (this.info.status !== 400) {
-      //    this.setState({
-      //       step: step + 1
-      //    });
-      // .then(res => {
-      //    this.info = res;
-      //    alert(this.info);
-      // })
-      // .catch(err => {
-      //    this.info = err;
-      //    alert(`Ups, we have some error ${this.info}`);
-      // });
-      console.log(test);
-   };
 
-   handleStepUp = () => {
-      const { lastName, firstName, email, step } = this.state;
-      if (step === 2) {
-         const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-         if (lastName.trim().length > 2 && firstName.trim().length > 2 && validate.test(email)) {
-            this.setState({
-               confirmed: false,
-               step: step + 1
-            });
-         } else {
-            alert("Please, fill out correctly all the required fields");
-            return;
-         }
-      }
-      this.setState({
-         step: step + 1
-      });
-   };
-   handleStepDown = () => {
-      const { step } = this.state;
-      this.setState({
-         step: step - 1
-      });
-   };
-   showModal = () => {
-      const { modalActive } = this.state;
-      this.setState({
-         modalActive: !modalActive,
-         step: 1
-      });
-   };
    resetBasket = () => {
       this.setState({
          cartStore: []
       });
-      this.setBook();
+      this.getData();
    };
 
    render() {
-      const {
-         addToBasket,
-         deleteItem,
-         subtractItem,
-         addItem,
-         handleForms,
-         handleSubmitForm,
-         handleStepUp,
-         handleStepDown,
-         showModal,
-         resetBasket,
-         handleLogIn
-      } = this;
-      const { step, password, email, lastName, firstName, nickName, dateBirth, modalActive, phone } = this.state;
+      const { addToBasket, deleteItem, subtractItem, addItem, resetBasket } = this;
 
       return (
          <BookContext.Provider
@@ -251,21 +126,6 @@ class StoreProvider extends Component {
                deleteItem,
                subtractItem,
                addItem,
-               modalActive,
-               step,
-               password,
-               firstName,
-               lastName,
-               email,
-               nickName,
-               showModal,
-               handleForms,
-               handleSubmitForm,
-               handleStepUp,
-               handleStepDown,
-               handleLogIn,
-               dateBirth,
-               phone,
                resetBasket
             }}
          >

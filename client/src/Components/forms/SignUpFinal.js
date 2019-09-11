@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext } from "react";
-import { StoreConsumer } from "../Store";
+import { AuthContext } from "../context/Auth";
 import { Link } from "react-router-dom";
 const SignUpFinal = () => {
-   const { handleForms, nickName, handleStepDown, phone, handleSubmitForm, password } = useContext(StoreConsumer);
+   const { handleForms, nickName, handleStepDown, phone, handleSubmitForm, password } = useContext(AuthContext);
    return (
       <>
          <div className="form">

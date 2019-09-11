@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SignUpFinal from "./SignUpFinal";
 import ConfirmInfo from "./ConfirmInfo";
 
-class LoginForm extends Component {
-   state = {};
+const LoginForm = (props) => {
 
-   render() {
-      const { step } = this.props.data;
+      const { step } = props.data;
       let showForms;
       if (step === 1) {
          return (showForms = <SignIn />);
@@ -22,5 +20,4 @@ class LoginForm extends Component {
 
       return <>{showForms}</>;
    }
-}
 export default LoginForm;

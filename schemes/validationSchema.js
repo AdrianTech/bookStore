@@ -25,7 +25,8 @@ const registerSchema = data => {
       phone: joi
          .string()
          .min(8)
-         .allow("")
+         .allow(""),
+      registerDate: joi.string().min(3)
    };
    return joi.validate(data, schema);
 };

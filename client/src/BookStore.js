@@ -10,16 +10,10 @@ import PageNotFound from "./Components/NotFound";
 import End from "./Components/End";
 import Terms from "./Components/forms/Terms";
 import EnterPage from "./Components/EnterPage";
-//import bg from "./img/bookStore.jpg";
+import User from "./Components/User";
 
 class BookStore extends Component {
    render() {
-      // const bgImg = {
-      //    backgroundImage: `url(${bg})`,
-      //    backgroundPosition: "cover",
-      //    position: "relative",
-      //    zIndex: "-100"
-      // };
 
       return (
          <>
@@ -32,6 +26,7 @@ class BookStore extends Component {
                   <Route path="/end" component={End} />
                   <Route path="/yourCart" component={YourCart} />
                   <Route path="/terms" component={Terms} />
+                  <Route path="/auth/user/:id" component={User} />
                   <Route component={PageNotFound} />
                </Switch>
             </div>

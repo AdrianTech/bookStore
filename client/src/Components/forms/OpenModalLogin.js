@@ -1,21 +1,24 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import { Context } from "../Store";
+import { AuthContext } from "../context/Auth";
+import { Link } from "react-router-dom";
 
 const OpenModalLogin = () => {
    return (
       <>
-         <Context>
+         <AuthContext>
             {data => (
                <>
-                  {!data.confirmed ? (
+                  {!data.isAuthorized ? (
                      <button className="secondary-btn button-login" onClick={data.showModal}>
                         <i className="far fa-user-circle" />
                         Sign In
                      </button>
                   ) : (
                      <h4>
-                        <i className="far fa-user-circle" /> Hello, {data.nickName}
+                        <Link to={`/auth/user/${data.userID}`}>
+                           <i className="far fa-user-circle" /> Hello, {data.user.nickName}
+                        </Link>
                      </h4>
                   )}
                   {data.modalActive && (
@@ -28,7 +31,7 @@ const OpenModalLogin = () => {
                   )}
                </>
             )}
-         </Context>
+         </AuthContext>
       </>
    );
 };

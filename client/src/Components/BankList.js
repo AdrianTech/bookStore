@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import payForm from "./payForm";
 import { Link } from "react-router-dom";
-import { StoreConsumer } from "../Components/Store";
+import { AuthContext } from "./context/Auth";
+import { StoreConsumer } from "./Store";
 const BankList = ({ click, resetBasket }) => {
-   const { sum, nickName, confirmed } = useContext(StoreConsumer);
+   const { nickName, confirmed } = useContext(AuthContext);
+   const { sum } = useContext(StoreConsumer);
    const mapPayForm = payForm.map(item => (
       <div key={item.id} className="list" onClick={resetBasket}>
          <Link to="/end">

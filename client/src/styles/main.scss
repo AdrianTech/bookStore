@@ -88,6 +88,17 @@ img {
       }
    }
 }
+.userProfil {
+   i {
+      margin-right: 5px;
+   }
+   h2 {
+      margin: 30px 10px 15px;
+   }
+   h3 {
+      margin: 15px;
+   }
+}
 footer {
    width: 100%;
    padding: 10px 0;
@@ -126,6 +137,9 @@ footer {
             font-size: 25px;
          }
       }
+   }
+   .userProfil {
+      font-size: 24px;
    }
    footer {
       margin-top: 15px;
