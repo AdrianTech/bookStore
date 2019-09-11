@@ -23,7 +23,6 @@ class AuthProvider extends Component {
    }
    logoutUser = () => {
       localStorage.clear();
-      console.log("Logout");
       this.setState({
          isAuthorized: false,
          token: null,
@@ -35,7 +34,6 @@ class AuthProvider extends Component {
    getUser = () => {
       const userAuth = JSON.parse(localStorage.getItem("auth-token"));
       if (!userAuth || !userAuth.id) return;
-      console.log("getUSER");
       const myHeaders = new Headers({
          "Content-Type": "application/json",
          "auth-token": userAuth.token
@@ -102,8 +100,6 @@ class AuthProvider extends Component {
          body: JSON.stringify({ firstName, lastName, email, nickName, password, phone, registerDate })
       })
          .then(res => {
-            console.log(res);
-            this.info = res.ok;
             if (res.ok) {
                this.setState({
                   step: step + 1
