@@ -3,7 +3,6 @@ import { AuthContext } from "./context/Auth";
 import { Link } from "react-router-dom";
 const User = props => {
    const { user, logoutUser } = useContext(AuthContext);
-   console.log(user);
 
    return (
       <>
