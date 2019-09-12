@@ -1,4 +1,4 @@
-### Technology stack of the MERN application
+### A full stack application with MERN
 
 #### Client-side
 

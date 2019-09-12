@@ -22,7 +22,6 @@ class AuthProvider extends Component {
    }
    logoutUser = () => {
       localStorage.clear();
-      console.log("Logout");
       this.setState({
          isAuthorized: false,
          token: null,
