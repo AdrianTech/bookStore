@@ -46,7 +46,6 @@ class AuthProvider extends Component {
             else return;
          })
          .then(data => {
-            console.log(data);
             this.setState({
                user: data,
                userID: data._id,
