@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const verify = require("../middleware/auth");
 
 router.post("/register", async (req, res) => {
-   const { firstName, lastName, email, nickName, password, phone, registerDate } = req.body;
+   const { fullname, email, nickName, password, phone, registerDate } = req.body;
    const { error } = registerSchema(req.body);
    if (error) return res.status(400).json(error.details[0].message);
    const checkIfEmailIsExist = await UserSchema.findOne({ email });
@@ -16,8 +16,7 @@ router.post("/register", async (req, res) => {
    const hashedPass = await bcrypt.hash(password, salt);
 
    const newUser = new UserSchema({
-      firstName,
-      lastName,
+      fullname,
       email,
       nickName,
       password: hashedPass,
@@ -26,7 +25,7 @@ router.post("/register", async (req, res) => {
    });
    try {
       const createdUser = await newUser.save();
-      res.status(200).json("Your account has been successfully created");
+      res.status(200).json("your account has been successfully created");
    } catch (err) {
       res.status(400).json(err);
    }
@@ -46,8 +45,7 @@ router.post("/login", async (req, res) => {
       id: user._id,
       user: {
          userID: user._id,
-         firstName: user.firstName,
-         lastName: user.lastName,
+         fullname: user.fullname,
          nickName: user.nickName,
          email: user.email,
          phone: user.phone,
@@ -58,9 +56,9 @@ router.post("/login", async (req, res) => {
 router.get("/:id", verify, (req, res) => {
    const { id } = req.params;
    UserSchema.findById(id, (err, data) => {
-      if (err) res.status(403);
+      if (err) res.status(404);
       else res.json(data);
-   });
+   }).select("-password");
 });
 
 module.exports = router;

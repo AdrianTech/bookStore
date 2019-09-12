@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./context/Auth";
 import { StoreConsumer } from "./Store";
 const BankList = ({ click, resetBasket }) => {
-   const { nickName, confirmed } = useContext(AuthContext);
+   const { user } = useContext(AuthContext);
    const { sum } = useContext(StoreConsumer);
    const mapPayForm = payForm.map(item => (
       <div key={item.id} className="list" onClick={resetBasket}>
@@ -20,9 +20,9 @@ const BankList = ({ click, resetBasket }) => {
          <button onClick={click}>
             <i className="far fa-times-circle" />
          </button>
-         {confirmed ? (
-            <h3 style={{ marginBottom: nickName.length > 7 ? "8px" : null }}>
-               {nickName}, you'll pay only: {sum} &euro;
+         {user.nickName ? (
+            <h3 style={{ marginBottom: user.nickName.length > 7 ? "8px" : null }}>
+               {user.nickName}, you'll pay only: {sum} &euro;
             </h3>
          ) : (
             <h3>

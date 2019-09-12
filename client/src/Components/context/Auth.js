@@ -6,8 +6,7 @@ class AuthProvider extends Component {
       isAuthorized: false,
       token: null,
       step: 1,
-      firstName: "",
-      lastName: "",
+      fullname: "",
       nickName: "",
       email: "",
       password: "",
@@ -35,7 +34,6 @@ class AuthProvider extends Component {
    getUser = () => {
       const userAuth = JSON.parse(localStorage.getItem("auth-token"));
       if (!userAuth || !userAuth.id) return;
-      console.log("getUSER");
       const myHeaders = new Headers({
          "Content-Type": "application/json",
          "auth-token": userAuth.token
@@ -48,6 +46,7 @@ class AuthProvider extends Component {
             else return;
          })
          .then(data => {
+            console.log(data);
             this.setState({
                user: data,
                userID: data._id,
@@ -84,7 +83,9 @@ class AuthProvider extends Component {
                   isAuthorized: true,
                   modalActive: false,
                   userID: res.id,
-                  token: res.token
+                  token: res.token,
+                  email: "",
+                  password: ""
                });
             }
          });
@@ -93,17 +94,15 @@ class AuthProvider extends Component {
       e.preventDefault();
       let registerDate;
       registerDate = new Date().toLocaleString();
-      const { nickName, lastName, firstName, email, password, phone, step } = this.state;
+      const { nickName, fullname, email, password, phone, step } = this.state;
       fetch("/user/register", {
          method: "POST",
          headers: {
             "Content-Type": "application/json"
          },
-         body: JSON.stringify({ firstName, lastName, email, nickName, password, phone, registerDate })
+         body: JSON.stringify({ fullname, email, nickName, password, phone, registerDate })
       })
          .then(res => {
-            console.log(res);
-            this.info = res.ok;
             if (res.ok) {
                this.setState({
                   step: step + 1
@@ -112,15 +111,17 @@ class AuthProvider extends Component {
             return res.json();
          })
          .then(res => {
-            alert(res);
+            this.setState({
+               info: res
+            });
          });
    };
 
    handleStepUp = () => {
-      const { lastName, firstName, email, step } = this.state;
+      const { email, step, nickName, fullname } = this.state;
       if (step === 2) {
          const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-         if (lastName.trim().length > 2 && firstName.trim().length > 2 && validate.test(email)) {
+         if (fullname.trim().length > 5 && nickName.trim().length > 2 && validate.test(email)) {
             this.setState({
                confirmed: false,
                step: step + 1
@@ -155,9 +156,8 @@ class AuthProvider extends Component {
          email,
          phone,
          confirmed,
+         fullname,
          nickName,
-         lastName,
-         firstName,
          modalActive,
          step,
          info,
@@ -178,13 +178,11 @@ class AuthProvider extends Component {
                userID,
                confirmed,
                nickName,
-               lastName,
-               firstName,
                modalActive,
                step,
                info,
                password,
-               // registerDate,
+               fullname,
                showModal,
                handleForms,
                handleLogIn,

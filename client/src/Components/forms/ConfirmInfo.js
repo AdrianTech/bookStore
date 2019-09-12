@@ -2,10 +2,12 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/Auth";
 const ConfirmInfo = () => {
-   const { nickName } = useContext(AuthContext);
+   const { nickName, info } = useContext(AuthContext);
    return (
       <>
-         <h2 className="done">{nickName}, your account has been successfully created. Sign in to you Old Town account.</h2>
+         <h2 className="done">
+            {nickName}, {info}. Now, you'll be able to sign in.
+         </h2>
       </>
    );
 };

@@ -1,13 +1,9 @@
 const joi = require("@hapi/joi");
 const registerSchema = data => {
    const schema = {
-      firstName: joi
+      fullname: joi
          .string()
-         .min(2)
-         .required(),
-      lastName: joi
-         .string()
-         .min(3)
+         .min(5)
          .required(),
       email: joi
          .string()

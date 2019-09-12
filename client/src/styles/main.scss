@@ -89,14 +89,31 @@ img {
    }
 }
 .userProfil {
+   margin-left: 15px;
+   font-size: 16px;
+   .user-btn {
+      background-color: transparent;
+      margin-right: 20%;
+      border: 1px solid black;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: $darkRed;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+   }
+   .user-btn-logout {
+      padding: 5px 8px;
+      font-size: 12px;
+   }
    i {
       margin-right: 5px;
    }
    h2 {
-      margin: 30px 10px 15px;
+      margin: 15px 0px 15px;
    }
    h3 {
-      margin: 15px;
+      margin: 15px 0px;
    }
 }
 footer {
@@ -139,6 +156,16 @@ footer {
       }
    }
    .userProfil {
+      .user-btn {
+         left: 2%;
+      }
+      .user-btn-logout {
+         position: absolute;
+         padding: 7px 11px;
+         font-size: 15px;
+         top: 13%;
+         right: 4%;
+      }
       font-size: 24px;
    }
    footer {

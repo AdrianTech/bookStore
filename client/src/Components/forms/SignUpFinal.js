@@ -3,13 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "../context/Auth";
 import { Link } from "react-router-dom";
 const SignUpFinal = () => {
-   const { handleForms, nickName, handleStepDown, phone, handleSubmitForm, password } = useContext(AuthContext);
+   const { handleForms, handleStepDown, phone, handleSubmitForm, password } = useContext(AuthContext);
    return (
       <>
          <div className="form">
             <form className="forms" onSubmit={handleSubmitForm}>
-               <label>Enter your nickname</label>
-               <input type="text" name="nickName" value={nickName} onChange={handleForms} />
                <label>Password</label>
                <input type="password" name="password" value={password} onChange={handleForms} />
                <label>Your phone number*</label>

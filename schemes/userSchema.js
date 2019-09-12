@@ -2,16 +2,10 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
    id: mongoose.Schema.Types.ObjectId,
-   firstName: {
+   fullname: {
       type: String,
       require: true,
-      min: 2,
-      max: 100
-   },
-   lastName: {
-      type: String,
-      require: true,
-      min: 3,
+      min: 5,
       max: 100
    },
    email: {
