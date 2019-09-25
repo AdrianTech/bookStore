@@ -3,7 +3,6 @@ const { productValidation } = require("../schemes/validationSchema");
 const ProductsSchema = require("../schemes/productsSchema");
 const verify = require("../middleware/auth");
 const multer = require("multer");
-const config = require("../config");
 const storage = multer.diskStorage({
    destination: (req, file, cb) => {
       cb(null, "./images/");
