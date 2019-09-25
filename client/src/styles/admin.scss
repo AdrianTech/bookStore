@@ -1,0 +1,111 @@
+.adminPanel {
+   margin: 25px 15px 25px 0;
+   .editBook {
+      p {
+         margin: 5px 0;
+         font-size: 16px;
+         color: #3d3b3b;
+         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+   }
+
+   .btn-add-product {
+      margin: 14px;
+      padding: 7px 13px;
+      font-size: 14px;
+   }
+   .productManagement {
+      display: block;
+
+      .buttons {
+         margin: 7px auto;
+      }
+   }
+   .bookFromDB {
+      margin: 10px 0;
+      display: block;
+      font-size: 1.3rem;
+      .buttons-cms-event {
+         margin: 10px auto;
+      }
+      button {
+         margin: 0 6px;
+         padding: 5px 12px;
+         border: 1px solid black;
+         font-size: 14px;
+         border-radius: 3px;
+         &:first-child {
+            background-color: #0a993a;
+            color: #fff;
+         }
+         &:nth-child(2) {
+            background-color: #c71d1d;
+            color: #fff;
+         }
+      }
+   }
+}
+.cms-form {
+   display: flex;
+   flex-direction: column;
+   label {
+      margin: 5px;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: "Poppins";
+   }
+   input,
+   textarea {
+      border: 2px solid $darkRed;
+      padding: 6px;
+      font-size: 18px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      border-radius: 6px;
+   }
+   input[type="file"] {
+      font-size: 14px;
+   }
+   .cms-button {
+      width: 100%;
+      margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid $darkRed;
+      padding: 7px 0;
+      font-weight: 700;
+      background-color: #b2e3fa;
+      cursor: pointer;
+   }
+}
+@media (min-width: 768px) {
+   .adminPanel {
+      .btn-add-product {
+         padding: 8px 14px;
+         font-size: 15px;
+      }
+      .bookFromDB {
+         display: flex;
+         position: relative;
+         .buttons-cms-event {
+            position: absolute;
+            right: 10%;
+            margin-top: -5px;
+         }
+      }
+   }
+   .cms-form {
+      width: 50%;
+      label {
+         font-size: 20px;
+      }
+      input,
+      textarea {
+         font-size: 21px;
+      }
+      .cms-button {
+         width: 30%;
+      }
+      input[type="file"] {
+         font-size: 19px;
+      }
+   }
+}
