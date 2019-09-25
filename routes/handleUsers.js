@@ -39,7 +39,6 @@ router.post("/login", async (req, res) => {
    const comparePass = await bcrypt.compare(password, user.password);
    if (!comparePass) return res.status(400).json("Wrong email or password");
    const token = jwt.sign({ _id: user._id }, process.env.USER_TOKEN, { expiresIn: 9000 });
-   console.log("hello from Backend");
    res.json({
       token,
       id: user._id,

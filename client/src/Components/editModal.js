@@ -9,7 +9,7 @@ const EditModal = ({ click }) => {
       .map(item => (
          <div className="editBook" key={item._id}>
             <button onClick={() => click(false)} className="secondary-btn btn-add-product">
-               Hide edition fields
+               Hide update module
             </button>
             <form onSubmit={editBookInDB} className="cms-form">
                <label>Author</label>

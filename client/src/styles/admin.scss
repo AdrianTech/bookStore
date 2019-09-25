@@ -16,10 +16,9 @@
    }
    .productManagement {
       display: block;
-
-      .buttons {
-         margin: 7px auto;
-      }
+      background-color: #fafae9;
+      margin-bottom: 10px;
+      padding: 8px 10px;
    }
    .bookFromDB {
       margin: 10px 0;
@@ -30,7 +29,7 @@
       }
       button {
          margin: 0 6px;
-         padding: 5px 12px;
+         padding: 5px 15px;
          border: 1px solid black;
          font-size: 14px;
          border-radius: 3px;
@@ -82,15 +81,18 @@
          padding: 8px 14px;
          font-size: 15px;
       }
-      .bookFromDB {
-         display: flex;
-         position: relative;
-         .buttons-cms-event {
-            position: absolute;
-            right: 10%;
-            margin-top: -5px;
-         }
-      }
+      // .productManagement {
+      //    max-width: 90%;
+      //    position: relative;
+      // }
+      // .bookFromDB {
+      //    display: flex;
+      //    .buttons-cms-event {
+      //       position: absolute;
+      //       right: 0;
+      //       margin-top: -5px;
+      //    }
+      // }
    }
    .cms-form {
       width: 50%;

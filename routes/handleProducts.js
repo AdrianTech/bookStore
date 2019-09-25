@@ -7,7 +7,6 @@ router.get("/products", async (req, res) => {
 });
 router.delete("/deleteProduct", verify, (req, res) => {
    const { id } = req.body;
-   console.log(req.body);
    ProductsSchema.deleteOne({ _id: id }, err => {
       if (err) {
          res.status(400).json(err);
@@ -18,4 +17,3 @@ router.delete("/deleteProduct", verify, (req, res) => {
 });
 
 module.exports = router;
-//

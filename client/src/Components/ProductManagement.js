@@ -9,7 +9,7 @@ const ProductManagement = () => {
    const displayBooks = booksData.map(item => (
       <div className="productManagement" key={item._id}>
          <div className="bookFromDB">
-            Author: {item.author}, Title: {item.title}
+            <h4>Author: {item.author}</h4> <h4> Title: {item.title}</h4>
             <div className="buttons-cms-event">
                <button
                   onClick={() => {
@@ -17,7 +17,7 @@ const ProductManagement = () => {
                      getThisBookFromDB(item._id);
                   }}
                >
-                  Edit
+                  Update
                </button>
                <button onClick={() => deleteBookFromDB(item._id)}>Delete</button>
             </div>
