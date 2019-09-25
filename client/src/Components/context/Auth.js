@@ -63,6 +63,7 @@ class AuthProvider extends Component {
    };
    handleLogIn = e => {
       e.preventDefault();
+      console.log("Hello");
       const { password, email } = this.state;
       fetch("/user/login", {
          method: "POST",
@@ -85,6 +86,8 @@ class AuthProvider extends Component {
                   email: "",
                   password: ""
                });
+            } else {
+               alert(res);
             }
          });
    };

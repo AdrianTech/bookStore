@@ -4,41 +4,31 @@ const ProductsSchema = new mongoose.Schema({
    id: mongoose.Schema.Types.ObjectId,
    author: {
       type: String,
-      require: true,
-      min: 2,
-      max: 100
+      require: false
    },
    title: {
       type: String,
-      require: true,
-      min: 3,
-      max: 100
+      require: false
    },
    cover: {
       type: String,
-      require: true,
-      max: 255,
-      min: 5
+      require: false
    },
    pages: {
-      type: Number,
-      require: true,
-      min: 3
+      type: String,
+      require: false
    },
    desc: {
       type: String,
-      require: true,
-      min: 8
+      require: false
    },
    print: {
       type: String,
-      require: true,
-      min: 3
+      require: false
    },
    price: {
       type: String,
-      require: true,
-      min: 3
+      require: false
    },
    date: {
       type: String
@@ -47,9 +37,12 @@ const ProductsSchema = new mongoose.Schema({
       type: Boolean
    },
    count: {
-      type: Number
+      type: String
    },
    total: {
+      type: String
+   },
+   addedDate: {
       type: String
    }
 });

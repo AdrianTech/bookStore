@@ -7,7 +7,17 @@ class StoreProvider extends Component {
       booksData: [],
       cartStore: [],
       sum: 0,
-      itemSum: 0
+      itemSum: 0,
+      author: "",
+      title: "",
+      desc: "",
+      pages: "",
+      print: "",
+      date: "",
+      cover: null,
+      price: "",
+      editBook: null,
+      bookID: ""
    };
    componentDidMount() {
       //this.setBook();
@@ -22,17 +32,6 @@ class StoreProvider extends Component {
          })
          .catch(err => err);
    };
-
-   // setBook = () => {
-   //    let booksData = [];
-   //    books.forEach(item => {
-   //       const book = { ...item };
-   //       booksData = [...booksData, book];
-   //    });
-   //    this.setState({
-   //       booksData
-   //    });
-   // };
 
    addToBasket = id => {
       const { booksData, cartStore } = this.state;
@@ -114,9 +113,153 @@ class StoreProvider extends Component {
       });
       this.getData();
    };
+   handleCmsValue = e => {
+      const name = e.target.name;
+      const value = e.target.value;
+      const file = e.target.files;
+      if (file) {
+         this.setState({
+            [name]: file[0]
+         });
+      } else {
+         this.setState({
+            [name]: value
+         });
+      }
+   };
+   handleCmsSubmit = e => {
+      e.preventDefault();
+      const { price, desc, author, print, date, title, cover, pages } = this.state;
+      const data = {
+         author,
+         title,
+         price,
+         desc,
+         date,
+         pages,
+         print,
+         total: "0",
+         count: "0",
+         isActive: false,
+         cover
+      };
+      let formData = new FormData();
+      for (let name in data) {
+         formData.append(name, data[name]);
+      }
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      fetch("/addNewProduct", {
+         method: "POST",
+         headers: {
+            "auth-token": userAuth.token
+         },
+         body: formData
+      })
+         .then(res => {
+            if (res.ok) {
+               this.setState({
+                  author: "",
+                  title: "",
+                  desc: "",
+                  pages: "",
+                  print: "",
+                  date: "",
+                  cover: null,
+                  price: ""
+               });
+            }
+            return res.json();
+         })
+         .then(res => {
+            alert(res);
+         });
+   };
+   deleteBookFromDB = id => {
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      fetch("/deleteProduct", {
+         method: "DELETE",
+         headers: {
+            "Content-type": "application/json",
+            "auth-token": userAuth.token
+         },
+         body: JSON.stringify({ id })
+      })
+         .then(res => {
+            if (res.ok) {
+               this.getData();
+            }
+            return res.json();
+         })
+         .then(res => {
+            alert(res);
+         });
+   };
+   getThisBookFromDB = id => {
+      this.setState({
+         bookID: id
+      });
+   };
+   editBookInDB = e => {
+      e.preventDefault();
+      const { price, desc, author, print, date, title, cover, pages, bookID } = this.state;
+      const data = {
+         id: bookID,
+         author,
+         title,
+         price,
+         desc,
+         date,
+         pages,
+         print,
+         cover
+      };
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      let formData = new FormData();
+      for (let name in data) {
+         formData.append(name, data[name]);
+      }
+      fetch("/editProduct", {
+         method: "PUT",
+         headers: {
+            "auth-token": userAuth.token
+         },
+         body: formData
+      })
+         .then(res => {
+            if (res.ok) {
+               this.setState({
+                  author: "",
+                  title: "",
+                  desc: "",
+                  pages: "",
+                  print: "",
+                  date: "",
+                  cover: null,
+                  price: ""
+               });
+               this.getData();
+            }
+            return res.json();
+         })
+         .then(res => {
+            alert(res);
+         });
+   };
 
    render() {
-      const { addToBasket, deleteItem, subtractItem, addItem, resetBasket } = this;
+      const {
+         addToBasket,
+         deleteItem,
+         subtractItem,
+         addItem,
+         resetBasket,
+         handleCmsSubmit,
+         handleCmsValue,
+         deleteBookFromDB,
+         getThisBookFromDB,
+         editBookInDB
+      } = this;
+      const { author, desc, title, pages, cover, price, date, print, editBook, bookID } = this.state;
 
       return (
          <BookContext.Provider
@@ -126,7 +269,22 @@ class StoreProvider extends Component {
                deleteItem,
                subtractItem,
                addItem,
-               resetBasket
+               resetBasket,
+               handleCmsSubmit,
+               handleCmsValue,
+               deleteBookFromDB,
+               getThisBookFromDB,
+               editBookInDB,
+               bookID,
+               author,
+               desc,
+               title,
+               pages,
+               cover,
+               price,
+               date,
+               print,
+               editBook
             }}
          >
             {this.props.children}
@@ -135,5 +293,5 @@ class StoreProvider extends Component {
    }
 }
 const Context = BookContext.Consumer;
-const StoreConsumer = BookContext; //Consumer
+const StoreConsumer = BookContext;
 export { StoreProvider, StoreConsumer, Context };

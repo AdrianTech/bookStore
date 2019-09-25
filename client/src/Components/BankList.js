@@ -20,7 +20,7 @@ const BankList = ({ click, resetBasket }) => {
          <button onClick={click}>
             <i className="far fa-times-circle" />
          </button>
-         {user.nickName ? (
+         {user ? (
             <h3 style={{ marginBottom: user.nickName.length > 7 ? "8px" : null }}>
                {user.nickName}, you'll pay only: {sum} &euro;
             </h3>

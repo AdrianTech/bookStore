@@ -37,11 +37,12 @@
       }
    }
    .addBasket {
-      display: flex;
-      justify-content: space-between;
+      // display: flex;
+      // justify-content: space-between;
       h4 {
          font-size: 19px;
          font-family: "Poppins";
+         margin-bottom: 8px;
       }
    }
 }

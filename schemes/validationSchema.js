@@ -27,7 +27,6 @@ const registerSchema = data => {
    return joi.validate(data, schema);
 };
 const loginValSchema = data => {
-   console.log(data);
    const schema = {
       email: joi
          .string()
@@ -41,5 +40,53 @@ const loginValSchema = data => {
    };
    return joi.validate(data, schema);
 };
+const productValidation = data => {
+   const schema = {
+      author: joi
+         .string()
+         .min(2)
+         .max(1000)
+         .required(),
+      title: joi
+         .string()
+         .required()
+         .min(3)
+         .max(100),
+      // cover: joi
+      //    .string()
+      //    .required()
+      //    .min(5)
+      //    .max(255),
+      pages: joi
+         .string()
+         .required()
+         .min(2)
+         .max(5000),
+      desc: joi
+         .string()
+         .required()
+         .min(8)
+         .max(1000),
+      print: joi
+         .string()
+         .required()
+         .min(2)
+         .max(100),
+      price: joi
+         .string()
+         .required()
+         .max(10),
+      date: joi
+         .string()
+         .required()
+         .min(4)
+         .max(4),
+      isActive: joi.boolean().required(),
+      count: joi.string().required(),
+      total: joi.string().required()
+   };
+   return joi.validate(data, schema);
+};
 module.exports.registerSchema = registerSchema;
 module.exports.loginValSchema = loginValSchema;
+module.exports.productValidation = productValidation;

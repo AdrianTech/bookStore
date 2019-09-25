@@ -18,7 +18,7 @@ class ViewBook extends Component {
                               <h5>{item.title}</h5>
                            </div>
                            <div className="bookCover">
-                              <img src={item.cover} alt="Cover" />
+                              <img src={`/${item.cover}`} alt="cover" />
                            </div>
                            <p>{item.desc}</p>
                            <div className="spanItems">

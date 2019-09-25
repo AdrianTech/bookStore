@@ -15,11 +15,11 @@ const OpenModalLogin = () => {
                         Sign In
                      </button>
                   ) : (
-                     <h4>
+                     <div className="user-nav-link">
                         <Link to={`/auth/user/${data.userID}`}>
                            <i className="far fa-user-circle" /> Hello, {data.user.nickName}
                         </Link>
-                     </h4>
+                     </div>
                   )}
                   {data.modalActive && (
                      <div className="loginForm">

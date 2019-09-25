@@ -7,20 +7,24 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 5500;
 //Import routes
 
-const db = mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => console.log("DB connected"));
+mongoose.set("useFindAndModify", false);
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => console.log("DB connected"));
 const handleUsers = require("./routes/handleUsers");
 const handleProducts = require("./routes/handleProducts");
+const addNewProduct = require("./routes/addNewProduct");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "client/build")));
-// app.use(express.static(path.join(__dirname, "public")));
+app.use("/images", express.static("images"));
+// app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", handleProducts);
 app.use("/user", handleUsers);
+app.use("/", addNewProduct);
 app.get("/*", function(req, res) {
    res.sendFile(path.join(__dirname, "client/build/index.html"), function(err) {
       if (err) {

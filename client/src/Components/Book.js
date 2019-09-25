@@ -16,13 +16,12 @@ class Book extends Component {
                </Link>
             </div>
             <div className="addBasket">
+               <h4>Only: {parseFloat(price)} &euro;</h4>
                <Link to={`/viewBook/${_id}`}>
                   <button className="main-btn">
                      <i className="far fa-eye" /> Read details
                   </button>
                </Link>
-
-               <h4>Only: {parseFloat(price)} &euro;</h4>
             </div>
          </div>
       );

@@ -4,36 +4,31 @@ const userSchema = new mongoose.Schema({
    id: mongoose.Schema.Types.ObjectId,
    fullname: {
       type: String,
-      require: true,
-      min: 5,
-      max: 100
+      require: false
    },
    email: {
       type: String,
-      require: true,
-      max: 100,
-      min: 5
+      require: false
    },
    nickName: {
       type: String,
-      require: true,
-      min: 3
+      require: false
    },
    password: {
       type: String,
-      require: true,
-      min: 8
+      require: false
    },
    phone: {
       type: String,
-      require: false,
-      min: 8
+      require: false
    },
    registerDate: {
       type: String,
-      require: true,
-      min: 3,
-      max: 100
+      require: false
+   },
+   isAdmin: {
+      type: String,
+      require: false
    }
 });
 

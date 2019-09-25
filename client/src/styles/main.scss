@@ -91,9 +91,12 @@ img {
 .userProfil {
    margin-left: 15px;
    font-size: 16px;
+   .btn-admin {
+      margin: 25px 0;
+   }
    .user-btn {
       background-color: transparent;
-      margin-right: 20%;
+      margin-right: 25%;
       border: 1px solid black;
       padding: 4px 8px;
       border-radius: 4px;
@@ -156,6 +159,11 @@ footer {
       }
    }
    .userProfil {
+      font-size: 24px;
+      .btn-admin {
+         margin: 50px 0;
+         padding: 8px 50px;
+      }
       .user-btn {
          left: 2%;
       }
@@ -166,7 +174,6 @@ footer {
          top: 13%;
          right: 4%;
       }
-      font-size: 24px;
    }
    footer {
       margin-top: 15px;
