@@ -20,7 +20,6 @@ class StoreProvider extends Component {
       bookID: ""
    };
    componentDidMount() {
-      //this.setBook();
       this.getData();
    }
 
@@ -165,8 +164,10 @@ class StoreProvider extends Component {
                   print: "",
                   date: "",
                   cover: null,
-                  price: ""
+                  price: "",
+                  dataState: "ok"
                });
+               this.getData();
             }
             return res.json();
          })
@@ -174,7 +175,9 @@ class StoreProvider extends Component {
             alert(res);
          });
    };
-   deleteBookFromDB = id => {
+   deleteBookFromDB = (id, cover) => {
+      const confirmation = window.confirm("Delete this book?");
+      if (!confirmation) return;
       const userAuth = JSON.parse(localStorage.getItem("auth-token"));
       fetch("/deleteProduct", {
          method: "DELETE",
@@ -182,7 +185,7 @@ class StoreProvider extends Component {
             "Content-type": "application/json",
             "auth-token": userAuth.token
          },
-         body: JSON.stringify({ id })
+         body: JSON.stringify({ id, cover })
       })
          .then(res => {
             if (res.ok) {
@@ -235,7 +238,8 @@ class StoreProvider extends Component {
                   print: "",
                   date: "",
                   cover: null,
-                  price: ""
+                  price: "",
+                  dataState: "ok"
                });
                this.getData();
             }
@@ -257,7 +261,8 @@ class StoreProvider extends Component {
          handleCmsValue,
          deleteBookFromDB,
          getThisBookFromDB,
-         editBookInDB
+         editBookInDB,
+         openModalFunc
       } = this;
       const { author, desc, title, pages, cover, price, date, print, editBook, bookID } = this.state;
 
@@ -275,6 +280,7 @@ class StoreProvider extends Component {
                deleteBookFromDB,
                getThisBookFromDB,
                editBookInDB,
+               openModalFunc,
                bookID,
                author,
                desc,

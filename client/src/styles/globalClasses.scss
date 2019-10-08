@@ -9,6 +9,17 @@
    outline: none;
    transition: all 0.25s ease-in;
 }
+.show-modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   // padding: 15px;
+   background-color: #1d1c1cb9;
+   width: 100%;
+   overflow: auto;
+   z-index: 30;
+}
 
 .main-btn {
    padding: 7px 11px;

@@ -1,24 +1,23 @@
 .adminPanel {
-   margin: 25px 15px 25px 0;
+   padding: 10px;
+   h4 {
+      font-size: 20px;
+   }
    .editBook {
       p {
          margin: 5px 0;
-         font-size: 16px;
-         color: #3d3b3b;
+         font-size: 15px;
+         color: #e0f8fa;
          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
    }
-
    .btn-add-product {
       margin: 14px;
       padding: 7px 13px;
       font-size: 14px;
    }
    .productManagement {
-      display: block;
-      background-color: #fafae9;
       margin-bottom: 10px;
-      padding: 8px 10px;
    }
    .bookFromDB {
       margin: 10px 0;
@@ -44,14 +43,38 @@
       }
    }
 }
+.close {
+   width: 50px;
+   font-size: 25px;
+   color: white;
+   font-weight: 700;
+   position: absolute;
+   text-align: center;
+   right: 5%;
+   top: 3%;
+   cursor: pointer;
+}
+
 .cms-form {
    display: flex;
    flex-direction: column;
+   position: relative;
+   background-color: $darkRed;
+   padding: 20px 10px;
+   border-radius: 5px;
    label {
       margin: 5px;
       font-size: 17px;
       font-weight: 700;
       font-family: "Poppins";
+      color: #def0f8;
+   }
+   a {
+      color: #fca1a1;
+      font-size: 15px;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      margin-bottom: 10px;
+      width: 45%;
    }
    input,
    textarea {
@@ -60,6 +83,11 @@
       font-size: 18px;
       font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
       border-radius: 6px;
+      &::placeholder {
+         color: #1f1b1b;
+         font-size: 18px;
+         font-style: italic;
+      }
    }
    input[type="file"] {
       font-size: 14px;
@@ -69,10 +97,56 @@
       margin-top: 20px;
       font-size: 18px;
       border: 1px solid $darkRed;
+      border-radius: 5px;
       padding: 7px 0;
       font-weight: 700;
-      background-color: #b2e3fa;
+      background-color: #d7eaf3;
       cursor: pointer;
+   }
+}
+.user-data {
+   height: 65vh;
+   padding-top: 20px;
+   font-size: 15px;
+   font-family: "Poppins";
+   position: relative;
+   label {
+      font-size: 17px;
+   }
+   input {
+      &::placeholder {
+         color: #000;
+         opacity: 0.8;
+      }
+   }
+   button {
+      margin-top: 13px;
+      // width: 100%;
+      font-family: "Poppins";
+      padding: 3px 10px;
+      background-color: #525250;
+      border: 1px solid #000;
+      border-radius: 5px;
+      color: #e8f4fa;
+      font-size: 15px;
+      cursor: pointer;
+   }
+   .btn-delete-user {
+      // width: 55%;
+      background-color: #f30707;
+      padding: 3px 6px;
+      font-size: 14px;
+      color: #f5f5e9;
+      position: absolute;
+      bottom: 0;
+   }
+}
+@media (min-width: 500px) {
+   .cms-form {
+      width: 80%;
+      position: relative;
+      top: 10%;
+      left: 10%;
    }
 }
 @media (min-width: 768px) {
@@ -81,23 +155,21 @@
          padding: 8px 14px;
          font-size: 15px;
       }
-      // .productManagement {
-      //    max-width: 90%;
-      //    position: relative;
-      // }
-      // .bookFromDB {
-      //    display: flex;
-      //    .buttons-cms-event {
-      //       position: absolute;
-      //       right: 0;
-      //       margin-top: -5px;
-      //    }
-      // }
+      .productManagement {
+         padding: 8px 10px;
+      }
    }
    .cms-form {
       width: 50%;
+      padding: 30px 40px;
+      margin: 20px auto;
+      left: 0;
       label {
          font-size: 20px;
+         text-align: left;
+      }
+      a {
+         font-size: 18px;
       }
       input,
       textarea {
@@ -107,6 +179,12 @@
          width: 30%;
       }
       input[type="file"] {
+         font-size: 19px;
+      }
+   }
+   .user-data {
+      font-size: 18px;
+      label {
          font-size: 19px;
       }
    }

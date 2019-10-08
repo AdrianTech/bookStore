@@ -60,5 +60,24 @@ router.get("/:id", verify, (req, res) => {
       else res.json(data);
    }).select("-password");
 });
+router.put("/:id", verify, (req, res) => {
+   const { id } = req.params;
+   let data = req.body;
+
+   Object.entries(data).forEach(([key, value]) => {
+      if (!value) delete data[key];
+   });
+   UserSchema.updateOne({ _id: id }, data, err => {
+      if (err) return res.status(404).json("Not Found");
+      res.status(200).json("Your data has been updated");
+   });
+});
+router.delete("/delete/:id", (req, res) => {
+   const { id } = req.params;
+   UserSchema.deleteOne({ _id: id }, err => {
+      if (err) return res.status(404).json("Something went wrong");
+      return res.status(200).json("You removed your account");
+   });
+});
 
 module.exports = router;

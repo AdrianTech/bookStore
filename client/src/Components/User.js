@@ -1,33 +1,67 @@
 import React, { useContext, useState } from "react";
 import AdminPanel from "./AdminPanel";
 import { AuthContext } from "./context/Auth";
+import CurrentUser from "./CurrentUser";
+import UpdateUser from "./UpdateUser";
 import { Link } from "react-router-dom";
 const User = () => {
    const { user, logoutUser } = useContext(AuthContext);
    const [showPanel, displayAdminPanel] = useState(false);
+   const [update, updateUserData] = useState(false);
+   const [updateProduct, showUpdateProduct] = React.useState(false);
+   const [addProduct, showAddProduct] = React.useState(false);
+   React.useEffect(() => {
+      const handleClick = e => {
+         const target = e.target;
+         if (target.closest(".cms-form")) return;
+         if (target.closest(".show-modal")) {
+            updateUserData(false);
+            showUpdateProduct(false);
+            showAddProduct(false);
+            return;
+         }
+      };
+      document.addEventListener("click", handleClick);
+
+      return () => {
+         document.addEventListener("click", handleClick);
+      };
+   });
    return (
       <>
-         {user && (
+         {user ? (
             <div className="userProfil">
-               <button className="user-btn">Edit your data</button>
+               <button className="user-btn" onClick={() => updateUserData(true)}>
+                  Edit your data
+               </button>
                <Link to="/yourCart">
                   <button className="secondary-btn user-btn-logout" onClick={logoutUser}>
                      <i className="fas fa-sign-out-alt"></i>
                      Logout
                   </button>
                </Link>
-               <h2> Your Name: {user.fullname}</h2>
-               <h3> Nickname: {user.nickName}</h3>
-               <h3> Phone number: {user.phone}</h3>
-               <h3> Your email: {user.email}</h3>
-               <h3> You're here since: {user.registerDate}</h3>
+               <div className="user-data">{!update ? <CurrentUser /> : <UpdateUser click={updateUserData} />}</div>
+
                {user.isAdmin && (
                   <button onClick={() => displayAdminPanel(!showPanel)} className="main-btn btn-admin">
                      Show Admin Panel
                   </button>
                )}
-               {showPanel && <AdminPanel />}
+               {showPanel && (
+                  <AdminPanel
+                     addProduct={addProduct}
+                     updateProduct={updateProduct}
+                     showUpdateProduct={showUpdateProduct}
+                     showAddProduct={showAddProduct}
+                  />
+               )}
             </div>
+         ) : (
+            <h2>
+               Looks like you are not logged in!
+               <br />
+               <Link to="/yourCart">Back To Basket</Link>
+            </h2>
          )}
       </>
    );

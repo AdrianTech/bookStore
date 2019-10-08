@@ -63,7 +63,6 @@ class AuthProvider extends Component {
    };
    handleLogIn = e => {
       e.preventDefault();
-      console.log("Hello");
       const { password, email } = this.state;
       fetch("/user/login", {
          method: "POST",
@@ -117,6 +116,48 @@ class AuthProvider extends Component {
             });
          });
    };
+   updateUserData = async e => {
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      e.preventDefault();
+      const { fullname, email, phone, nickName, userID } = this.state;
+      const updateData = {
+         fullname,
+         email,
+         phone,
+         nickName
+      };
+      let validate = 0;
+      Object.entries(updateData).map(([prop, value]) => {
+         if (!value) validate++;
+         return validate;
+      });
+      if (validate === Object.keys(updateData).length) return alert("Change at least one field");
+      const fetchSettings = {
+         method: "PUT",
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token": userAuth.token
+         },
+         body: JSON.stringify(updateData)
+      };
+
+      try {
+         let response = await fetch(`/user/${userID}`, fetchSettings);
+         if (response.ok) {
+            this.setState({
+               fullname: "",
+               email: "",
+               phone: "",
+               nickName: "",
+               userID: ""
+            });
+         }
+         const data = await response.json();
+         alert(data);
+      } catch (err) {
+         alert(err);
+      }
+   };
 
    handleStepUp = () => {
       const { email, step, nickName, fullname } = this.state;
@@ -149,6 +190,33 @@ class AuthProvider extends Component {
          step: 1
       });
    };
+   deleteUserAccount = async id => {
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      const cfm = window.confirm("Are you sure that you want to delete the account?");
+      if (!cfm) return;
+      const fetchSettings = {
+         method: "DELETE",
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token": userAuth.token
+         },
+         body: JSON.stringify()
+      };
+      try {
+         let response = await fetch(`/user/delete/${id}`, fetchSettings);
+         if (response.ok) {
+            this.setState({
+               user: null,
+               isAuthorized: false
+            });
+            localStorage.clear();
+         }
+         const data = await response.json();
+         alert(data);
+      } catch (err) {
+         alert(err);
+      }
+   };
 
    render() {
       const {
@@ -166,7 +234,17 @@ class AuthProvider extends Component {
          user,
          userID
       } = this.state;
-      const { showModal, handleForms, handleLogIn, handleStepDown, handleStepUp, handleSubmitForm, logoutUser } = this;
+      const {
+         showModal,
+         handleForms,
+         handleLogIn,
+         handleStepDown,
+         handleStepUp,
+         handleSubmitForm,
+         logoutUser,
+         updateUserData,
+         deleteUserAccount
+      } = this;
 
       return (
          <AuthContext.Provider
@@ -190,7 +268,9 @@ class AuthProvider extends Component {
                handleStepDown,
                handleStepUp,
                handleSubmitForm,
-               logoutUser
+               logoutUser,
+               updateUserData,
+               deleteUserAccount
             }}
          >
             {this.props.children}

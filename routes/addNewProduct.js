@@ -3,13 +3,17 @@ const { productValidation } = require("../schemes/validationSchema");
 const ProductsSchema = require("../schemes/productsSchema");
 const verify = require("../middleware/auth");
 const multer = require("multer");
+const fs = require("fs");
+// const imageUpload = require("../middleware/uploadImage");
 const storage = multer.diskStorage({
    destination: (req, file, cb) => {
       cb(null, "./images/");
    },
    filename: (req, file, cb) => {
-      const date = new Date().toLocaleDateString();
-      cb(null, date + file.originalname);
+      const date = Date.now()
+         .toString()
+         .slice(0, 10);
+      cb(null, `${date}-${file.originalname}`);
    }
 });
 const imageFilter = (req, file, cb) => {
@@ -45,42 +49,31 @@ router.post("/addNewProduct", [verify, upload.single("cover")], (req, res) => {
    })
       .save()
       .then(info => {
-         res.status(201).json("Your product has been added to database");
+         res.status(201).json("Your product has been added to a database");
       })
       .catch(err => {
          res.status(400).json(err);
       });
 });
 router.put("/editProduct", [verify, upload.single("cover")], (req, res) => {
-   const { id, author, title, pages, date, desc, print, price } = req.body;
+   const { id } = req.body;
+   updatedData = req.body;
+
    let cover;
-   if (!req.file) {
-      console.log("Here");
-      cover = "";
-   } else cover = req.file.path;
-
-   updatedData = {
-      author,
-      title,
-      pages,
-      date,
-      desc,
-      print,
-      price,
-      cover: cover
-   };
-
+   if (req.file) cover = { cover: req.file.path };
    Object.entries(updatedData).forEach(([key, value]) => {
-      if (value.length < 1) {
-         delete updatedData[key];
-      }
+      if (!value || value === "null" || key === "id") delete updatedData[key];
+      if (cover) updatedData = { ...updatedData, ...cover };
       return updatedData;
    });
-   console.log(updatedData);
-
-   ProductsSchema.findByIdAndUpdate(id, updatedData, err => {
-      if (err) return res.status(500).send(err);
-      return res.status(200).json("Document has been updated");
+   ProductsSchema.findByIdAndUpdate(id, updatedData, (err, data) => {
+      if (err) return res.status(404).json("Product not found");
+      else {
+         res.status(200).json("Document has been updated");
+         fs.unlink(data.cover, err => {
+            if (err) console.log(err);
+         });
+      }
    });
 });
 

@@ -1,9 +1,14 @@
 import React from "react";
 import ProductManagement from "./ProductManagement";
-const AdminPanel = () => {
+const AdminPanel = ({ updateProduct, showUpdateProduct, showAddProduct, addProduct }) => {
    return (
       <div className="adminPanel">
-         <ProductManagement />
+         <ProductManagement
+            addProduct={addProduct}
+            updateProduct={updateProduct}
+            showUpdateProduct={showUpdateProduct}
+            showAddProduct={showAddProduct}
+         />
       </div>
    );
 };
