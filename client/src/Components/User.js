@@ -10,6 +10,7 @@ const User = () => {
    const [update, updateUserData] = useState(false);
    const [updateProduct, showUpdateProduct] = React.useState(false);
    const [addProduct, showAddProduct] = React.useState(false);
+   const [logoutMessage, setLogout] = React.useState(false);
    React.useEffect(() => {
       const handleClick = e => {
          const target = e.target;
@@ -22,9 +23,16 @@ const User = () => {
          }
       };
       document.addEventListener("click", handleClick);
+      let timeout;
+      if (!user) {
+         timeout = setTimeout(() => {
+            setLogout(true);
+         }, 1000);
+      }
 
       return () => {
          document.addEventListener("click", handleClick);
+         clearTimeout(timeout);
       };
    });
    return (
@@ -57,11 +65,17 @@ const User = () => {
                )}
             </div>
          ) : (
-            <h2>
-               Looks like you are not logged in!
-               <br />
-               <Link to="/yourCart">Back To Basket</Link>
-            </h2>
+            <>
+               {logoutMessage && (
+                  <h2>
+                     Looks like you are not logged in!
+                     <br />
+                     <Link className="logoutInfo" to="/yourCart">
+                        Back To Basket
+                     </Link>
+                  </h2>
+               )}
+            </>
          )}
       </>
    );

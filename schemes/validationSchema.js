@@ -13,6 +13,7 @@ const registerSchema = data => {
       nickName: joi
          .string()
          .min(3)
+         .max(12)
          .required(),
       password: joi
          .string()
@@ -52,11 +53,6 @@ const productValidation = data => {
          .required()
          .min(3)
          .max(100),
-      // cover: joi
-      //    .string()
-      //    .required()
-      //    .min(5)
-      //    .max(255),
       pages: joi
          .string()
          .required()

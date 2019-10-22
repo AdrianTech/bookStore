@@ -10,6 +10,7 @@ class AuthProvider extends Component {
       nickName: "",
       email: "",
       password: "",
+      newPassword: "",
       modalActive: "",
       phone: "",
       confirmed: false,
@@ -119,12 +120,14 @@ class AuthProvider extends Component {
    updateUserData = async e => {
       const userAuth = JSON.parse(localStorage.getItem("auth-token"));
       e.preventDefault();
-      const { fullname, email, phone, nickName, userID } = this.state;
+      const { fullname, email, phone, nickName, userID, password, newPassword } = this.state;
       const updateData = {
          fullname,
          email,
          phone,
-         nickName
+         nickName,
+         password,
+         newPassword
       };
       let validate = 0;
       Object.entries(updateData).map(([prop, value]) => {
@@ -149,8 +152,11 @@ class AuthProvider extends Component {
                email: "",
                phone: "",
                nickName: "",
-               userID: ""
+               userID: "",
+               password: "",
+               newPassword: ""
             });
+            this.getUser();
          }
          const data = await response.json();
          alert(data);
@@ -232,7 +238,8 @@ class AuthProvider extends Component {
          info,
          password,
          user,
-         userID
+         userID,
+         newPassword
       } = this.state;
       const {
          showModal,
@@ -262,6 +269,7 @@ class AuthProvider extends Component {
                info,
                password,
                fullname,
+               newPassword,
                showModal,
                handleForms,
                handleLogIn,

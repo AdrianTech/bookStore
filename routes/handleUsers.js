@@ -60,9 +60,22 @@ router.get("/:id", verify, (req, res) => {
       else res.json(data);
    }).select("-password");
 });
-router.put("/:id", verify, (req, res) => {
+router.put("/:id", verify, async (req, res) => {
    const { id } = req.params;
+   const { password, newPassword } = req.body;
+   if (!password) return res.json("You need to enter your password");
+   const user = await UserSchema.findOne({ _id: id });
+   const comparePass = await bcrypt.compare(password, user.password);
+   if (!comparePass) return res.status(400).json("Wrong password");
    let data = req.body;
+   if (data["newPassword"]) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPass = await bcrypt.hash(newPassword, salt);
+      data["password"] = hashedPass;
+      delete data["newPassword"];
+   } else {
+      delete data[("newPassword", "password")];
+   }
 
    Object.entries(data).forEach(([key, value]) => {
       if (!value) delete data[key];

@@ -2,7 +2,8 @@ import React from "react";
 import { AuthContext } from "./context/Auth";
 
 const UpdateUser = ({ click }) => {
-   const { user, fullname, email, phone, nickName, updateUserData, handleForms } = React.useContext(AuthContext);
+   const { user, fullname, email, phone, nickName, password, newPassword, updateUserData, handleForms } = React.useContext(AuthContext);
+   const [changePass, setNewPass] = React.useState(false);
    return (
       <div className="show-modal">
          <form onSubmit={updateUserData} className="cms-form ">
@@ -20,6 +21,17 @@ const UpdateUser = ({ click }) => {
 
             <label>Your phone number</label>
             <input type="text" value={phone} name="phone" placeholder={user.phone} onChange={handleForms} />
+            {/* <> */}
+            {!changePass ? (
+               <button onClick={() => setNewPass(true)}>Change old password</button>
+            ) : (
+               <>
+                  <label>Enter new password</label>
+                  <input type="password" value={newPassword} name="newPassword" onChange={handleForms} />{" "}
+               </>
+            )}
+            <label>To admit, enter old password</label>
+            <input type="password" value={password} name="password" onChange={handleForms} />
             <button>Confirm</button>
          </form>
       </div>

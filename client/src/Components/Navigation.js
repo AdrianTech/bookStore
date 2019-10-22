@@ -22,7 +22,7 @@ const Navigation = () => {
                   </div>
                ) : null}
             </Link>
-            {isAuthorized ? <p>{user.nickName}'s cart</p> : <p>Book cart</p>}
+            {isAuthorized ? <p>{user.nickName} cart</p> : <p>Book cart</p>}
          </div>
       </nav>
    );
