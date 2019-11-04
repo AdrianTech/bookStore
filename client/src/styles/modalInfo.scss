@@ -1,0 +1,45 @@
+.showModalBox {
+   position: absolute;
+   top: 0;
+   left: 50%;
+   transform: translate(-50%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 10px;
+   font-family: "Poppins";
+   width: 90%;
+   height: 80px;
+   font-size: 14px;
+   background-color: #f2fbfd;
+   color: #1a1919;
+   z-index: 99;
+   border: 2px solid $darkRed;
+   box-shadow: 0 2px 2px 3px rgba(3, 3, 3, 0.5);
+   font-weight: 700;
+}
+.show {
+   animation: showModal 0.3s;
+}
+@keyframes showModal {
+   from {
+      transform: translate(-50%, -100%);
+   }
+
+   to {
+      transform: translate(-50%, 0);
+   }
+}
+@media (min-width: 400px) {
+   .showModalBox {
+      width: 80%;
+      font-size: 15px;
+   }
+}
+@media (min-width: 768px) {
+   .showModalBox {
+      width: 370px;
+      height: 100px;
+      font-size: 18px;
+   }
+}

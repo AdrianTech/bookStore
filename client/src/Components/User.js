@@ -49,7 +49,6 @@ const User = () => {
                   </button>
                </Link>
                <div className="user-data">{!update ? <CurrentUser /> : <UpdateUser click={updateUserData} />}</div>
-
                {user.isAdmin && (
                   <button onClick={() => displayAdminPanel(!showPanel)} className="main-btn btn-admin">
                      Show Admin Panel

@@ -26,7 +26,7 @@ const ProductManagement = ({ showUpdateProduct, showAddProduct, addProduct, upda
          <EditModal showUpdateProduct={showUpdateProduct} value={updateProduct} />
          {!updateProduct && (
             <div className="productManagement">
-               <h4>There are {booksData.length} book(s) in the database</h4>
+               <h3>There are {booksData.length} book(s) in the database</h3>
                {displayBooks}
             </div>
          )}

@@ -76,5 +76,4 @@ router.put("/editProduct", [verify, upload.single("cover")], (req, res) => {
       }
    });
 });
-
 module.exports = router;

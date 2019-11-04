@@ -4,20 +4,19 @@ import SignUp from "./SignUp";
 import SignUpFinal from "./SignUpFinal";
 import ConfirmInfo from "./ConfirmInfo";
 
-const LoginForm = (props) => {
-
-      const { step } = props.data;
-      let showForms;
-      if (step === 1) {
-         return (showForms = <SignIn />);
-      } else if (step === 2) {
-         return (showForms = <SignUp />);
-      } else if (step === 3) {
-         return (showForms = <SignUpFinal />);
-      } else if (step === 4) {
-         return (showForms = <ConfirmInfo />);
-      }
-
-      return <>{showForms}</>;
+const LoginForm = props => {
+   const { step } = props.data;
+   let showForms;
+   if (step === 1) {
+      return (showForms = <SignIn />);
+   } else if (step === 2) {
+      return (showForms = <SignUp />);
+   } else if (step === 3) {
+      return (showForms = <SignUpFinal />);
+   } else if (step === 4) {
+      return (showForms = <ConfirmInfo />);
    }
+
+   return <>{showForms}</>;
+};
 export default LoginForm;

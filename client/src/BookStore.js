@@ -1,6 +1,6 @@
 import "./styles/main.scss";
 import "./index.scss";
-import React, { Component } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Navigation from "./Components/Navigation";
 import BookList from "./Components/BookList";
@@ -11,26 +11,60 @@ import End from "./Components/End";
 import Terms from "./Components/forms/Terms";
 import EnterPage from "./Components/EnterPage";
 import User from "./Components/User";
+import Chat from "./Components/Chat/Chat";
+import ChatTalk from "./Components/Chat/ChatTalk";
+import InfoModal from "./Components/InfoModal";
+import { AuthContext } from "./Components/context/Auth";
+import { StoreConsumer } from "./Components/Store";
 
-class BookStore extends Component {
-   render() {
-      return (
-         <>
-            <Navigation />
-            <div className="wrapper">
-               <Switch>
-                  <Route path="/" exact component={EnterPage} />
-                  <Route path="/list" exact component={BookList} />
-                  <Route path="/viewBook/:id" component={ViewBook} />
-                  <Route path="/end" component={End} />
-                  <Route path="/yourCart" component={YourCart} />
-                  <Route path="/terms" component={Terms} />
-                  <Route path="/auth/user/:id" component={User} />
-                  <Route component={PageNotFound} />
-               </Switch>
-            </div>
-         </>
-      );
+const BookStore = () => {
+   const { isAuthorized, openChatWindow, chatUsers } = React.useContext(AuthContext);
+   const { displayInfo, showInfo } = React.useContext(StoreConsumer);
+   let user;
+   if (openChatWindow) {
+      user = chatUsers.filter(item => item._id === openChatWindow["id"]);
    }
-}
+   return (
+      <>
+         <Navigation />
+         {displayInfo && <InfoModal />}
+         {isAuthorized && chatUsers.length > 0 && <Chat />}
+         {isAuthorized && openChatWindow["bool"] && <ChatTalk user={user} />}
+         <div className="wrapper">
+            <Switch>
+               <Route path="/" exact component={EnterPage} />
+               <Route path="/list" exact component={BookList} />
+               <Route path="/viewBook/:id" component={ViewBook} />
+               <Route path="/end" component={End} />
+               <Route path="/yourCart" component={YourCart} />
+               <Route path="/terms" component={Terms} />
+               <Route path="/auth/user/:id" component={User} />
+               <Route component={PageNotFound} />
+            </Switch>
+         </div>
+      </>
+   );
+};
 export default BookStore;
+
+// class BookStore extends Component {
+//    render() {
+//       return (
+//          <>
+//             <Navigation />
+//             <div className="wrapper">
+//                <Switch>
+//                   <Route path="/" exact component={EnterPage} />
+//                   <Route path="/list" exact component={BookList} />
+//                   <Route path="/viewBook/:id" component={ViewBook} />
+//                   <Route path="/end" component={End} />
+//                   <Route path="/yourCart" component={YourCart} />
+//                   <Route path="/terms" component={Terms} />
+//                   <Route path="/auth/user/:id" component={User} />
+//                   <Route component={PageNotFound} />
+//                </Switch>
+//             </div>
+//          </>
+//       );
+//    }
+// }

@@ -21,18 +21,24 @@ const UpdateUser = ({ click }) => {
 
             <label>Your phone number</label>
             <input type="text" value={phone} name="phone" placeholder={user.phone} onChange={handleForms} />
-            {/* <> */}
-            {!changePass ? (
+            {changePass && (
+               <>
+                  <label>Enter new password</label>
+                  <input type="password" value={newPassword} name="newPassword" onChange={handleForms} />{" "}
+               </>
+            )}
+            {/* {!changePass ? (
                <button onClick={() => setNewPass(true)}>Change old password</button>
             ) : (
                <>
                   <label>Enter new password</label>
                   <input type="password" value={newPassword} name="newPassword" onChange={handleForms} />{" "}
                </>
-            )}
-            <label>To admit, enter old password</label>
+            )} */}
+            <label>{changePass ? <>To confirm, enter old password</> : <>To confirm, enter password</>}</label>
             <input type="password" value={password} name="password" onChange={handleForms} />
             <button>Confirm</button>
+            {!changePass && <button onClick={() => setNewPass(true)}>Change old password</button>}
          </form>
       </div>
    );

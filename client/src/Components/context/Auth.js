@@ -1,3 +1,4 @@
+import { StoreConsumer } from "../../Components/Store";
 import React, { Component } from "react";
 const AuthContext = React.createContext();
 
@@ -16,10 +17,16 @@ class AuthProvider extends Component {
       confirmed: false,
       info: "",
       user: null,
-      userID: ""
+      userID: "",
+      chatUsers: [],
+      chatMessage: "",
+      chatTalks: [],
+      openChatWindow: false
    };
+   static contextType = StoreConsumer;
    componentDidMount() {
       this.getUser();
+      this.getChatUser();
    }
    logoutUser = () => {
       localStorage.clear();
@@ -27,12 +34,108 @@ class AuthProvider extends Component {
          isAuthorized: false,
          token: null,
          userID: "",
-         user: null
+         user: null,
+         chatUsers: []
       });
+   };
+   getTokenFromLS() {
+      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      return userAuth;
+   }
+   sendMessage = async e => {
+      e.preventDefault();
+      const { id } = e.target.dataset;
+      const { userID, chatMessage, user } = this.state;
+      const userAuth = this.getTokenFromLS();
+      const data = {
+         from: user.nickName,
+         chatMessage,
+         Ids: [id, userID],
+         time: new Date().toLocaleString()
+      };
+      const fetchSettings = {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token": userAuth.token
+         },
+         body: JSON.stringify(data)
+      };
+
+      try {
+         let response = await fetch(`/user/sendMessage`, fetchSettings);
+         const data = await response.json();
+         if (response.ok) {
+            this.setState(() => ({
+               chatMessage: "",
+               chatTalks: data
+            }));
+         }
+      } catch (err) {
+         alert(err);
+      }
+   };
+   // test = async data => {
+   //    console.log(data);
+   //    const userAuth = this.getTokenFromLS();
+   //    const data = {
+   //       id1: id,
+   //       id2: this.state.userID
+   //    };
+   //    const fetchSettings = {
+   //       method: "POST",
+   //       headers: {
+   //          "Content-Type": "application/json",
+   //          "auth-token": userAuth.token
+   //       },
+   //       body: JSON.stringify(data)
+   //    };
+
+   //    try {
+   //       let response = await fetch(`/user/getChatTalk`, fetchSettings);
+   //       const data = await response.json();
+   //       this.setState(() => ({
+   //          chatTalks: data
+   //       }));
+   //    } catch (err) {
+   //       alert(err);
+   //    }
+   // };
+   showChatWindow = async (bool, id) => {
+      this.setState({
+         openChatWindow: { bool, id },
+         chatTalks: []
+      });
+      if (!id) return;
+      const userAuth = this.getTokenFromLS();
+      const data = {
+         id1: id,
+         id2: this.state.userID
+      };
+      const fetchSettings = {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token": userAuth.token
+         },
+         body: JSON.stringify(data)
+      };
+      const { showInfo } = this.context;
+      try {
+         let response = await fetch(`/user/getChatTalk`, fetchSettings);
+         const data = await response.json();
+         if (response.ok) {
+            this.setState(() => ({
+               chatTalks: data
+            }));
+         }
+      } catch (err) {
+         showInfo(err);
+      }
    };
 
    getUser = () => {
-      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      const userAuth = this.getTokenFromLS();
       if (!userAuth || !userAuth.id) return;
       const myHeaders = new Headers({
          "Content-Type": "application/json",
@@ -64,6 +167,7 @@ class AuthProvider extends Component {
    };
    handleLogIn = e => {
       e.preventDefault();
+      const { showInfo } = this.context;
       const { password, email } = this.state;
       fetch("/user/login", {
          method: "POST",
@@ -86,11 +190,28 @@ class AuthProvider extends Component {
                   email: "",
                   password: ""
                });
+               this.getChatUser();
             } else {
-               alert(res);
+               showInfo(res);
             }
          });
    };
+   async getChatUser() {
+      const userAuth = this.getTokenFromLS();
+      if (!userAuth) return;
+      const fetchSettings = {
+         method: "GET",
+         headers: {
+            "Content-Type": "application/json",
+            "auth-token": userAuth.token
+         }
+      };
+      let res = await fetch("/user/getChatUser", fetchSettings);
+      let data = await res.json();
+      this.setState({
+         chatUsers: data
+      });
+   }
    handleSubmitForm = e => {
       e.preventDefault();
       let registerDate;
@@ -101,7 +222,7 @@ class AuthProvider extends Component {
          headers: {
             "Content-Type": "application/json"
          },
-         body: JSON.stringify({ fullname, email, nickName, password, phone, registerDate })
+         body: JSON.stringify({ fullname, email, nickName, password, phone, registerDate, isChatActiv: true })
       })
          .then(res => {
             if (res.ok) {
@@ -112,13 +233,14 @@ class AuthProvider extends Component {
             return res.json();
          })
          .then(res => {
+            if (this.state.step === 3) return alert(res);
             this.setState({
                info: res
             });
          });
    };
    updateUserData = async e => {
-      const userAuth = JSON.parse(localStorage.getItem("auth-token"));
+      const userAuth = this.getTokenFromLS();
       e.preventDefault();
       const { fullname, email, phone, nickName, userID, password, newPassword } = this.state;
       const updateData = {
@@ -143,7 +265,7 @@ class AuthProvider extends Component {
          },
          body: JSON.stringify(updateData)
       };
-
+      const { showInfo } = this.context;
       try {
          let response = await fetch(`/user/${userID}`, fetchSettings);
          if (response.ok) {
@@ -159,14 +281,15 @@ class AuthProvider extends Component {
             this.getUser();
          }
          const data = await response.json();
-         alert(data);
+         showInfo(data);
       } catch (err) {
-         alert(err);
+         showInfo(err);
       }
    };
 
    handleStepUp = () => {
       const { email, step, nickName, fullname } = this.state;
+      const { showInfo } = this.context;
       if (step === 2) {
          const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
          if (fullname.trim().length > 5 && nickName.trim().length > 2 && validate.test(email)) {
@@ -175,7 +298,8 @@ class AuthProvider extends Component {
                step: step + 1
             });
          } else {
-            alert("Please, fill out correctly all the required fields");
+            // alert("Please, fill out correctly all the required fields");
+            showInfo("Please, fill out correctly all the required fields");
             return;
          }
       }
@@ -208,6 +332,7 @@ class AuthProvider extends Component {
          },
          body: JSON.stringify()
       };
+      const { showInfo } = this.context;
       try {
          let response = await fetch(`/user/delete/${id}`, fetchSettings);
          if (response.ok) {
@@ -218,9 +343,9 @@ class AuthProvider extends Component {
             localStorage.clear();
          }
          const data = await response.json();
-         alert(data);
+         showInfo(data);
       } catch (err) {
-         alert(err);
+         showInfo(err);
       }
    };
 
@@ -236,10 +361,14 @@ class AuthProvider extends Component {
          modalActive,
          step,
          info,
+         chatMessage,
          password,
          user,
          userID,
-         newPassword
+         newPassword,
+         chatUsers,
+         openChatWindow,
+         chatTalks
       } = this.state;
       const {
          showModal,
@@ -250,7 +379,9 @@ class AuthProvider extends Component {
          handleSubmitForm,
          logoutUser,
          updateUserData,
-         deleteUserAccount
+         deleteUserAccount,
+         showChatWindow,
+         sendMessage
       } = this;
 
       return (
@@ -269,8 +400,12 @@ class AuthProvider extends Component {
                info,
                password,
                fullname,
+               chatUsers,
                newPassword,
+               openChatWindow,
                showModal,
+               chatMessage,
+               chatTalks,
                handleForms,
                handleLogIn,
                handleStepDown,
@@ -278,7 +413,9 @@ class AuthProvider extends Component {
                handleSubmitForm,
                logoutUser,
                updateUserData,
-               deleteUserAccount
+               deleteUserAccount,
+               showChatWindow,
+               sendMessage
             }}
          >
             {this.props.children}

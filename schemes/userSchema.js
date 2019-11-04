@@ -27,8 +27,12 @@ const userSchema = new mongoose.Schema({
       require: false
    },
    isAdmin: {
-      type: String,
+      type: Boolean,
       require: false
+   },
+   isChatActiv: {
+      type: Boolean,
+      require: true
    }
 });
 

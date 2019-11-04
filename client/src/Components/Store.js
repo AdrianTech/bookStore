@@ -17,7 +17,9 @@ class StoreProvider extends Component {
       cover: null,
       price: "",
       editBook: null,
-      bookID: ""
+      bookID: "",
+      displayInfo: false,
+      info: ""
    };
    componentDidMount() {
       this.getData();
@@ -172,7 +174,7 @@ class StoreProvider extends Component {
             return res.json();
          })
          .then(res => {
-            alert(res);
+            this.showInfo(res);
          });
    };
    deleteBookFromDB = (id, cover) => {
@@ -194,7 +196,7 @@ class StoreProvider extends Component {
             return res.json();
          })
          .then(res => {
-            alert(res);
+            this.showInfo(res);
          });
    };
    getThisBookFromDB = id => {
@@ -246,8 +248,20 @@ class StoreProvider extends Component {
             return res.json();
          })
          .then(res => {
-            alert(res);
+            this.showInfo(res);
          });
+   };
+   showInfo = res => {
+      console.log(res);
+      this.setState({
+         displayInfo: true,
+         info: res
+      });
+      setTimeout(() => {
+         this.setState({
+            displayInfo: false
+         });
+      }, 4000);
    };
 
    render() {
@@ -262,9 +276,10 @@ class StoreProvider extends Component {
          deleteBookFromDB,
          getThisBookFromDB,
          editBookInDB,
-         openModalFunc
+         openModalFunc,
+         showInfo
       } = this;
-      const { author, desc, title, pages, cover, price, date, print, editBook, bookID } = this.state;
+      const { author, desc, title, pages, cover, price, date, print, editBook, bookID, displayInfo, info } = this.state;
 
       return (
          <BookContext.Provider
@@ -281,6 +296,7 @@ class StoreProvider extends Component {
                getThisBookFromDB,
                editBookInDB,
                openModalFunc,
+               showInfo,
                bookID,
                author,
                desc,
@@ -290,7 +306,9 @@ class StoreProvider extends Component {
                price,
                date,
                print,
-               editBook
+               editBook,
+               info,
+               displayInfo
             }}
          >
             {this.props.children}
@@ -301,3 +319,4 @@ class StoreProvider extends Component {
 const Context = BookContext.Consumer;
 const StoreConsumer = BookContext;
 export { StoreProvider, StoreConsumer, Context };
+// StoreProvider.contextType = BookContext;
