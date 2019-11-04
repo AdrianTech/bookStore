@@ -8,7 +8,7 @@ import ViewBook from "./Components/ViewBook";
 import YourCart from "./Components/BookCart";
 import PageNotFound from "./Components/NotFound";
 import End from "./Components/End";
-import Terms from "./Components/forms/Terms";
+import Terms from "./Components/Forms/Terms";
 import EnterPage from "./Components/EnterPage";
 import User from "./Components/User";
 import Chat from "./Components/Chat/Chat";
