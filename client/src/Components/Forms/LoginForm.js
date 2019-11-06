@@ -4,8 +4,7 @@ import SignUp from "./SignUp";
 import SignUpFinal from "./SignUpFinal";
 import ConfirmInfo from "./ConfirmInfo";
 
-const LoginForm = props => {
-   const { step } = props.data;
+const LoginForm = ({ step }) => {
    let showForms;
    if (step === 1) {
       return (showForms = <SignIn />);

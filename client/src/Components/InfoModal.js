@@ -1,16 +1,10 @@
 import React from "react";
 import { StoreConsumer } from "./Store";
 const InfoModal = () => {
-   const { info, displayInfo } = React.useContext(StoreConsumer);
-   console.log(info);
-   let show = "showModalBox";
-   if (displayInfo) {
-      show += " show";
-   }
-   console.log(show);
+   const { info } = React.useContext(StoreConsumer);
    return (
       <>
-         <div className={show}>
+         <div className="showModalBox">
             <span>{info}</span>
          </div>
       </>

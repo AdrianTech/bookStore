@@ -17,17 +17,20 @@
    border: 2px solid $darkRed;
    box-shadow: 0 2px 2px 3px rgba(3, 3, 3, 0.5);
    font-weight: 700;
-}
-.show {
-   animation: showModal 0.3s;
+   animation: showModal 4s;
 }
 @keyframes showModal {
-   from {
+   0% {
       transform: translate(-50%, -100%);
    }
-
-   to {
+   8% {
       transform: translate(-50%, 0);
+   }
+   92% {
+      transform: translate(-50%, 0%);
+   }
+   100% {
+      transform: translate(-50%, -100%);
    }
 }
 @media (min-width: 400px) {

@@ -32,11 +32,37 @@ nav {
          }
       }
    }
+   .mobile-menu-bar,
+   span {
+      cursor: pointer;
+   }
+   .mobile-menu-bar {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      right: 5%;
+      color: #d9f869;
+      font-size: 25px;
+   }
+   .mobileNavbar {
+      flex-basis: 85%;
+      display: none;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: "Arima Madurai";
+      a,
+      span {
+         color: #d9f869;
+      }
+   }
    .cart {
-      flex-basis: 40%;
+      display: none;
       @include txtCtr;
       color: $global-light;
-      background-color: #690202;
+      // background-color: #740303;
       padding: 3px;
       a {
          @include clearLink;
@@ -48,13 +74,15 @@ nav {
       }
       .items {
          border-radius: 50%;
-         width: 20px;
-         height: 20px;
+         width: 18px;
+         height: 18px;
          background-color: $global-light;
          display: inline-block;
          position: relative;
+         top: -10px;
+         left: -3px;
+         border: 1px solid #444343;
          span {
-            font-size: 16px;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -74,9 +102,30 @@ nav {
 }
 @media (min-width: 768px) {
    nav {
+      // padding-left: 200px;
+      .mobile-menu-bar {
+         display: none;
+      }
+      .link-cart {
+         display: none;
+      }
+      .mobileNavbar {
+         // background-color: #740303;
+         letter-spacing: 1px;
+         flex-basis: 60%;
+         display: flex;
+         justify-content: space-around;
+         font-size: 19px;
+         a,
+         span {
+            text-align: right;
+            color: #fff;
+         }
+      }
       height: 70px;
       .baner {
-         flex-basis: 85%;
+         flex-basis: 30%;
+         margin: 0 50px;
          h1 {
             margin-left: 10%;
             font-size: 28px;
@@ -87,12 +136,12 @@ nav {
          }
       }
       .cart {
-         flex-basis: 15%;
-         items span {
-            font-size: 18px;
+         display: block;
+         .items span {
+            font-size: 13px;
          }
          a {
-            font-size: 33px;
+            font-size: 25px;
             line-height: 55px;
             margin-left: 20px;
          }

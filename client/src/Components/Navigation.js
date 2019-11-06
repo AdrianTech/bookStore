@@ -1,30 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { StoreConsumer } from "./Store";
 import { AuthContext } from "./context/Auth";
+import MobileNavbar from "./MobileNavbar";
+import LoginModal from "./Forms/LoginModal";
 
 const Navigation = () => {
-   const { cartStore } = React.useContext(StoreConsumer);
-   const { user, isAuthorized } = React.useContext(AuthContext);
+   const { modalActive } = React.useContext(AuthContext);
+   const [showMenu, setMenu] = React.useState(false);
+   React.useEffect(() => {
+      const handleMenu = () => {
+         if (window.innerWidth > 768) {
+            setMenu(false);
+         }
+      };
+
+      window.addEventListener("resize", handleMenu);
+      return () => {
+         window.removeEventListener("resize", handleMenu);
+      };
+   });
    return (
-      <nav>
-         <div className="baner">
-            <h1>
-               <Link to="/">Old Town</Link>
-            </h1>
-         </div>
-         <div className="cart">
-            <Link to="/yourCart">
-               <i className="fas fa-shopping-cart" />
-               {cartStore.length > 0 ? (
-                  <div className="items">
-                     <span>{cartStore.length}</span>
-                  </div>
-               ) : null}
-            </Link>
-            {isAuthorized ? <p>{user.nickName} cart</p> : <p>Book cart</p>}
-         </div>
-      </nav>
+      <>
+         {modalActive && <LoginModal />}
+         <nav>
+            {!showMenu && (
+               <div className="baner">
+                  <h1>
+                     <Link to="/">Old Town</Link>
+                  </h1>
+               </div>
+            )}
+            <MobileNavbar showMenu={showMenu} />
+            <div onClick={() => setMenu(!showMenu)} className="mobile-menu-bar">
+               <i className="fas fa-align-right"></i>
+            </div>
+         </nav>
+      </>
    );
 };
 export default Navigation;

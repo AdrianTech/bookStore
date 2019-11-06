@@ -19,7 +19,7 @@ import { StoreConsumer } from "./Components/Store";
 
 const BookStore = () => {
    const { isAuthorized, openChatWindow, chatUsers } = React.useContext(AuthContext);
-   const { displayInfo, showInfo } = React.useContext(StoreConsumer);
+   const { displayInfo } = React.useContext(StoreConsumer);
    let user;
    if (openChatWindow) {
       user = chatUsers.filter(item => item._id === openChatWindow["id"]);
@@ -46,25 +46,3 @@ const BookStore = () => {
    );
 };
 export default BookStore;
-
-// class BookStore extends Component {
-//    render() {
-//       return (
-//          <>
-//             <Navigation />
-//             <div className="wrapper">
-//                <Switch>
-//                   <Route path="/" exact component={EnterPage} />
-//                   <Route path="/list" exact component={BookList} />
-//                   <Route path="/viewBook/:id" component={ViewBook} />
-//                   <Route path="/end" component={End} />
-//                   <Route path="/yourCart" component={YourCart} />
-//                   <Route path="/terms" component={Terms} />
-//                   <Route path="/auth/user/:id" component={User} />
-//                   <Route component={PageNotFound} />
-//                </Switch>
-//             </div>
-//          </>
-//       );
-//    }
-// }

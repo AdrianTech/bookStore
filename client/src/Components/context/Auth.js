@@ -298,7 +298,6 @@ class AuthProvider extends Component {
                step: step + 1
             });
          } else {
-            // alert("Please, fill out correctly all the required fields");
             showInfo("Please, fill out correctly all the required fields");
             return;
          }
