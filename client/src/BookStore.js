@@ -21,7 +21,7 @@ const BookStore = () => {
    const { isAuthorized, openChatWindow, chatUsers } = React.useContext(AuthContext);
    const { displayInfo } = React.useContext(StoreConsumer);
    let user;
-   if (openChatWindow) {
+   if (openChatWindow.bool) {
       user = chatUsers.filter(item => item._id === openChatWindow["id"]);
    }
    return (
