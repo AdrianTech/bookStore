@@ -1,11 +1,12 @@
 .showModalBox {
-   position: absolute;
+   position: fixed;
    top: 0;
    left: 50%;
    transform: translate(-50%);
    display: flex;
    justify-content: center;
    align-items: center;
+   text-align: center;
    padding: 10px;
    font-family: "Poppins";
    width: 90%;

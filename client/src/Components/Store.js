@@ -252,7 +252,6 @@ class StoreProvider extends Component {
          });
    };
    showInfo = res => {
-      console.log(res);
       this.setState({
          displayInfo: true,
          info: res

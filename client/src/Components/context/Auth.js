@@ -1,6 +1,8 @@
 import { StoreConsumer } from "../../Components/Store";
 import React, { Component } from "react";
 const AuthContext = React.createContext();
+let interval;
+// console.log(interval);
 
 class AuthProvider extends Component {
    state = {
@@ -21,7 +23,7 @@ class AuthProvider extends Component {
       chatUsers: [],
       chatMessage: "",
       chatTalks: [],
-      openChatWindow: false
+      openChatWindow: { bool: false, id: "" }
    };
    static contextType = StoreConsumer;
    componentDidMount() {
@@ -75,43 +77,41 @@ class AuthProvider extends Component {
          alert(err);
       }
    };
-   // test = async data => {
-   //    console.log(data);
-   //    const userAuth = this.getTokenFromLS();
-   //    const data = {
-   //       id1: id,
-   //       id2: this.state.userID
-   //    };
-   //    const fetchSettings = {
-   //       method: "POST",
-   //       headers: {
-   //          "Content-Type": "application/json",
-   //          "auth-token": userAuth.token
-   //       },
-   //       body: JSON.stringify(data)
-   //    };
-
-   //    try {
-   //       let response = await fetch(`/user/getChatTalk`, fetchSettings);
-   //       const data = await response.json();
-   //       this.setState(() => ({
-   //          chatTalks: data
-   //       }));
-   //    } catch (err) {
-   //       alert(err);
-   //    }
-   // };
-   showChatWindow = async (bool, id) => {
-      this.setState({
-         openChatWindow: { bool, id },
-         chatTalks: []
-      });
-      if (!id) return;
+   refreshChatTalk = (data, bool) => {
+      clearInterval(this.interval);
       const userAuth = this.getTokenFromLS();
-      const data = {
-         id1: id,
-         id2: this.state.userID
-      };
+      // const data = {
+      //    id1: id,
+      //    id2: this.state.userID
+      // };
+      this.interval = setInterval(async () => {
+         const fetchSettings = {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+               "auth-token": userAuth.token
+            },
+            body: JSON.stringify(data)
+         };
+         const { showInfo } = this.context;
+         try {
+            let response = await fetch(`/user/getChatTalk`, fetchSettings);
+            const data = await response.json();
+            console.log(data);
+            if (response.ok) {
+               this.setState(() => ({
+                  chatTalks: data
+               }));
+            } else {
+               clearInterval(interval);
+            }
+         } catch (err) {
+            showInfo(err);
+         }
+      }, 2000);
+   };
+   getChatData = async data => {
+      const userAuth = this.getTokenFromLS();
       const fetchSettings = {
          method: "POST",
          headers: {
@@ -132,6 +132,40 @@ class AuthProvider extends Component {
       } catch (err) {
          showInfo(err);
       }
+   };
+   showChatWindow = (bool, id) => {
+      this.setState({
+         openChatWindow: { bool, id },
+         chatTalks: []
+      });
+      if (!id) return;
+      // const userAuth = this.getTokenFromLS();
+      const data = {
+         id1: id,
+         id2: this.state.userID
+      };
+      this.getChatData(data);
+      this.refreshChatTalk(data, bool);
+      // const fetchSettings = {
+      //    method: "POST",
+      //    headers: {
+      //       "Content-Type": "application/json",
+      //       "auth-token": userAuth.token
+      //    },
+      //    body: JSON.stringify(data)
+      // };
+      // const { showInfo } = this.context;
+      // try {
+      //    let response = await fetch(`/user/getChatTalk`, fetchSettings);
+      //    const data = await response.json();
+      //    if (response.ok) {
+      //       this.setState(() => ({
+      //          chatTalks: data
+      //       }));
+      //    }
+      // } catch (err) {
+      //    showInfo(err);
+      // }
    };
 
    getUser = () => {
@@ -214,6 +248,7 @@ class AuthProvider extends Component {
    }
    handleSubmitForm = e => {
       e.preventDefault();
+      const { showInfo } = this.context;
       let registerDate;
       registerDate = new Date().toLocaleString();
       const { nickName, fullname, email, password, phone, step } = this.state;
@@ -233,7 +268,7 @@ class AuthProvider extends Component {
             return res.json();
          })
          .then(res => {
-            if (this.state.step === 3) return alert(res);
+            if (this.state.step === 3) return showInfo(res);
             this.setState({
                info: res
             });
@@ -256,7 +291,8 @@ class AuthProvider extends Component {
          if (!value) validate++;
          return validate;
       });
-      if (validate === Object.keys(updateData).length) return alert("Change at least one field");
+      const { showInfo } = this.context;
+      if ((validate === Object.keys(updateData).length - 1 && password) || !password) return showInfo("Change at least one field");
       const fetchSettings = {
          method: "PUT",
          headers: {
@@ -265,7 +301,6 @@ class AuthProvider extends Component {
          },
          body: JSON.stringify(updateData)
       };
-      const { showInfo } = this.context;
       try {
          let response = await fetch(`/user/${userID}`, fetchSettings);
          if (response.ok) {
@@ -349,6 +384,9 @@ class AuthProvider extends Component {
    };
 
    render() {
+      if (!this.state.openChatWindow.bool) {
+         clearInterval(this.interval);
+      }
       const {
          isAuthorized,
          token,

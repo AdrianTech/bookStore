@@ -47,6 +47,7 @@
       label {
          color: $bgc-item;
          margin: 7px 0;
+         text-align: left;
       }
       input {
          border-radius: 5px;
@@ -113,9 +114,6 @@
             padding: 8px;
             font-size: 17px;
             font-weight: 700;
-         }
-         label {
-            text-align: left;
          }
          p {
             font-size: 13px;

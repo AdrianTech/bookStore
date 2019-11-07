@@ -13,7 +13,7 @@ const MobileNavbar = ({ showMenu }) => {
             Cart
          </Link>
 
-         {isAuthorized ? <Link to={`/auth/user/${userID}`}>Profile</Link> : <span onClick={showModal}>Log in</span>}
+         {isAuthorized ? <Link to={`/auth/user/${userID}`}>Profile</Link> : <span onClick={showModal}>Sign in</span>}
 
          <div className="cart">
             <Link to="/yourCart">

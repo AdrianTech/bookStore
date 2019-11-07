@@ -8,7 +8,7 @@ const SignIn = () => {
       <>
          <div className="form">
             <form className="forms" onSubmit={handleLogIn}>
-               <h2>Sign in</h2>
+               <h3>Sign in</h3>
                <label htmlFor="LogIn">Your Email</label>
                <input type="text" name="email" value={email} onChange={handleForms} />
                <label htmlFor="password">Password</label>
