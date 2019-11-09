@@ -26,10 +26,6 @@ const BookStore = () => {
    }
    return (
       <>
-         <Navigation />
-         {displayInfo && <InfoModal />}
-         {isAuthorized && chatUsers.length > 0 && <Chat />}
-         {isAuthorized && openChatWindow["bool"] && <ChatTalk user={user} />}
          <div className="wrapper">
             <Switch>
                <Route path="/" exact component={EnterPage} />
@@ -42,6 +38,10 @@ const BookStore = () => {
                <Route component={PageNotFound} />
             </Switch>
          </div>
+         <Navigation />
+         {displayInfo && <InfoModal />}
+         {isAuthorized && chatUsers.length > 0 && <Chat />}
+         {isAuthorized && openChatWindow["bool"] && <ChatTalk user={user} />}
       </>
    );
 };

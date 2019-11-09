@@ -1,8 +1,6 @@
 import { StoreConsumer } from "../../Components/Store";
 import React, { Component } from "react";
 const AuthContext = React.createContext();
-let interval;
-// console.log(interval);
 
 class AuthProvider extends Component {
    state = {
@@ -77,13 +75,35 @@ class AuthProvider extends Component {
          alert(err);
       }
    };
+   deleteMessage = async id => {
+      const confirm = window.confirm("Delete this message?");
+      if (!confirm) return;
+      const { showInfo } = this.context;
+      const fetchSettings = {
+         method: "DELETE",
+         headers: {
+            "Content-Type": "application/json"
+         }
+      };
+
+      try {
+         let response = await fetch(`/user/deleteMessage/${id}`, fetchSettings);
+         const data = await response.json();
+         console.log(data);
+         // if (response.ok) {
+         //    this.setState(() => ({
+         //       chatMessage: "",
+         //       chatTalks: data
+         //    }));
+         // }
+      } catch (err) {
+         console.log(err);
+         showInfo("err");
+      }
+   };
    refreshChatTalk = (data, bool) => {
       clearInterval(this.interval);
       const userAuth = this.getTokenFromLS();
-      // const data = {
-      //    id1: id,
-      //    id2: this.state.userID
-      // };
       this.interval = setInterval(async () => {
          const fetchSettings = {
             method: "POST",
@@ -103,7 +123,7 @@ class AuthProvider extends Component {
                   chatTalks: data
                }));
             } else {
-               clearInterval(interval);
+               clearInterval(this.interval);
             }
          } catch (err) {
             showInfo(err);
@@ -139,33 +159,12 @@ class AuthProvider extends Component {
          chatTalks: []
       });
       if (!id) return;
-      // const userAuth = this.getTokenFromLS();
       const data = {
          id1: id,
          id2: this.state.userID
       };
       this.getChatData(data);
       this.refreshChatTalk(data, bool);
-      // const fetchSettings = {
-      //    method: "POST",
-      //    headers: {
-      //       "Content-Type": "application/json",
-      //       "auth-token": userAuth.token
-      //    },
-      //    body: JSON.stringify(data)
-      // };
-      // const { showInfo } = this.context;
-      // try {
-      //    let response = await fetch(`/user/getChatTalk`, fetchSettings);
-      //    const data = await response.json();
-      //    if (response.ok) {
-      //       this.setState(() => ({
-      //          chatTalks: data
-      //       }));
-      //    }
-      // } catch (err) {
-      //    showInfo(err);
-      // }
    };
 
    getUser = () => {
@@ -418,7 +417,8 @@ class AuthProvider extends Component {
          updateUserData,
          deleteUserAccount,
          showChatWindow,
-         sendMessage
+         sendMessage,
+         deleteMessage
       } = this;
 
       return (
@@ -452,7 +452,8 @@ class AuthProvider extends Component {
                updateUserData,
                deleteUserAccount,
                showChatWindow,
-               sendMessage
+               sendMessage,
+               deleteMessage
             }}
          >
             {this.props.children}

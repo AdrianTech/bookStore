@@ -1,12 +1,12 @@
 import React from "react";
 import { AuthContext } from "../context/Auth";
 const ChatTalk = ({ user }) => {
-   const { showChatWindow, chatTalks, handleForms, chatMessage, sendMessage } = React.useContext(AuthContext);
+   const { showChatWindow, chatTalks, handleForms, chatMessage, sendMessage, deleteMessage } = React.useContext(AuthContext);
    const { _id } = user[0];
    let chat;
    if (chatTalks.length > 0) {
       chat = chatTalks.map(chat => (
-         <div key={chat.id} className="chatMessages">
+         <div key={chat.id} className="chatMessages" onDoubleClick={() => deleteMessage(chat.id)}>
             <span className="from">{chat.from} said:</span>
             <p>{chat.message}</p>
          </div>
@@ -28,7 +28,7 @@ const ChatTalk = ({ user }) => {
          </div>
          <div className="chatContent">{chat}</div>
          <form data-id={_id} onSubmit={sendMessage}>
-            <input type="text" value={chatMessage} name="chatMessage" onChange={handleForms} />
+            <input autoComplete="off" type="text" value={chatMessage} name="chatMessage" onChange={handleForms} />
          </form>
       </div>
    );

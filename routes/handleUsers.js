@@ -6,49 +6,30 @@ const { registerSchema, loginValSchema } = require("../schemes/validationSchema"
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../middleware/auth");
+router.delete("/deleteMessage/:id", async (req, res) => {
+   const { id } = req.params;
+   Chat.updateOne(
+      { "chat.id": mongoose.Types.ObjectId(id) },
+      { $pull: { chat: { id: mongoose.Types.ObjectId(id) } } },
+      { multi: true },
+      err => {
+         if (err) console.log(err);
+      }
+   );
+   res.status(200);
+});
 router.get("/getChatUser", verify, async (req, res) => {
    const user = await UserSchema.find().select("-password -phone -registerDate -email -fullname");
-   // const chatUser = user.map(item => item.nickName);
-   // id = "5db1fc75130d434df8c3ff6d";
-   // const findChat = await Chat.find({ idUser1: "Test1", idUser2: "Test2" });
-   // console.log(findChat);
-   // if (findChat) console.log("yes");
-   // console.log(findChat[0]["idUser1"]);
-   // const newChat = new Chat({
-   //    idUser1: "Test1",
-   //    idUser2: "Test7",
-   //    chat: [{ test1: "Nothing to say" }]
-   // });
-   // try {
-   //    const createChat = await newChat.save();
-   //    res.status(200).json(chatUser);
-   // } catch (err) {
-   //    res.status(400).json(err);
-   // }
-   // console.log(user);
    res.status(200).json(user);
 });
 router.post("/getChatTalk/", async (req, res) => {
    const { id1, id2 } = req.body;
-   // console.log(id2, id1);
-   // const findChat = await Chat.findOne({ usersID: (id2, id1) });
-   // obj = {
-   //    from: "Developerek",
-   //    date: "22/03/2019 22:45:39",
-   //    message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga aspernatur earum alias nihil facilis reiciendis!"
-   // };
-   // findChat.chat.push(obj);
-   // findChat.save();
-   // const findChat = await Chat.findOne({ usersID: mongoose.Types.ObjectId(id2, id1) });
-   // const findChat = await Chat.find({ usersID: { $in: [id2, id1] } });
    const findChat = await Chat.findOne({ usersID: { $all: [id1, id2] } });
 
-   // console.log(findChat);
    if (findChat) res.status(200).json(findChat.chat);
    else res.status(404).json("Not found");
 });
 router.post("/sendMessage", verify, async (req, res) => {
-   // console.log(req.body);
    const ObjectID = require("mongodb").ObjectID;
    const { Ids, chatMessage, from, time } = req.body;
    const findChat = await Chat.findOne({ usersID: { $all: Ids } });
