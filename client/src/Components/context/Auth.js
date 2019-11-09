@@ -70,6 +70,7 @@ class AuthProvider extends Component {
                chatMessage: "",
                chatTalks: data
             }));
+            this.refreshChatTalk({ userID, id });
          }
       } catch (err) {
          alert(err);
@@ -89,19 +90,13 @@ class AuthProvider extends Component {
       try {
          let response = await fetch(`/user/deleteMessage/${id}`, fetchSettings);
          const data = await response.json();
-         console.log(data);
-         // if (response.ok) {
-         //    this.setState(() => ({
-         //       chatMessage: "",
-         //       chatTalks: data
-         //    }));
-         // }
+         showInfo(data);
       } catch (err) {
          console.log(err);
          showInfo("err");
       }
    };
-   refreshChatTalk = (data, bool) => {
+   refreshChatTalk = data => {
       clearInterval(this.interval);
       const userAuth = this.getTokenFromLS();
       this.interval = setInterval(async () => {

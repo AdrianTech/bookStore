@@ -16,7 +16,7 @@ router.delete("/deleteMessage/:id", async (req, res) => {
          if (err) console.log(err);
       }
    );
-   res.status(200);
+   res.status(200).json("Message deleted");
 });
 router.get("/getChatUser", verify, async (req, res) => {
    const user = await UserSchema.find().select("-password -phone -registerDate -email -fullname");
@@ -144,11 +144,10 @@ router.put("/:id", verify, async (req, res) => {
       res.status(200).json("Your data has been updated");
    });
 });
-router.delete("/delete/:id", (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
    const { id } = req.params;
    UserSchema.deleteOne({ _id: id }, err => {
       if (err) return res.status(404).json("Something went wrong");
-      return res.status(200).json("Your account has been removed");
    });
 });
 
