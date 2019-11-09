@@ -112,7 +112,6 @@ class AuthProvider extends Component {
          try {
             let response = await fetch(`/user/getChatTalk`, fetchSettings);
             const data = await response.json();
-            console.log(data);
             if (response.ok) {
                this.setState(() => ({
                   chatTalks: data
