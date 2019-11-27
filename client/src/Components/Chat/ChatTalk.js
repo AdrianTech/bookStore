@@ -11,13 +11,12 @@ const ChatTalk = ({ chatUser }) => {
     userID,
     user
   } = React.useContext(AuthContext);
-  const { _id, nickName } = chatUser[0];
   let chat;
   let messageAuthor;
-  if (chatTalks.length > 0) {
+  if (chatUser.length === 1 && chatTalks.length > 0) {
     chat = chatTalks.map(chat => {
       if (chat.from === userID) messageAuthor = user.nickName;
-      else messageAuthor = nickName;
+      else messageAuthor = chatUser[0].nickName;
       return (
         <div
           style={{
@@ -35,8 +34,16 @@ const ChatTalk = ({ chatUser }) => {
     });
   } else {
     chat = (
-      <p style={{ textAlign: "center", backgroundColor: "#fff" }}>
-        Just say "Hello"
+      <p
+        style={{
+          textAlign: "center",
+          backgroundColor: "#fff",
+          marginTop: "15px",
+          fontFamily: "Poppins",
+          fontSize: "16px"
+        }}
+      >
+        Your Chat
       </p>
     );
   }
@@ -53,7 +60,7 @@ const ChatTalk = ({ chatUser }) => {
         </span>
       </div>
       <div className="chatContent">{chat}</div>
-      <form data-id={_id} onSubmit={sendMessage}>
+      <form data-id={chatUser[0]._id} onSubmit={sendMessage}>
         <input
           autoComplete="off"
           type="text"

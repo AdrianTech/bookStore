@@ -73,6 +73,7 @@
       padding-left: 3px;
       width: 100%;
       height: 100%;
+      font-family: "Poppins";
       font-size: 14px;
       font-weight: 700;
       outline: none;
@@ -125,7 +126,7 @@
         font-size: 14px;
       }
     }
-    input {
+    form input {
       font-size: 15px;
     }
   }
@@ -147,6 +148,20 @@
     }
     span {
       font-size: 17px;
+    }
+  }
+}
+@media (max-height: 300px) {
+  .chatWindow {
+    height: 100%;
+    form {
+      height: 12%;
+    }
+    .chatContent {
+      height: 75%;
+    }
+    .talk {
+      height: 12%;
     }
   }
 }

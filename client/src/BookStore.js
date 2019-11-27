@@ -42,8 +42,8 @@ const BookStore = () => {
       </div>
       <Navigation />
       {displayInfo && <InfoModal />}
-      {isAuthorized && chatUsers.length > 0 && <Chat />}
-      {openChatWindow["bool"] && <ChatTalk chatUser={user} />}
+      {isAuthorized && <Chat />}
+      {isAuthorized && openChatWindow["bool"] && <ChatTalk chatUser={user} />}
     </>
   );
 };

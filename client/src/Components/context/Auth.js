@@ -35,7 +35,9 @@ class AuthProvider extends Component {
       token: null,
       userID: "",
       user: null,
-      chatUsers: []
+      chatUsers: [],
+      chatTalks: [],
+      openChatWindow: { bool: false, id: "" }
     });
   };
   getTokenFromLS() {
@@ -130,7 +132,7 @@ class AuthProvider extends Component {
       } catch (err) {
         showInfo("Something went wrong");
       }
-    }, 2000);
+    }, 1000);
   };
   getChatData = async data => {
     const userAuth = this.getTokenFromLS();
