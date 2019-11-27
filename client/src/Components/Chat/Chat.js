@@ -6,7 +6,7 @@ const Chat = () => {
    const { chatUsers, userID } = React.useContext(AuthContext);
    let users;
    if (showChat) {
-      users = chatUsers.filter(user => user._id !== userID && !user.isAdmin).map(user => <ChatUser key={user._id} user={user} />);
+      users = chatUsers.filter(user => user._id !== userID && !user.isAdmin).map(user => <ChatUser key={user._id} chatUser={user} />);
    }
    return (
       <>

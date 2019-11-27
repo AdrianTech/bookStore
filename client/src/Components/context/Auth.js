@@ -45,10 +45,10 @@ class AuthProvider extends Component {
   sendMessage = async e => {
     e.preventDefault();
     const { id } = e.target.dataset;
-    const { userID, chatMessage, user } = this.state;
+    const { userID, chatMessage } = this.state;
     const userAuth = this.getTokenFromLS();
     const data = {
-      from: user.nickName,
+      from: userID,
       chatMessage,
       Ids: [id, userID],
       time: new Date().toLocaleString()
@@ -61,7 +61,6 @@ class AuthProvider extends Component {
       },
       body: JSON.stringify(data)
     };
-
     try {
       let response = await fetch(`/user/sendMessage`, fetchSettings);
       const data = await response.json();
@@ -70,13 +69,14 @@ class AuthProvider extends Component {
           chatMessage: "",
           chatTalks: data
         }));
-        this.refreshChatTalk({ userID, id });
+        this.refreshChatTalk(id);
       }
     } catch (err) {
       alert(err);
     }
   };
-  deleteMessage = async id => {
+  deleteMessage = async (chatID, IDUser) => {
+    if (this.state.userID !== IDUser) return;
     const confirm = window.confirm("Delete this message?");
     if (!confirm) return;
     const { showInfo } = this.context;
@@ -88,7 +88,10 @@ class AuthProvider extends Component {
     };
 
     try {
-      let response = await fetch(`/user/deleteMessage/${id}`, fetchSettings);
+      let response = await fetch(
+        `/user/deleteMessage/${chatID}`,
+        fetchSettings
+      );
       const data = await response.json();
       showInfo(data);
     } catch (err) {
@@ -97,8 +100,13 @@ class AuthProvider extends Component {
     }
   };
   refreshChatTalk = data => {
+    const { userID } = this.state;
     clearInterval(this.interval);
     const userAuth = this.getTokenFromLS();
+    const chatData = {
+      userID,
+      data
+    };
     this.interval = setInterval(async () => {
       const fetchSettings = {
         method: "POST",
@@ -106,21 +114,22 @@ class AuthProvider extends Component {
           "Content-Type": "application/json",
           "auth-token": userAuth.token
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(chatData)
       };
       const { showInfo } = this.context;
       try {
-        let response = await fetch(`/user/getChatTalk`, fetchSettings);
-        const data = await response.json();
+        let response = await fetch(`/user/getChatTalk/`, fetchSettings);
+        const dataResponse = await response.json();
+        console.log(dataResponse);
         if (response.ok) {
           this.setState(() => ({
-            chatTalks: data
+            chatTalks: dataResponse
           }));
         } else {
           clearInterval(this.interval);
         }
       } catch (err) {
-        showInfo(err);
+        showInfo("Something went wrong");
       }
     }, 2000);
   };
@@ -144,7 +153,7 @@ class AuthProvider extends Component {
         }));
       }
     } catch (err) {
-      showInfo(err);
+      showInfo("Something went wrong. Try again.");
     }
   };
   showChatWindow = (bool, id) => {
@@ -153,12 +162,7 @@ class AuthProvider extends Component {
       chatTalks: []
     });
     if (!id) return;
-    const data = {
-      id1: id,
-      id2: this.state.userID
-    };
-    this.getChatData(data);
-    this.refreshChatTalk(data, bool);
+    this.refreshChatTalk(id);
   };
 
   getUser = () => {

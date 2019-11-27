@@ -7,21 +7,19 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { StoreProvider } from "./Components/Store";
 import { AuthProvider } from "./Components/context/Auth";
 // if (
-//    process.env.NODE_ENV === "production" &&
-//    window.__REACT_DEVTOOLS_GLOBAL_HOOK__ &&
-//    Object.keys(window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers).length
+//    process.env.NODE_ENV === "production"
 // ) {
 //    window.__REACT_DEVTOOLS_GLOBAL_HOOK__._renderers = {};
 // }
 
 ReactDOM.render(
-   <StoreProvider>
-      <AuthProvider>
-         <Router>
-            <BookStore />
-         </Router>
-      </AuthProvider>
-   </StoreProvider>,
-   document.getElementById("root")
+  <StoreProvider>
+    <AuthProvider>
+      <Router>
+        <BookStore />
+      </Router>
+    </AuthProvider>
+  </StoreProvider>,
+  document.getElementById("root")
 );
 serviceWorker.unregister();

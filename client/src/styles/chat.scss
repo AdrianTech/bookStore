@@ -1,127 +1,152 @@
 .chat {
-   position: fixed;
-   bottom: 0;
-   right: 0;
-   border: 3px solid $darkRed;
-   width: 45%;
-   font-size: 14px;
-   background-color: #fff;
-   font-family: "Pacifico";
-   text-align: center;
-   background-color: $darkRed;
-   color: #fff;
-   z-index: 15;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border: 3px solid $darkRed;
+  width: 45%;
+  font-size: 14px;
+  background-color: #fff;
+  font-family: "Pacifico";
+  text-align: center;
+  background-color: $darkRed;
+  color: #fff;
+  z-index: 15;
 
-   ul,
-   p {
-      background-color: #8ad3f5;
-   }
-   p {
-      font-size: 16px;
-      text-align: center;
-   }
-   ul {
-      list-style: none;
-      li {
-         padding: 2px 0;
-         font-size: 1rem;
-         margin-left: 15px;
-         font-size: 14px;
-         text-align: left;
-         color: $darkRed;
-      }
-   }
+  ul,
+  p {
+    background-color: #8ad3f5;
+  }
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    li {
+      padding: 2px 0;
+      font-size: 1rem;
+      margin-left: 15px;
+      font-size: 14px;
+      text-align: left;
+      color: $darkRed;
+    }
+  }
 }
 .chat-buttons {
-   z-index: 15;
-   height: 25px;
-   left: 70%;
-   color: #fff;
+  z-index: 15;
+  height: 25px;
+  left: 70%;
+  color: #fff;
 
-   span {
-      position: absolute;
-      right: 3%;
-      top: 1%;
-   }
-   .chat-close-btn {
-      top: -3px;
-   }
-   p {
-      font-size: 13px;
-      padding: 3px 5px;
-      font-family: "Open Sans";
-   }
+  span {
+    position: absolute;
+    right: 3%;
+    top: 1%;
+  }
+  .chat-close-btn {
+    top: -3px;
+  }
+  p {
+    font-size: 13px;
+    padding: 3px 5px;
+    font-family: "Open Sans";
+  }
 }
 .chatWindow {
-   position: fixed;
-   border: 2px solid $darkRed;
-   background-color: $darkRed;
-   width: 50%;
-   left: 0;
-   bottom: 0;
-   max-height: 400px;
-   z-index: 15;
-   input {
-      border-top: 2px solid #5e5c5c;
+  position: fixed;
+  border: 2px solid $darkRed;
+  background-color: $darkRed;
+  width: 50%;
+  left: 0;
+  bottom: 0;
+  height: 60vh;
+  z-index: 15;
+  .talk {
+    height: 10%;
+  }
+  form {
+    height: 10%;
+    background-color: #fff;
+    input {
+      border-top: 2px solid $darkRed;
+      border-left: none;
+      padding-left: 3px;
       width: 100%;
-      height: 30px;
+      height: 100%;
       font-size: 14px;
+      font-weight: 700;
       outline: none;
-   }
-   .chatContent {
-      overflow: auto;
-      max-height: 355px;
-   }
-   .chatMessages {
-      background-color: #fff;
-      padding: 3px;
-      span {
-         font-style: italic;
-         font-size: 12px;
-      }
-      p {
-         font-size: 14px;
-      }
-   }
+    }
+  }
+  .chatContent {
+    overflow: auto;
+    height: 80%;
+    background-color: #fff;
+  }
+  .chatMessages {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 7px;
+    margin: 3px;
+    font-family: "Poppins";
+    span {
+      font-style: italic;
+      font-size: 11px;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
 }
 @media (min-width: 768px) {
-   .chat {
+  .chat {
+    font-size: 16px;
+    width: 25%;
+    ul li {
       font-size: 16px;
-      width: 25%;
-      ul li {
-         font-size: 16px;
+    }
+  }
+  .chatWindow {
+    width: 35%;
+    left: 38%;
+    .talk {
+      p {
+        font-size: 18px;
       }
-   }
-   .chatWindow {
-      width: 30%;
-      left: 40%;
-      .chatMessages {
-         span {
-            font-size: 14px;
-         }
-         p {
-            font-size: 16px;
-         }
+      i {
+        font-size: 20px;
       }
-      input {
-         font-size: 15px;
+    }
+    .chatMessages {
+      span {
+        font-size: 12px;
       }
-   }
+      p {
+        font-size: 14px;
+      }
+    }
+    input {
+      font-size: 15px;
+    }
+  }
 }
 @media (min-width: 1000px) {
-   .chat {
-      width: 15%;
-   }
-   .chatWindow {
-      left: 50%;
-   }
-   .chat-buttons {
-      height: 28px;
-      p {
-         font-size: 15px;
-      }
-      span {
-         font-size: 17px;
-      }
-   }
+  .chat {
+    width: 15%;
+  }
+  .chatWindow {
+    left: 44%;
+    input {
+      font-size: 17px;
+    }
+  }
+  .chat-buttons {
+    height: 28px;
+    p {
+      font-size: 15px;
+    }
+    span {
+      font-size: 17px;
+    }
+  }
 }
