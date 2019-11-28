@@ -90,9 +90,17 @@
     border-radius: 7px;
     margin: 3px;
     font-family: "Poppins";
-    span {
+    .from {
       font-style: italic;
       font-size: 11px;
+    }
+    .chat-time {
+      font-size: 8px;
+      display: none;
+    }
+    .from:hover .chat-time {
+      display: block;
+      font-size: 9px;
     }
     p {
       font-size: 13px;
@@ -119,11 +127,22 @@
       }
     }
     .chatMessages {
-      span {
+      .from {
         font-size: 12px;
       }
       p {
         font-size: 14px;
+      }
+      .chat-time {
+        display: inline-block;
+        opacity: 0;
+        transition: opacity 0.5s;
+        will-change: opacity;
+      }
+      .from:hover .chat-time {
+        display: inline-block;
+        font-size: 11px;
+        opacity: 1;
       }
     }
     form input {

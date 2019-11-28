@@ -21,13 +21,16 @@ const ChatTalk = ({ chatUser }) => {
         <div
           style={{
             backgroundColor:
-              messageAuthor === user.nickName ? "#d3f8ef" : "#f7d9b3"
+              messageAuthor === user.nickName ? "#d3f8ef" : "bisque"
           }}
           key={chat.id}
           className="chatMessages"
-          onDoubleClick={() => deleteMessage(chat.id, userID)}
+          onDoubleClick={() => deleteMessage(chat.id, chat.from)}
         >
-          <span className="from">{messageAuthor} said:</span>
+          <span className="from">
+            {messageAuthor} said:{" "}
+            <span className="chat-time">[{chat.time}]</span>
+          </span>
           <p>{chat.message}</p>
         </div>
       );

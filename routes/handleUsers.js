@@ -31,11 +31,8 @@ router.get("/getChatUser", verify, async (req, res) => {
 router.post("/getChatTalk/", async (req, res) => {
   const { userID, data } = req.body;
   const findChat = await Chat.findOne({ usersID: { $all: [userID, data] } });
-  try {
-    if (findChat) res.status(200).json(findChat.chat);
-  } catch (err) {
-    res.status(404).json("Not found");
-  }
+  if (findChat) res.status(200).json(findChat.chat);
+  else res.status(404).json("Not found");
 });
 router.post("/sendMessage", verify, async (req, res) => {
   const ObjectID = require("mongodb").ObjectID;

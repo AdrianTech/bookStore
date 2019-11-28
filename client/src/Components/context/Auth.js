@@ -78,6 +78,7 @@ class AuthProvider extends Component {
     }
   };
   deleteMessage = async (chatID, IDUser) => {
+    console.log(this.state.userID, IDUser);
     if (this.state.userID !== IDUser) return;
     const confirm = window.confirm("Delete this message?");
     if (!confirm) return;
@@ -132,7 +133,7 @@ class AuthProvider extends Component {
       } catch (err) {
         showInfo("Something went wrong");
       }
-    }, 1000);
+    }, 2000);
   };
   getChatData = async data => {
     const userAuth = this.getTokenFromLS();
