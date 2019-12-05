@@ -78,7 +78,6 @@ class AuthProvider extends Component {
     }
   };
   deleteMessage = async (chatID, IDUser) => {
-    console.log(this.state.userID, IDUser);
     if (this.state.userID !== IDUser) return;
     const confirm = window.confirm("Delete this message?");
     if (!confirm) return;
@@ -411,26 +410,6 @@ class AuthProvider extends Component {
       clearInterval(this.interval);
     }
     const {
-      isAuthorized,
-      token,
-      email,
-      phone,
-      confirmed,
-      fullname,
-      nickName,
-      modalActive,
-      step,
-      info,
-      chatMessage,
-      password,
-      user,
-      userID,
-      newPassword,
-      chatUsers,
-      openChatWindow,
-      chatTalks
-    } = this.state;
-    const {
       showModal,
       handleForms,
       handleLogIn,
@@ -448,25 +427,8 @@ class AuthProvider extends Component {
     return (
       <AuthContext.Provider
         value={{
-          isAuthorized,
-          token,
-          user,
-          email,
-          phone,
-          userID,
-          confirmed,
-          nickName,
-          modalActive,
-          step,
-          info,
-          password,
-          fullname,
-          chatUsers,
-          newPassword,
-          openChatWindow,
+          ...this.state,
           showModal,
-          chatMessage,
-          chatTalks,
           handleForms,
           handleLogIn,
           handleStepDown,

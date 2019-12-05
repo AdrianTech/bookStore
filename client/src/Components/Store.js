@@ -297,20 +297,6 @@ class StoreProvider extends Component {
       openModalFunc,
       showInfo
     } = this;
-    const {
-      author,
-      desc,
-      title,
-      pages,
-      cover,
-      price,
-      date,
-      print,
-      editBook,
-      bookID,
-      displayInfo,
-      info
-    } = this.state;
 
     return (
       <BookContext.Provider
@@ -327,19 +313,7 @@ class StoreProvider extends Component {
           getThisBookFromDB,
           editBookInDB,
           openModalFunc,
-          showInfo,
-          bookID,
-          author,
-          desc,
-          title,
-          pages,
-          cover,
-          price,
-          date,
-          print,
-          editBook,
-          info,
-          displayInfo
+          showInfo
         }}
       >
         {this.props.children}
@@ -350,4 +324,3 @@ class StoreProvider extends Component {
 const Context = BookContext.Consumer;
 const StoreConsumer = BookContext;
 export { StoreProvider, StoreConsumer, Context };
-// StoreProvider.contextType = BookContext;
