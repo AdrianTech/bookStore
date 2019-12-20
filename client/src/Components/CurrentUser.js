@@ -1,18 +1,38 @@
 import React from "react";
 import { AuthContext } from "./context/Auth";
 const CurrentUser = () => {
-   const { user, deleteUserAccount } = React.useContext(AuthContext);
-   return (
-      <>
-         <h3> Your Name: {user.fullname}</h3>
-         <h3> Nickname: {user.nickName}</h3>
-         <h3> Phone number: {user.phone}</h3>
-         <h3> Your email: {user.email}</h3>
-         <h3> You're here since: {user.registerDate}</h3>
-         <button onClick={() => deleteUserAccount(user._id)} className="btn-delete-user">
-            Delete account
-         </button>
-      </>
-   );
+  const { user, deleteUserAccount } = React.useContext(AuthContext);
+  let date = user.registerDate.split("");
+  date.splice(-3);
+  return (
+    <>
+      <div className="user-list">
+        <h3>Full name:</h3>
+        <span>{user.fullname}</span>
+      </div>
+      <div className="user-list">
+        <h3>Nickname:</h3>
+        <span>{user.nickName}</span>
+      </div>
+      <div className="user-list">
+        <h3>Phone:</h3>
+        <span>{user.phone}</span>
+      </div>
+      <div className="user-list">
+        <h3>Email:</h3>
+        <span>{user.email}</span>
+      </div>
+      <div className="user-list">
+        <h3>Registration:</h3>
+        <span>{date}</span>
+      </div>
+      <button
+        onClick={() => deleteUserAccount(user._id)}
+        className="btn-delete-user"
+      >
+        Delete account
+      </button>
+    </>
+  );
 };
 export default CurrentUser;

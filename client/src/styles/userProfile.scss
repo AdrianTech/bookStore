@@ -1,0 +1,141 @@
+.userProfil {
+  font-size: 16px;
+  background-color: #defbfc;
+  padding: 12px;
+  .btn-admin {
+    margin: 32px 0;
+  }
+  .user-btn {
+    background-color: transparent;
+    margin-right: 25%;
+    border: 1px solid black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: $darkRed;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .user-btn-logout {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  i {
+    margin-right: 5px;
+  }
+  h2 {
+    margin: 15px 0px 15px;
+  }
+}
+.user-data {
+  height: 64vh;
+  padding-top: 40px;
+  font-size: 15px;
+  font-family: "Poppins";
+  position: relative;
+  label {
+    font-size: 17px;
+  }
+  .user-list {
+    display: flex;
+    border-bottom: 2px solid black;
+    padding: 7px 0;
+    h3 {
+      flex: 1;
+      text-align: left;
+      font-size: 15px;
+    }
+    span {
+      flex: 1;
+      text-align: left;
+      font-size: 15px;
+      color: #420205;
+      font-weight: 700;
+    }
+    &:first-child {
+      border-top: 2px solid black;
+    }
+    &:nth-child(5) {
+      h3 {
+        font-size: 15px;
+      }
+    }
+  }
+  input {
+    &::placeholder {
+      color: #000;
+      opacity: 0.8;
+    }
+  }
+  button {
+    margin-top: 13px;
+    font-family: "Poppins";
+    padding: 3px 10px;
+    background-color: #525250;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #e8f4fa;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .btn-delete-user {
+    background-color: #f30707;
+    padding: 3px 13px;
+    font-size: 14px;
+    color: #f5f5e9;
+    position: absolute;
+    bottom: 0;
+  }
+}
+@media (min-width: 480px) {
+  .user-data .user-list {
+    padding: 10px 0;
+    h3,
+    span {
+      font-size: 17px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .userProfil {
+    width: 70%;
+    font-size: 24px;
+    margin: 0 auto;
+    padding: 20px;
+    .btn-admin {
+      margin: 40px 0;
+      padding: 8px 50px;
+    }
+    .user-btn {
+      left: 2%;
+    }
+    .user-btn-logout {
+      position: absolute;
+      padding: 7px 11px;
+      font-size: 15px;
+      top: 13%;
+      right: 4%;
+    }
+  }
+  .user-data {
+    font-size: 18px;
+    label {
+      font-size: 19px;
+    }
+    .user-list {
+      max-width: 100%;
+      padding: 12px 0;
+      h3 {
+        font-size: 20px;
+      }
+      span {
+        font-size: 21px;
+      }
+      &:nth-child(5) {
+        h3 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

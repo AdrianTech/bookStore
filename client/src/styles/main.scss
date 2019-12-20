@@ -2,184 +2,137 @@
 *,
 ::before,
 ::after {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .wrapper {
-   padding: 80px 3% 0;
+  padding: 70px 3% 0;
 }
 a {
-   text-decoration: none;
-   cursor: pointer;
-   color: #3d1616;
+  text-decoration: none;
+  cursor: pointer;
+  color: #3d1616;
 }
 img {
-   border: 1px solid #000;
+  border: 1px solid #000;
 }
 .welcome {
-   font-size: 20px;
-   font-weight: 700;
-   margin-bottom: 15px;
-   display: block;
-   text-align: center;
-   text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
 }
 .end {
-   text-align: center;
+  text-align: center;
 }
 .notFound {
-   text-align: center;
-   font-family: "Poppins";
-   font-size: 14px;
-   h2 {
-      margin-bottom: 10px;
-   }
-   a {
-      font-weight: 700;
-      background-color: $bgc-item;
-      padding: 8px;
-      color: $darkRed;
-      &:hover {
-         color: black;
-      }
-   }
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 14px;
+  h2 {
+    margin-bottom: 10px;
+  }
+  a {
+    font-weight: 700;
+    background-color: $bgc-item;
+    padding: 8px;
+    color: $darkRed;
+    &:hover {
+      color: black;
+    }
+  }
 }
 .enterPage {
-   position: absolute;
-   display: flex;
-   flex-direction: column;
-   height: 100%;
-   width: 100vw;
-   font-family: "Poppins";
-   overflow: hidden;
-   top: 0;
-   left: 0;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   z-index: 70;
-   .nav-page {
-      background-color: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      padding: 20px;
-      width: 80%;
-      h1 {
-         font-size: 22px;
-         color: #fcfcfc;
-         text-transform: uppercase;
-      }
-      .welcome-btn {
-         padding: 8px 22px;
-         margin-top: 15px;
-         border: 1px solid $bgc-item;
-         background-color: transparent;
-         color: #fff;
-         font-weight: 700;
-         border-radius: 6px;
-         font-size: 20px;
-         cursor: pointer;
-         transition: all 0.3s ease;
-         &:hover {
-            background-color: #000;
-            border-color: #e2dfdf;
-            color: $bgc-item;
-         }
-      }
-   }
-}
-.userProfil {
-   margin-left: 15px;
-   font-size: 16px;
-   .btn-admin {
-      margin: 25px 0;
-   }
-   .user-btn {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100vw;
+  font-family: "Poppins";
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 70;
+  .nav-page {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    h1 {
+      font-size: 22px;
+      color: #fcfcfc;
+      text-transform: uppercase;
+    }
+    .welcome-btn {
+      padding: 8px 22px;
+      margin-top: 15px;
+      border: 1px solid $bgc-item;
       background-color: transparent;
-      margin-right: 25%;
-      border: 1px solid black;
-      padding: 4px 8px;
-      border-radius: 4px;
-      color: $darkRed;
-      font-size: 14px;
+      color: #fff;
       font-weight: 700;
+      border-radius: 6px;
+      font-size: 20px;
       cursor: pointer;
-   }
-   .user-btn-logout {
-      padding: 5px 8px;
-      font-size: 12px;
-   }
-   i {
-      margin-right: 5px;
-   }
-   h2 {
-      margin: 15px 0px 15px;
-   }
-   h3 {
-      margin: 15px 0px;
-   }
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #000;
+        border-color: #e2dfdf;
+        color: $bgc-item;
+      }
+    }
+  }
 }
 footer {
-   width: 100%;
-   padding: 10px 0;
-   text-align: center;
-   background-color: #e2dfdf;
-   font-family: "Poppins";
-   font-size: 15px;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #e2dfdf;
+  font-family: "Poppins";
+  font-size: 15px;
 }
 @media (min-width: 768px) {
-   .notFound {
-      font-size: 18px;
-   }
-   .welcome {
-      font-size: 40px;
-      margin-bottom: 25px;
-      padding: 10px 0;
-   }
+  .wrapper {
+    padding: 80px 3% 0;
+  }
+  .notFound {
+    font-size: 18px;
+  }
+  .welcome {
+    font-size: 40px;
+    margin-bottom: 25px;
+    padding: 10px 0;
+  }
 
-   .enterPage {
-      .nav-page {
-         background-color: rgba(0, 0, 0, 0.7);
-         padding: 30px;
-         width: 70%;
-         h1 {
-            font-size: 50px;
-            display: inline-block;
-            &:first-child {
-               margin-right: 10px;
-            }
-         }
-         a {
-            display: block;
-         }
-         .welcome-btn {
-            padding: 10px 30px;
-            font-size: 25px;
-         }
+  .enterPage {
+    .nav-page {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      width: 70%;
+      h1 {
+        font-size: 50px;
+        display: inline-block;
+        &:first-child {
+          margin-right: 10px;
+        }
       }
-   }
-   .userProfil {
-      width: 60%;
-      font-size: 24px;
-      margin: 0 auto;
-      .btn-admin {
-         margin: 50px 0;
-         padding: 8px 50px;
+      a {
+        display: block;
       }
-      .user-btn {
-         left: 2%;
+      .welcome-btn {
+        padding: 10px 30px;
+        font-size: 25px;
       }
-      .user-btn-logout {
-         position: absolute;
-         padding: 7px 11px;
-         font-size: 15px;
-         top: 13%;
-         right: 4%;
-      }
-   }
-   footer {
-      margin-top: 15px;
-      font-size: 18px;
-      font-weight: 600;
-   }
+    }
+  }
+  footer {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+  }
 }

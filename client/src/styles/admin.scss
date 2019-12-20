@@ -23,7 +23,6 @@
     margin: 10px 0;
     display: block;
     padding: 10px;
-    // font-size: 1.1rem;
     border: 1px dashed black;
     font-family: "Poppins";
     h4 {
@@ -112,49 +111,6 @@
     cursor: pointer;
   }
 }
-.user-data {
-  height: 65vh;
-  padding-top: 20px;
-  font-size: 15px;
-  font-family: "Poppins";
-  position: relative;
-  label {
-    font-size: 17px;
-  }
-  input {
-    &::placeholder {
-      color: #000;
-      opacity: 0.8;
-    }
-  }
-  button {
-    margin-top: 13px;
-    font-family: "Poppins";
-    padding: 3px 10px;
-    background-color: #525250;
-    border: 1px solid #000;
-    border-radius: 5px;
-    color: #e8f4fa;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  .btn-delete-user {
-    background-color: #f30707;
-    padding: 3px 6px;
-    font-size: 14px;
-    color: #f5f5e9;
-    position: absolute;
-    bottom: 0;
-  }
-}
-@media (min-width: 500px) {
-  .cms-form {
-    width: 80%;
-    position: relative;
-    top: 10%;
-    left: 10%;
-  }
-}
 @media (min-width: 480px) {
   .adminPanel .bookFromDB {
     padding: 15px 100px;
@@ -207,12 +163,6 @@
       width: 30%;
     }
     input[type="file"] {
-      font-size: 19px;
-    }
-  }
-  .user-data {
-    font-size: 18px;
-    label {
       font-size: 19px;
     }
   }

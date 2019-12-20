@@ -13,7 +13,6 @@ const UpdateUser = ({ click }) => {
     updateUserData,
     handleForms
   } = React.useContext(AuthContext);
-  console.log("Update User");
   const [changePass, setNewPass] = React.useState(false);
   return (
     <div className="show-modal">
