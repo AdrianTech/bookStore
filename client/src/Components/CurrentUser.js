@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthContext } from "./context/Auth";
 const CurrentUser = () => {
-  const { user, deleteUserAccount } = React.useContext(AuthContext);
+  const { user, deleteUserAccount, chatStatus } = React.useContext(AuthContext);
   let date = user.registerDate.split("");
   date.splice(-3);
   return (
@@ -26,12 +26,20 @@ const CurrentUser = () => {
         <h3>Registration:</h3>
         <span>{date}</span>
       </div>
-      <button
-        onClick={() => deleteUserAccount(user._id)}
-        className="btn-delete-user"
-      >
-        Delete account
-      </button>
+      <div className="user-data-buttons">
+        <button
+          onClick={() => deleteUserAccount(user._id)}
+          className="btn-delete-user"
+        >
+          Delete account
+        </button>
+        <button
+          className="btn-chat-status"
+          onClick={() => chatStatus(user.isChatActive)}
+        >
+          {user.isChatActive ? "Hide chat" : "Show chat"}
+        </button>
+      </div>
     </>
   );
 };

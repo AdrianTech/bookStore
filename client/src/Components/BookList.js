@@ -7,13 +7,13 @@ class BookList extends Component {
   render() {
     return (
       <>
-        <div className="showBooks">
+        <section className="showBooks">
           <Context>
             {data =>
               data.booksData.map(elem => <Book key={elem._id} elem={elem} />)
             }
           </Context>
-        </div>
+        </section>
         <Footer />
       </>
     );

@@ -61,7 +61,6 @@ router.post("/sendMessage", verify, async (req, res) => {
     });
     try {
       const createChat = await newChat.save();
-      console.log(createChat.chat);
       res.status(200).json(createChat.chat);
     } catch (err) {
       res.status(400).json("Error");
@@ -115,7 +114,8 @@ router.post("/login", async (req, res) => {
       email: user.email,
       phone: user.phone,
       registerDate: user.registerDate,
-      isAdmin: user.isAdmin
+      isAdmin: user.isAdmin,
+      isChatActive: user.isChatActive
     }
   });
 });

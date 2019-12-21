@@ -5,7 +5,7 @@ import CurrentUser from "./CurrentUser";
 import UpdateUser from "./UpdateUser";
 import { Link } from "react-router-dom";
 const User = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [showPanel, displayAdminPanel] = useState(false);
   const [update, updateUserData] = useState(false);
   const [updateProduct, showUpdateProduct] = React.useState(false);
@@ -38,16 +38,10 @@ const User = () => {
   return (
     <>
       {user ? (
-        <div className="userProfil">
+        <section className="userProfil">
           <button className="user-btn" onClick={() => updateUserData(true)}>
-            Edit your data
+            <i className="fas fa-user-edit"></i> Update
           </button>
-          {/* <Link to="/yourCart">
-                  <button className="secondary-btn user-btn-logout" onClick={logoutUser}>
-                     <i className="fas fa-sign-out-alt"></i>
-                     Logout
-                  </button>
-               </Link> */}
           <div className="user-data">
             {!update ? <CurrentUser /> : <UpdateUser click={updateUserData} />}
           </div>
@@ -67,7 +61,7 @@ const User = () => {
               showAddProduct={showAddProduct}
             />
           )}
-        </div>
+        </section>
       ) : (
         <>
           {logoutMessage && (

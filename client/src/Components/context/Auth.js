@@ -262,7 +262,7 @@ class AuthProvider extends Component {
         password,
         phone,
         registerDate,
-        isChatActiv: true
+        isChatActive: true
       })
     })
       .then(res => {
@@ -335,6 +335,29 @@ class AuthProvider extends Component {
       showInfo(data);
     } catch (err) {
       showInfo("Something went wrong");
+    }
+  };
+  chatStatus = async chatStatus => {
+    const { userID } = this.state;
+    const fetchSettings = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    try {
+      let response = await fetch(
+        `/chatStatus/${userID}/${!chatStatus}`,
+        fetchSettings
+      );
+      const data = await response.json();
+      if (response.ok) {
+        this.setState({
+          user: data
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -421,7 +444,8 @@ class AuthProvider extends Component {
       deleteUserAccount,
       showChatWindow,
       sendMessage,
-      deleteMessage
+      deleteMessage,
+      chatStatus
     } = this;
 
     return (
@@ -439,7 +463,8 @@ class AuthProvider extends Component {
           deleteUserAccount,
           showChatWindow,
           sendMessage,
-          deleteMessage
+          deleteMessage,
+          chatStatus
         }}
       >
         {this.props.children}

@@ -18,13 +18,13 @@ import { AuthContext } from "./Components/context/Auth";
 import { StoreConsumer } from "./Components/Store";
 
 const BookStore = () => {
-  const { isAuthorized, openChatWindow, chatUsers } = React.useContext(
+  const { isAuthorized, openChatWindow, chatUsers, user } = React.useContext(
     AuthContext
   );
   const { displayInfo } = React.useContext(StoreConsumer);
-  let user;
+  let chatUser;
   if (openChatWindow.bool) {
-    user = chatUsers.filter(item => item._id === openChatWindow["id"]);
+    chatUser = chatUsers.filter(item => item._id === openChatWindow["id"]);
   }
   return (
     <>
@@ -42,8 +42,10 @@ const BookStore = () => {
       </div>
       <Navigation />
       {displayInfo && <InfoModal />}
-      {isAuthorized && <Chat />}
-      {isAuthorized && openChatWindow["bool"] && <ChatTalk chatUser={user} />}
+      {isAuthorized && user.isChatActive && <Chat />}
+      {isAuthorized && openChatWindow["bool"] && (
+        <ChatTalk chatUser={chatUser} />
+      )}
     </>
   );
 };

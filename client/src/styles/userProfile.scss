@@ -8,17 +8,13 @@
   .user-btn {
     background-color: transparent;
     margin-right: 25%;
-    border: 1px solid black;
-    padding: 4px 8px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    padding: 4px 12px;
     border-radius: 4px;
     color: $darkRed;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     cursor: pointer;
-  }
-  .user-btn-logout {
-    padding: 5px 8px;
-    font-size: 12px;
   }
   i {
     margin-right: 5px;
@@ -33,12 +29,27 @@
   font-size: 15px;
   font-family: "Poppins";
   position: relative;
+  .user-data-buttons {
+    display: flex;
+    margin-top: 22px;
+    .btn-delete-user,
+    .btn-chat-status {
+      padding: 3px 12px;
+      font-size: 12px;
+      color: #f5f5e9;
+      width: 120px;
+    }
+    .btn-delete-user {
+      margin-right: 20px;
+      background-color: #f30707;
+    }
+  }
   label {
     font-size: 17px;
   }
   .user-list {
     display: flex;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #0000009a;
     padding: 7px 0;
     h3 {
       flex: 1;
@@ -53,7 +64,7 @@
       font-weight: 700;
     }
     &:first-child {
-      border-top: 2px solid black;
+      border-bottom: 2px solid #0000009a;
     }
     &:nth-child(5) {
       h3 {
@@ -78,14 +89,6 @@
     font-size: 15px;
     cursor: pointer;
   }
-  .btn-delete-user {
-    background-color: #f30707;
-    padding: 3px 13px;
-    font-size: 14px;
-    color: #f5f5e9;
-    position: absolute;
-    bottom: 0;
-  }
 }
 @media (min-width: 480px) {
   .user-data .user-list {
@@ -108,13 +111,7 @@
     }
     .user-btn {
       left: 2%;
-    }
-    .user-btn-logout {
-      position: absolute;
-      padding: 7px 11px;
       font-size: 15px;
-      top: 13%;
-      right: 4%;
     }
   }
   .user-data {
