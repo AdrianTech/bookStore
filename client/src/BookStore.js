@@ -43,7 +43,7 @@ const BookStore = () => {
       <Navigation />
       {displayInfo && <InfoModal />}
       {isAuthorized && user.isChatActive && <Chat />}
-      {isAuthorized && openChatWindow["bool"] && (
+      {isAuthorized && user.isChatActive && openChatWindow["bool"] && (
         <ChatTalk chatUser={chatUser} />
       )}
     </>

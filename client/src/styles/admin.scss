@@ -34,7 +34,6 @@
       border: 1px solid black;
       font-size: 14px;
       border-radius: 3px;
-      cursor: pointer;
       &:first-child {
         background-color: #0a993a;
         color: #fff;
@@ -108,7 +107,6 @@
     padding: 7px 0;
     font-weight: 700;
     background-color: #d7eaf3;
-    cursor: pointer;
   }
 }
 @media (min-width: 480px) {

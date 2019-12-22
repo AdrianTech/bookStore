@@ -1,185 +1,184 @@
 .cartContent {
-   font-family: "Poppins";
-   margin-top: -10px;
-   h2,
-   h3,
-   h5,
-   .total,
-   .title {
-      text-align: center;
-   }
-   .user-nav-link {
+  font-family: "Poppins";
+  margin-top: -10px;
+  h2,
+  h3,
+  h5,
+  .total,
+  .title {
+    text-align: center;
+  }
+  .user-nav-link {
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid red;
+    border-radius: 8px;
+    margin: 13px 0;
+    padding: 5px 10px;
+    display: inline-flex;
+    box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.6);
+  }
+  h2 {
+    font-size: 18px;
+    margin: 3% 0 6% 0;
+  }
+  .addedToBasketBook {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px dotted black;
+    margin-bottom: 2%;
+    .title {
+      width: 50%;
+      height: 57%;
+      margin: 0 auto;
+      padding: 2%;
+      img {
+        width: 100%;
+      }
+    }
+    h5,
+    .countItems,
+    .fas,
+    .total {
+      padding: 10px 5px;
+    }
+    h5 {
+      flex: 1;
       font-size: 18px;
+    }
+    .countItems {
+      flex: 1;
+      margin: 0 auto;
+      button {
+        width: 30px;
+        height: 30px;
+        background-color: $darkRed;
+        color: $global-light;
+        border: none;
+        font-size: 18px;
+        font-weight: 700;
+        font-family: "Poppins";
+        border-radius: 50%;
+        outline: none;
+      }
+      span {
+        padding: 10px;
+        font-size: 23px;
+        font-weight: 700;
+      }
+    }
+    .total {
+      font-size: 18px;
+      flex: 1;
       font-weight: 700;
-      border: 1px solid red;
-      border-radius: 8px;
-      margin: 13px 0;
-      padding: 5px 10px;
-      display: inline-flex;
-      box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.6);
-   }
-   h2 {
-      font-size: 18px;
-      margin: 3% 0 6% 0;
-   }
-   .addedToBasketBook {
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1px dotted black;
-      margin-bottom: 2%;
+    }
+    .deleteBook {
+      margin: 0 auto 15px;
+      i {
+        font-size: 19px;
+        cursor: pointer;
+        padding: 8px 15px;
+        display: flex;
+        color: #d60606;
+        p {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .summary {
+    position: absolute;
+    font-size: 12px;
+    border: 2px dashed #000;
+    padding: 5px;
+    margin-top: 10px;
+    span {
+      color: $darkRed;
+      font-size: 17px;
+    }
+    h3 {
+      color: #000;
+      margin: 0;
+    }
+  }
+  .bank-btn {
+    text-align: right;
+    position: relative;
+    padding: 10px 20px;
+    margin: 10px;
+    left: 55%;
+  }
+}
+@media (min-width: 768px) {
+  .cartContent {
+    margin-top: 0;
+    h2 {
+      margin-bottom: 3%;
+    }
+    .user-nav-link {
+      font-size: 19px;
+      font-weight: 700;
+      border: 2px solid red;
+      padding: 8px 16px;
+    }
+    .addedToBasketBook {
+      flex-direction: row;
       .title {
-         width: 50%;
-         height: 57%;
-         margin: 0 auto;
-         padding: 2%;
-         img {
-            width: 100%;
-         }
+        width: 15%;
+        height: 20%;
+        flex: 0.4;
+      }
+      i {
+        background-color: transparent;
       }
       h5,
       .countItems,
-      .fas,
+      .deleteBook,
       .total {
-         padding: 10px 5px;
+        padding-top: 7%;
       }
-      h5 {
-         flex: 1;
-         font-size: 18px;
+      .total {
+        font-size: 20px;
+        text-align: left;
       }
       .countItems {
-         flex: 1;
-         margin: 0 auto;
-         button {
-            width: 30px;
-            height: 30px;
-            background-color: $darkRed;
-            color: $global-light;
-            border: none;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: "Poppins";
-            border-radius: 50%;
-            cursor: pointer;
-            outline: none;
-         }
-         span {
-            padding: 10px;
-            font-size: 23px;
-            font-weight: 700;
-         }
+        flex: 1;
+        text-align: center;
+        div {
+          button {
+            font-size: 20px;
+            padding: 4px 8px;
+            width: 40px;
+            height: 40px;
+          }
+          span {
+            font-size: 29px;
+          }
+        }
       }
-      .total {
-         font-size: 18px;
-         flex: 1;
-         font-weight: 700;
+      h5 {
+        font-size: 20px;
       }
-      .deleteBook {
-         margin: 0 auto 15px;
-         i {
-            font-size: 19px;
-            cursor: pointer;
-            padding: 8px 15px;
-            display: flex;
-            color: #d60606;
-            p {
-               margin-left: 10px;
-            }
-         }
-      }
-   }
-   .summary {
-      position: absolute;
-      font-size: 12px;
-      border: 2px dashed #000;
-      padding: 5px;
-      margin-top: 10px;
-      span {
-         color: $darkRed;
-         font-size: 17px;
-      }
-      h3 {
-         color: #000;
-         margin: 0;
-      }
-   }
-   .bank-btn {
-      text-align: right;
-      position: relative;
-      padding: 10px 20px;
-      margin: 10px;
-      left: 55%;
-   }
-}
-@media (min-width: 768px) {
-   .cartContent {
+    }
+    h2 {
+      font-size: 22px;
+    }
+    .summary {
+      top: 12%;
+      right: 1.5%;
       margin-top: 0;
-      h2 {
-         margin-bottom: 3%;
+      padding: 10px;
+      font-size: 16px;
+      position: fixed;
+      background-color: #fff;
+      span {
+        font-size: 21px;
       }
-      .user-nav-link {
-         font-size: 19px;
-         font-weight: 700;
-         border: 2px solid red;
-         padding: 8px 16px;
-      }
-      .addedToBasketBook {
-         flex-direction: row;
-         .title {
-            width: 15%;
-            height: 20%;
-            flex: 0.4;
-         }
-         i {
-            background-color: transparent;
-         }
-         h5,
-         .countItems,
-         .deleteBook,
-         .total {
-            padding-top: 7%;
-         }
-         .total {
-            font-size: 20px;
-            text-align: left;
-         }
-         .countItems {
-            flex: 1;
-            text-align: center;
-            div {
-               button {
-                  font-size: 20px;
-                  padding: 4px 8px;
-                  width: 40px;
-                  height: 40px;
-               }
-               span {
-                  font-size: 29px;
-               }
-            }
-         }
-         h5 {
-            font-size: 20px;
-         }
-      }
-      h2 {
-         font-size: 22px;
-      }
-      .summary {
-         top: 12%;
-         right: 1.5%;
-         margin-top: 0;
-         padding: 10px;
-         font-size: 16px;
-         position: fixed;
-         background-color: #fff;
-         span {
-            font-size: 21px;
-         }
-      }
-      .bank-btn {
-         left: 80%;
-         padding-right: 30px;
-         padding-left: 30px;
-      }
-   }
+    }
+    .bank-btn {
+      left: 80%;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
 }

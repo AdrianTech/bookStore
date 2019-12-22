@@ -429,7 +429,7 @@ class AuthProvider extends Component {
   };
 
   render() {
-    if (!this.state.openChatWindow.bool) {
+    if (!this.state.openChatWindow.bool && !this.state.isChatActive) {
       clearInterval(this.interval);
     }
     const {

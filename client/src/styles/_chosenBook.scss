@@ -1,94 +1,94 @@
 .bookDetails {
-   display: grid;
-   grid-template-columns: 1fr;
-   font-family: "Poppins", sans-serif;
-   .header {
-      font-size: 22px;
-      margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  font-family: "Poppins", sans-serif;
+  .header {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  p {
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+  }
+  .bookCover {
+    margin: 0 auto 15px;
+    width: 53%;
+    height: 59%;
+    img {
+      width: 100%;
+    }
+  }
+  .spanItems {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 18px;
+    .price {
+      font-weight: 700;
+    }
+    span {
+      background-color: rgb(218, 216, 216);
+      margin-bottom: 5px;
       text-align: center;
-   }
-   p {
-      font-size: 18px;
-      font-family: "Poppins", sans-serif;
-   }
-   .bookCover {
-      margin: 0 auto 15px;
-      width: 53%;
-      height: 59%;
-      img {
-         width: 100%;
-      }
-   }
-   .spanItems {
-      margin-top: 15px;
-      display: grid;
-      grid-template-columns: 1fr;
-      font-size: 18px;
-      .price {
-         font-weight: 700;
-      }
-      span {
-         background-color: rgb(218, 216, 216);
-         margin-bottom: 5px;
-         text-align: center;
-      }
-   }
+    }
+  }
 }
 .buttons {
-   margin-top: 15px;
-   margin-bottom: 10px;
-   transition: all 0.25s ease-in-out;
-   text-align: center;
-   .btn-basket {
-      margin: 0 10px 10px 0;
-   }
+  margin-top: 15px;
+  margin-bottom: 10px;
+  transition: all 0.25s ease-in-out;
+  text-align: center;
+  .btn-basket {
+    margin: 0 10px 10px 0;
+  }
 }
 @media screen and (min-width: 768px) {
-   .bookDetails {
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(12, 1fr);
-      height: calc(100vh - 80px);
-      .header {
-         grid-column: 1/12;
-         grid-row: 1/2;
+  .bookDetails {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: calc(100vh - 80px);
+    .header {
+      grid-column: 1/12;
+      grid-row: 1/2;
+    }
+    .bookCover {
+      grid-column: 1/6;
+      grid-row: 2/5;
+    }
+    p {
+      grid-column: 6/12;
+      grid-row: 2/6;
+      font-size: 15px;
+    }
+    .spanItems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column: 6/13;
+      grid-row: 10/10;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 700;
+      .price {
+        font-size: 20px;
       }
-      .bookCover {
-         grid-column: 1/6;
-         grid-row: 2/5;
+      span {
+        background-color: transparent;
+        text-align: left;
       }
-      p {
-         grid-column: 6/12;
-         grid-row: 2/6;
-         font-size: 15px;
-      }
-      .spanItems {
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         grid-column: 6/13;
-         grid-row: 10/10;
-         font-family: "Open Sans", sans-serif;
-         font-weight: 700;
-         .price {
-            font-size: 20px;
-         }
-         span {
-            background-color: transparent;
-            text-align: left;
-         }
-      }
-   }
-   .buttons {
-      grid-column: 2/10;
-      grid-row: 11/13;
-      margin-top: 15px;
-      display: inline-block;
-      .btn-basket {
-         margin-right: 20%;
-      }
-   }
+    }
+  }
+  .buttons {
+    grid-column: 2/10;
+    grid-row: 11/13;
+    margin-top: 15px;
+    display: inline-block;
+    .btn-basket {
+      margin-right: 20%;
+    }
+  }
 }
 @media (min-width: 1100px) {
-   .bookDetails p {
-      font-size: 17px;
-   }
+  .bookDetails p {
+    font-size: 17px;
+  }
 }

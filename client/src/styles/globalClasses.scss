@@ -1,67 +1,69 @@
 .main-btn,
 .secondary-btn {
-   background-color: $darkRed;
-   color: #f3dddd;
-   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-   border: 1px solid $darkRed;
-   border-radius: 5px;
-   cursor: pointer;
-   outline: none;
-   transition: all 0.25s ease-in;
+  background-color: $darkRed;
+  color: #f3dddd;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  border: 1px solid $darkRed;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.25s ease-in;
 }
 .show-modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   height: 100%;
-   // padding: 15px;
-   background-color: #1d1c1cb9;
-   width: 100%;
-   overflow: auto;
-   z-index: 30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #1d1c1cb9;
+  width: 100%;
+  overflow: auto;
+  z-index: 30;
+}
+button {
+  cursor: pointer;
 }
 
 .main-btn {
-   padding: 7px 11px;
-   font-size: 15px;
-   border-radius: 5px;
+  padding: 7px 11px;
+  font-size: 15px;
+  border-radius: 5px;
 
-   &:hover {
-      background-color: #c3d6f8;
-      color: $darkRed;
-      transform: scale(1.05);
-      border: 1px dashed black;
-   }
+  &:hover {
+    background-color: #c3d6f8;
+    color: $darkRed;
+    transform: scale(1.05);
+    border: 1px dashed black;
+  }
 }
 .secondary-btn {
-   padding: 7px 12px;
-   font-size: 15px;
-   &:hover {
-      background-color: #c3d6f8;
-      color: $darkRed;
-      border: 1px dashed black;
-   }
+  padding: 7px 12px;
+  font-size: 15px;
+  &:hover {
+    background-color: #c3d6f8;
+    color: $darkRed;
+    border: 1px dashed black;
+  }
 }
 .form-btn {
-   display: block;
-   padding: 3px 9px;
-   font-size: 15px;
-   font-family: "Poppins";
-   background-color: #834040;
-   color: $bgc-item;
-   width: 65%;
-   border: 1px solid #575555;
-   margin: 10px auto 5px;
+  display: block;
+  padding: 3px 9px;
+  font-size: 15px;
+  font-family: "Poppins";
+  background-color: #834040;
+  color: $bgc-item;
+  width: 65%;
+  border: 1px solid #575555;
+  margin: 10px auto 5px;
 }
 @media (min-width: 768px) {
-   .main-btn {
-      font-size: 18px;
-   }
-   .secondary-btn {
-      padding: 10px 15px;
-      font-size: 17px;
-   }
-   .form-btn {
-      width: 40%;
-   }
+  .main-btn {
+    font-size: 18px;
+  }
+  .secondary-btn {
+    padding: 10px 15px;
+    font-size: 17px;
+  }
+  .form-btn {
+    width: 40%;
+  }
 }

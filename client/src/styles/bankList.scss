@@ -1,80 +1,79 @@
 .bankList {
-   width: 100%;
-   height: 100vh;
-   padding: 0 10px;
-   position: fixed;
-   top: 0;
-   left: 0;
-   overflow: auto;
-   background-color: rgba(0, 0, 0, 0.8);
-   z-index: 8;
-   a {
-      text-decoration: none;
-      color: black;
-   }
-   button {
-      font-size: 30px;
-      background-color: transparent;
-      color: #fff;
-      border: none;
-      outline: none;
-      padding: 10px 10px 10px 0;
-      cursor: pointer;
-   }
-   h3 {
-      color: white;
-      display: inline-block;
+  width: 100%;
+  height: 100vh;
+  padding: 0 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 8;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  button {
+    font-size: 30px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 10px 10px 0;
+  }
+  h3 {
+    color: white;
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+  }
+  .showPayForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    background-color: #000;
+    margin: 0 auto;
+    z-index: 10;
+    margin-bottom: 15px;
+    opacity: 1;
+    .list {
+      background-color: #fff;
+      padding: 15px;
+      font-size: 20px;
       text-align: center;
-      font-size: 15px;
-   }
-   .showPayForm {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
-      background-color: #000;
-      margin: 0 auto;
-      z-index: 10;
-      margin-bottom: 15px;
-      opacity: 1;
-      .list {
-         background-color: #fff;
-         padding: 15px;
-         font-size: 20px;
-         text-align: center;
-         cursor: pointer;
-         i {
-            font-size: 33px;
-         }
+      cursor: pointer;
+      i {
+        font-size: 33px;
       }
-   }
+    }
+  }
 }
 @media (min-width: 768px) {
-   .bankList {
-      width: 100%;
-      height: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h3 {
-         font-size: 20px;
+  .bankList {
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h3 {
+      font-size: 20px;
+    }
+    button {
+      padding-left: 5%;
+    }
+    .showPayForm {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+      width: 90%;
+      height: 90%;
+      padding: 20px;
+      margin-bottom: 0;
+      .list {
+        padding: 20px;
+        font-size: 28px;
+        i {
+          font-size: 50px;
+        }
       }
-      button {
-         padding-left: 5%;
-      }
-      .showPayForm {
-         grid-template-columns: repeat(4, 1fr);
-         grid-gap: 20px;
-         width: 90%;
-         height: 90%;
-         padding: 20px;
-         margin-bottom: 0;
-         .list {
-            padding: 20px;
-            font-size: 28px;
-            i {
-               font-size: 50px;
-            }
-         }
-      }
-   }
+    }
+  }
 }

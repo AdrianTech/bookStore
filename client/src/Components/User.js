@@ -3,14 +3,14 @@ import AdminPanel from "./AdminPanel";
 import { AuthContext } from "./context/Auth";
 import CurrentUser from "./CurrentUser";
 import UpdateUser from "./UpdateUser";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 const User = () => {
-  const { user } = useContext(AuthContext);
+  const { user, isAuthorized } = useContext(AuthContext);
   const [showPanel, displayAdminPanel] = useState(false);
   const [update, updateUserData] = useState(false);
   const [updateProduct, showUpdateProduct] = React.useState(false);
   const [addProduct, showAddProduct] = React.useState(false);
-  const [logoutMessage, setLogout] = React.useState(false);
+  const [logout, setLogout] = React.useState(false);
   React.useEffect(() => {
     const handleClick = e => {
       const target = e.target;
@@ -22,12 +22,12 @@ const User = () => {
         return;
       }
     };
-    document.addEventListener("click", handleClick);
     let timeout;
-    if (!user) {
+    document.addEventListener("click", handleClick);
+    if (!isAuthorized) {
       timeout = setTimeout(() => {
         setLogout(true);
-      }, 1000);
+      }, 1500);
     }
 
     return () => {
@@ -35,9 +35,12 @@ const User = () => {
       clearTimeout(timeout);
     };
   });
+  if (logout) {
+    return <Redirect to="/yourCart" />;
+  }
   return (
     <>
-      {user ? (
+      {user && (
         <section className="userProfil">
           <button className="user-btn" onClick={() => updateUserData(true)}>
             <i className="fas fa-user-edit"></i> Update
@@ -62,18 +65,6 @@ const User = () => {
             />
           )}
         </section>
-      ) : (
-        <>
-          {logoutMessage && (
-            <h2>
-              Looks like you are not logged in!
-              <br />
-              <Link className="logoutInfo" to="/yourCart">
-                Back To Basket
-              </Link>
-            </h2>
-          )}
-        </>
       )}
     </>
   );

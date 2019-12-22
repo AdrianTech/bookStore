@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import "../styles/_chosenBook.scss";
 
 class ViewBook extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <>
