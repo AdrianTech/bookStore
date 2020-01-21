@@ -24,7 +24,7 @@ const registerSchema = data => {
       .min(8)
       .allow(""),
     registerDate: joi.string().min(3),
-    isChatActiv: joi.boolean()
+    isChatActive: joi.boolean()
   };
   return joi.validate(data, schema);
 };
