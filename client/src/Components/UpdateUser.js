@@ -45,6 +45,7 @@ const UpdateUser = ({ click }) => {
           name="email"
           placeholder={user.email}
           onChange={handleForms}
+          autoComplete="off"
         />
 
         <label>Your phone number</label>
@@ -63,26 +64,16 @@ const UpdateUser = ({ click }) => {
               value={newPassword}
               name="newPassword"
               onChange={handleForms}
+              autoComplete="new-password"
             />{" "}
           </>
         )}
         <label>
-          {changePass ? (
-            <>To confirm, enter old password</>
-          ) : (
-            <>To confirm, enter password</>
-          )}
+          {changePass ? <>To confirm, enter old password</> : <>To confirm, enter password</>}
         </label>
-        <input
-          type="password"
-          value={password}
-          name="password"
-          onChange={handleForms}
-        />
+        <input type="password" value={password} name="password" onChange={handleForms} />
         <button>Confirm</button>
-        {!changePass && (
-          <button onClick={() => setNewPass(true)}>Change old password</button>
-        )}
+        {!changePass && <button onClick={() => setNewPass(true)}>Change old password</button>}
       </form>
     </div>
   );

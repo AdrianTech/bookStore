@@ -27,7 +27,7 @@ const User = () => {
     if (!isAuthorized) {
       timeout = setTimeout(() => {
         setLogout(true);
-      }, 1500);
+      }, 1200);
     }
 
     return () => {
@@ -49,10 +49,7 @@ const User = () => {
             {!update ? <CurrentUser /> : <UpdateUser click={updateUserData} />}
           </div>
           {user.isAdmin && (
-            <button
-              onClick={() => displayAdminPanel(!showPanel)}
-              className="main-btn btn-admin"
-            >
+            <button onClick={() => displayAdminPanel(!showPanel)} className="main-btn btn-admin">
               Show Admin Panel
             </button>
           )}

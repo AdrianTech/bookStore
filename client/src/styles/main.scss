@@ -16,6 +16,7 @@ a {
 }
 img {
   border: 1px solid #000;
+  border-radius: 3px;
 }
 .welcome {
   font-size: 20px;
@@ -37,7 +38,6 @@ img {
   }
   a {
     font-weight: 700;
-    background-color: $bgc-item;
     padding: 8px;
     color: $darkRed;
     &:hover {
@@ -92,7 +92,8 @@ footer {
   width: 100%;
   padding: 10px 0;
   text-align: center;
-  background-color: #e2dfdf;
+  background-color: #f8f4f4;
+  border: 1px solid #00000046;
   font-family: "Poppins";
   font-size: 15px;
 }

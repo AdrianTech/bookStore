@@ -31,19 +31,14 @@ class BookCart extends Component {
                   ))}
                   <Summary data={data} />
 
-                  <button
-                    className="secondary-btn bank-btn"
-                    onClick={this.handleState}
-                  >
-                    I Buy It!
+                  <button className="secondary-btn bank-btn" onClick={this.handleState}>
+                    I'll Buy It!
                   </button>
-                  {this.state.bankList && (
-                    <BankList click={this.handleState} {...data} />
-                  )}
+                  {this.state.bankList && <BankList click={this.handleState} {...data} />}
                 </>
               ) : (
                 <>
-                  <h2>Your Basket Is Empty </h2>
+                  <h2>Your cart is empty </h2>
                   <Link
                     style={{
                       display: "block",

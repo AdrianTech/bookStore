@@ -1,137 +1,139 @@
 .loginForm {
-   padding: 7% 3%;
-   position: fixed;
-   width: 100%;
-   height: 100%;
-   top: 0;
-   font-family: "Poppins";
-   left: 0;
-   overflow: auto;
-   background-color: rgba(0, 0, 0, 0.8);
-   z-index: 8;
-   h3 {
-      margin: 15px 0;
+  padding: 7% 3%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  font-family: "Poppins";
+  left: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 8;
+  h3 {
+    margin: 15px 0;
+    color: $bgc-item;
+  }
+  .done {
+    margin-top: 20%;
+    padding: 10px;
+    color: $bgc-item;
+    background-color: #000;
+    font-size: 16px;
+  }
+  .formModalClose {
+    position: absolute;
+    left: 87%;
+    padding: 10px;
+    text-align: right;
+    font-size: 23px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  .form {
+    width: 100%;
+    background-color: #000;
+    padding: 6%;
+    margin: 20% auto;
+    a {
+      color: #a8c0c5;
+      font-size: 1.1em;
+    }
+    .forms {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    label {
       color: $bgc-item;
-   }
-   .done {
-      margin-top: 20%;
-      padding: 10px;
+      margin: 7px 0;
+      text-align: left;
+    }
+    input {
+      border-radius: 5px;
+      border: 2px solid $darkRed;
+      padding: 7px;
+      font-size: 16px;
+      outline: none;
+    }
+    h2,
+    h6,
+    p {
       color: $bgc-item;
-      background-color: #000;
-   }
-   .formModalClose {
-      position: absolute;
-      left: 87%;
-      padding: 10px;
-      text-align: right;
-      font-size: 35px;
-      background-color: transparent;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-   }
-   .form {
-      width: 100%;
-      background-color: #000;
-      padding: 6%;
-      margin: 20% auto;
-      a {
-         color: #a8c0c5;
-         font-size: 1.1em;
-      }
-      .forms {
-         display: flex;
-         flex-direction: column;
-         text-align: center;
-      }
-      label {
-         color: $bgc-item;
-         margin: 7px 0;
-         text-align: left;
-      }
-      input {
-         border-radius: 5px;
-         border: 2px solid $darkRed;
-         padding: 7px;
-         font-size: 16px;
-         outline: none;
-      }
-      h2,
-      h6,
-      p {
-         color: $bgc-item;
-      }
-      p {
-         padding: 6px 0;
-         font-size: 11px;
-         text-align: center;
-         margin-top: 7px;
-      }
-      h6 {
-         padding-left: 10px;
-         opacity: 0.7;
-      }
-      h3 {
-         text-align: center;
-      }
-   }
+    }
+    p {
+      padding: 6px 0;
+      font-size: 11px;
+      text-align: center;
+      margin-top: 7px;
+    }
+    h6 {
+      padding-left: 10px;
+      opacity: 0.7;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
 }
 .terms {
-   > * {
-      padding: 11px 6px;
-   }
+  > * {
+    padding: 11px 6px;
+  }
 }
 .button-login {
-   padding: 6px 25px;
-   font-family: "Poppins";
-   font-weight: 700;
-   position: relative;
-   margin-bottom: 12px;
-   i {
-      margin-right: 7px;
-   }
+  padding: 6px 25px;
+  font-family: "Poppins";
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 12px;
+  i {
+    margin-right: 7px;
+  }
 }
 .signUp-btn {
-   display: block;
-   margin: auto;
-   padding: 4px 7px;
-   font-family: "Poppins";
-   background-color: #a8c0c5;
-   border: none;
+  display: block;
+  margin: auto;
+  padding: 4px 7px;
+  font-family: "Poppins";
+  background-color: #a8c0c5;
+  border: none;
 }
 @media (min-width: 768px) {
-   .loginForm {
-      .form {
-         width: 50%;
-         margin: 1% auto;
-         padding: 3%;
-         label,
-         input {
-            width: 70%;
-            margin: 3px auto;
-         }
-         input {
-            padding: 8px;
-            font-size: 17px;
-            font-weight: 700;
-         }
-         p {
-            font-size: 13px;
-            padding: 15px 0 10px;
-         }
+  .loginForm {
+    .form {
+      width: 50%;
+      margin: 1% auto;
+      padding: 3%;
+      label,
+      input {
+        width: 70%;
+        margin: 3px auto;
       }
-      .formModalClose {
-         font-size: 45px;
-         left: 85%;
-         top: 5%;
+      input {
+        padding: 8px;
+        font-size: 17px;
+        font-weight: 700;
       }
-      .done {
-         margin-top: 10%;
-         width: 60%;
-         margin: auto;
+      p {
+        font-size: 13px;
+        padding: 15px 0 10px;
       }
-   }
-   .terms {
-      text-align: center;
-   }
+    }
+    .formModalClose {
+      font-size: 35px;
+      left: 85%;
+      top: 3%;
+    }
+    .done {
+      margin-top: 10%;
+      width: 60%;
+      font-size: 25px;
+      margin: auto;
+    }
+  }
+  .terms {
+    text-align: center;
+  }
 }

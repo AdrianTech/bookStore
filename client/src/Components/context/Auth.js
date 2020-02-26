@@ -90,10 +90,7 @@ class AuthProvider extends Component {
     };
 
     try {
-      let response = await fetch(
-        `/user/deleteMessage/${chatID}`,
-        fetchSettings
-      );
+      let response = await fetch(`/user/deleteMessage/${chatID}`, fetchSettings);
       const data = await response.json();
       showInfo(data);
     } catch (err) {
@@ -249,7 +246,8 @@ class AuthProvider extends Component {
     const { showInfo } = this.context;
     let registerDate;
     registerDate = new Date().toLocaleString();
-    const { nickName, fullname, email, password, phone, step } = this.state;
+    let { nickName, fullname, email, password, phone, step } = this.state;
+    nickName = nickName[0].toUpperCase() + nickName.slice(1);
     fetch("/user/register", {
       method: "POST",
       headers: {
@@ -283,15 +281,7 @@ class AuthProvider extends Component {
   updateUserData = async e => {
     const userAuth = this.getTokenFromLS();
     e.preventDefault();
-    const {
-      fullname,
-      email,
-      phone,
-      nickName,
-      userID,
-      password,
-      newPassword
-    } = this.state;
+    const { fullname, email, phone, nickName, userID, password, newPassword } = this.state;
     const updateData = {
       fullname,
       email,
@@ -307,8 +297,7 @@ class AuthProvider extends Component {
       return validate;
     });
     if (validate === 6) return showInfo("Change at least one field");
-    else if (password.trim().length === 0)
-      return showInfo("Password is required");
+    else if (password.trim().length === 0) return showInfo("Password is required");
     const fetchSettings = {
       method: "PUT",
       headers: {
@@ -346,10 +335,7 @@ class AuthProvider extends Component {
       }
     };
     try {
-      let response = await fetch(
-        `/chatStatus/${userID}/${!chatStatus}`,
-        fetchSettings
-      );
+      let response = await fetch(`/chatStatus/${userID}/${!chatStatus}`, fetchSettings);
       const data = await response.json();
       if (response.ok) {
         this.setState({
@@ -366,11 +352,7 @@ class AuthProvider extends Component {
     const { showInfo } = this.context;
     if (step === 2) {
       const validate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      if (
-        fullname.trim().length > 5 &&
-        nickName.trim().length > 2 &&
-        validate.test(email)
-      ) {
+      if (fullname.trim().length > 5 && nickName.trim().length > 2 && validate.test(email)) {
         this.setState({
           confirmed: false,
           step: step + 1
@@ -399,9 +381,7 @@ class AuthProvider extends Component {
   };
   deleteUserAccount = async id => {
     const userAuth = JSON.parse(localStorage.getItem("auth-token"));
-    const cfm = window.confirm(
-      "Are you sure that you want to delete the account?"
-    );
+    const cfm = window.confirm("Are you sure that you want to delete the account?");
     if (!cfm) return;
     const fetchSettings = {
       method: "DELETE",

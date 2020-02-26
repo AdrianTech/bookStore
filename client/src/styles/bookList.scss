@@ -8,12 +8,17 @@
 .book-Cart {
   padding: 10px;
   @include txtCtr;
-  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px rgba(53, 1, 1, 0.6);
+  h2,
+  h3 {
+    font-family: "Poppins";
+  }
   h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
   h3 {
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 7px;
   }
   .img-book {
