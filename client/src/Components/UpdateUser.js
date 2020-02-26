@@ -40,7 +40,7 @@ const UpdateUser = ({ click }) => {
 
         <label>Your email</label>
         <input
-          type="text"
+          type="email"
           value={email}
           name="email"
           placeholder={user.email}
