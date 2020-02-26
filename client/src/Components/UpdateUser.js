@@ -45,7 +45,6 @@ const UpdateUser = ({ click }) => {
           name="email"
           placeholder={user.email}
           onChange={handleForms}
-          autoComplete="off"
         />
 
         <label>Your phone number</label>
