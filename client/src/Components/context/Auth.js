@@ -308,18 +308,16 @@ class AuthProvider extends Component {
     };
     try {
       let response = await fetch(`/user/${userID}`, fetchSettings);
-      if (response.ok) {
-        this.setState({
-          fullname: "",
-          email: "",
-          phone: "",
-          nickName: "",
-          userID: "",
-          password: "",
-          newPassword: ""
-        });
-        this.getUser();
-      }
+      this.setState({
+        fullname: "",
+        email: "",
+        phone: "",
+        nickName: "",
+        userID: "",
+        password: "",
+        newPassword: ""
+      });
+      this.getUser();
       const data = await response.json();
       showInfo(data);
     } catch (err) {
@@ -337,11 +335,9 @@ class AuthProvider extends Component {
     try {
       let response = await fetch(`/chatStatus/${userID}/${!chatStatus}`, fetchSettings);
       const data = await response.json();
-      if (response.ok) {
-        this.setState({
-          user: data
-        });
-      }
+      this.setState({
+        user: data
+      });
     } catch (err) {
       console.log(err);
     }
@@ -397,12 +393,17 @@ class AuthProvider extends Component {
       if (response.ok) {
         this.setState({
           user: null,
-          isAuthorized: false
+          isAuthorized: false,
+          openChatWindow: { bool: false, id: "" },
+          userID: "",
+          chatTalks: [],
+          chatUsers: [],
+          token: null
         });
         localStorage.clear();
+        const data = await response.json();
+        showInfo(data);
       }
-      const data = await response.json();
-      showInfo(data);
     } catch (err) {
       showInfo(err);
     }
@@ -412,21 +413,7 @@ class AuthProvider extends Component {
     if (!this.state.openChatWindow.bool && !this.state.isChatActive) {
       clearInterval(this.interval);
     }
-    const {
-      showModal,
-      handleForms,
-      handleLogIn,
-      handleStepDown,
-      handleStepUp,
-      handleSubmitForm,
-      logoutUser,
-      updateUserData,
-      deleteUserAccount,
-      showChatWindow,
-      sendMessage,
-      deleteMessage,
-      chatStatus
-    } = this;
+    const { showModal, handleForms, handleLogIn, handleStepDown, handleStepUp, handleSubmitForm, logoutUser, updateUserData, deleteUserAccount, showChatWindow, sendMessage, deleteMessage, chatStatus } = this;
 
     return (
       <AuthContext.Provider

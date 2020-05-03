@@ -2,30 +2,19 @@ const router = require("express").Router();
 const UserSchema = require("../schemes/userSchema");
 const Chat = require("../schemes/chatSchema");
 const mongoose = require("mongoose");
-const {
-  registerSchema,
-  loginValSchema,
-  updateSchema
-} = require("../schemes/validationSchema");
+const { registerSchema, loginValSchema, updateSchema } = require("../schemes/validationSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../middleware/auth");
 router.delete("/deleteMessage/:id", async (req, res) => {
   const { id } = req.params;
-  Chat.updateOne(
-    { "chat.id": mongoose.Types.ObjectId(id) },
-    { $pull: { chat: { id: mongoose.Types.ObjectId(id) } } },
-    { multi: true },
-    err => {
-      if (err) console.log(err);
-    }
-  );
+  Chat.updateOne({ "chat.id": mongoose.Types.ObjectId(id) }, { $pull: { chat: { id: mongoose.Types.ObjectId(id) } } }, { multi: true }, err => {
+    if (err) console.log(err);
+  });
   res.status(200).json("Message deleted");
 });
 router.get("/getChatUser", verify, async (req, res) => {
-  const user = await UserSchema.find().select(
-    "-password -phone -registerDate -email -fullname"
-  );
+  const user = await UserSchema.find().select("-password -phone -registerDate -email -fullname");
   res.status(200).json(user);
 });
 router.post("/getChatTalk/", async (req, res) => {
@@ -45,15 +34,10 @@ router.post("/sendMessage", verify, async (req, res) => {
     id: new ObjectID()
   };
   if (findChat) {
-    const updateChat = await Chat.findOneAndUpdate(
-      { usersID: { $all: Ids } },
-      { $addToSet: { chat: data } },
-      { new: true },
-      (err, data) => {
-        if (err) return res.status(404).json("Not found");
-        return res.status(200).json(data.chat);
-      }
-    );
+    const updateChat = await Chat.findOneAndUpdate({ usersID: { $all: Ids } }, { $addToSet: { chat: data } }, { new: true }, (err, data) => {
+      if (err) return res.status(404).json("Not found");
+      return res.status(200).json(data.chat);
+    });
   } else {
     const newChat = new Chat({
       usersID: Ids,
@@ -155,9 +139,12 @@ router.put("/:id", verify, async (req, res) => {
 });
 router.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
-  UserSchema.deleteOne({ _id: id }, err => {
-    if (err) return res.status(404).json("Something went wrong");
-  });
+  try {
+    await UserSchema.deleteOne({ _id: id });
+    res.status(200).json("Account deleted");
+  } catch (err) {
+    res.status(404).json("Something went wrong");
+  }
 });
 
 module.exports = router;
