@@ -6,9 +6,7 @@ const Chat = () => {
   const { chatUsers, userID } = React.useContext(AuthContext);
   let users;
   if (showChat) {
-    users = chatUsers
-      .filter(user => user._id !== userID && !user.isAdmin && user.isChatActive)
-      .map(user => <ChatUser key={user._id} chatUser={user} />);
+    users = chatUsers.filter((user) => user._id !== userID && !user.isAdmin && user.isChatActive).map((user) => <ChatUser key={user._id} chatUser={user} />);
   }
   return (
     <>
@@ -17,13 +15,15 @@ const Chat = () => {
           Your Chat
         </div>
       ) : (
-        <div className="chat">
+        <div className="chat" style={{ height: showChat && "350px" }}>
           <div className="chat-buttons">
             <span className="chat-close-btn" onClick={() => setChat(false)}>
               <i className="far fa-window-close"></i>
             </span>
           </div>
-          <ul>{users}</ul>
+          <div style={{ overflowY: "auto", height: "100%" }}>
+            <ul>{users}</ul>
+          </div>
         </div>
       )}
     </>
